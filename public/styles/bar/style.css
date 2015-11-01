@@ -21,6 +21,8 @@ body input {
 body a {
   text-decoration: none;
   font-weight: normal !important; }
+body p {
+  margin: 0; }
 
 .overlay {
   background-color: #000;
@@ -169,6 +171,64 @@ body a {
       float: left; }
     #login-page .content form div .forget-pw {
       float: right; }
+
+/*
+* 个人页 开始
+*/
+#profile-page {
+  position: relative; }
+  #profile-page .content-head {
+    background-color: #6946ff;
+    height: 10rem;
+    padding: 0 14%;
+    padding-top: 3.5rem;
+    padding-bottom: 0.7rem; }
+    #profile-page .content-head img.user-edit {
+      position: absolute;
+      right: 1.9rem;
+      top: 2.5rem;
+      width: 2.4rem; }
+    #profile-page .content-head .user-img-con {
+      position: absolute;
+      width: 100%; }
+      #profile-page .content-head .user-img-con img {
+        width: 6.5rem;
+        border-radius: 3.25rem;
+        float: left;
+        margin-right: 1.3rem; }
+      #profile-page .content-head .user-img-con a img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2.1rem; }
+      #profile-page .content-head .user-img-con p {
+        padding-left: 7.8rem;
+        font-size: 1.4rem;
+        font-family: "";
+        color: white;
+        margin-bottom: 1.8rem; }
+  #profile-page .consume-div {
+    margin-top: 2rem;
+    padding: 0 2rem;
+    font-size: 1.4rem;
+    font-family: ""; }
+    #profile-page .consume-div p {
+      margin-bottom: 2rem; }
+      #profile-page .consume-div p a img {
+        width: 2.4rem;
+        float: right; }
+    #profile-page .consume-div .head {
+      color: #8826ff; }
+  #profile-page .profile-link {
+    color: #8826ff;
+    font-size: 1.4rem;
+    font-family: "";
+    padding: 0 2rem;
+    margin-bottom: 2rem; }
+    #profile-page .profile-link a {
+      float: right; }
+  #profile-page .upload-con {
+    display: none; }
 
 #menu-page .content .control-con {
   width: 30%;

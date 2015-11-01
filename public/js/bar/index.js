@@ -47,7 +47,7 @@ jQuery(function($){
   $('#main-icons').css('height', document.body.clientHeight - 10.5 * $('html').css('fontSize').replace('px',''));
 
   $('#main-my-img, #main-my-p').on('click', function(){
-    if(true){
+    if(false){
       bo.toPage('#login-page');
     }else{
       bo.toPage('#profile-page');
