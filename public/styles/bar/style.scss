@@ -25,9 +25,13 @@ html {
 body{
 	span,
 	p,
-	a,{
+	a,
+	td,{
 		text-shadow:none;
-
+	}
+	ul{
+		box-shadow: none !important;
+		-webkit-box-shadow: none !important;
 	}
 	input{
 		outline:none;
@@ -377,52 +381,284 @@ body{
 
 // 呼叫 结束
 
+/*
+* 在线点酒 开始
+*/
 #menu-page{
-	.content{
-		.control-con{
-			.shopping-cart{
+	.content{		
+		div.ui-tabs{
+			padding:0;
 
+			.control-con{
+				width:25%;
+				height: 100%;
+				background-color: #f1f1f1;
+				ul{
+					margin: 0;					
+				}
+				.tablist-left{
+					li{
+						a{
+							background-color: #f1f1f1;
+							padding-top:0;
+							padding-bottom:0;
+							height:5rem;
+							line-height:5rem;
+							font-family: $family_1;
+							color:#999;
+							font-size:1.4rem;
+							font-weight:normal !important;
+						}
+						a:hover{
+							background-color:white;
+							color:#8826ff;
+							border-right:none;
+						}
+						a.ui-btn-active{
+							text-shadow: none;
+						}
+						.last-control{
+							border-bottom-width: 0;
+						}
+					}
+				}			
 			}
-			width:30%;
-			position: relative;
 
-			span{
-				width:20px;
-				height:20px;
-				position:absolute;
-				bottom:20px;
-				margin:0 auto;
-				background-color:olive;
+			.set-con{
+				width: 75%;
+				height: 100%;
+				background-color:white;
+				ul#recommend{
+					margin:0;					
+					li{
+						height:8.7rem;
+						border:none;
+						border-bottom: 1px solid #e5e5e5;
+						padding:0;
+						margin: 1.2rem 1.2rem 0 1rem;
+						p{
+							margin:0;
+						}						
+						.rec-name{
+							font-family: $family_1;
+							color:#3a3736;
+							font-size:1.3rem;
+						}
+						.rec-des{
+							font-family: $family_1;
+							color:#999;
+							font-size:0.9rem;
+							margin-top:10px;
+						}
+						.price-con{
+							margin-top:.5rem;
+							span{
+								float:left;
+								line-height:2.5rem;
+							}
+							img{
+								float:right;
+								width:2.4rem;
+							}
+							.rec-price{
+								font-family: 'Arial';
+								color:#333;
+								font-size:1.2rem;
+								margin-right:.5rem;
+							}
+							.discount-price{
+								font-family: 'Arial';
+								color:#ccc;
+								font-size:1.2rem;
+								text-decoration: line-through;
+								// 没有位置了
+								display:none;
+							}
+							.order-number{
+								float:right;
+								font-family: 'Arial';
+								color:white;
+								font-size:1.2rem;
+								margin:0 1rem;
+								display:none;
+							}
+							.minus-order{
+								// 没有位置了
+								display:none;
+							}
+						}						
+						div.img{
+							background: url(/images/food.png) no-repeat;
+							border-radius: 1.2rem;
+							width:6rem;
+							height:6rem;
+							margin-right: 1rem;
+							float:left;
+						}						
+					}
+				}				
 			}
 		}
-		.set-con{
-			width: 70%;
 
+		#shopping-table{
+			display:none;
+			position: absolute;
+			left:0;
+			bottom:0;
+			background-color:black;
+			opacity:0.9;
+			z-index: 100;
+    		width: 90%;
+    		color:white;
+    		padding:0 5%;
+    		padding-top:1.7rem;    		
+    		font-size:1.4rem;
+			font-family: $family_1;
+    		img{
+				width:2.7rem;
+				height:2.2rem;
+				margin-bottom:2rem;				
+			}
+			.shopping-num{
+				font-family:'HiraginoSansGB W6', Arial;
+				color:white;
+				font-size:.8rem;
+				position: absolute;
+				top: 1.7rem;
+				left: 2.9rem;
+				width: 1.4rem;
+			    height: 1.4rem;
+			    background-color: red;
+			    border-radius: .7rem;
+			    text-align: center;
+			    span{
+					line-height: 1.4rem;
+			    }
+			}
+			table{
+				margin-bottom:2rem;
+				tr{
+					margin-bottom: 2rem;
+					td{
+		    			padding:0;
+		    			float:left;
+		    			color:#999;
+		    		}
+				}
+			}
+			p{
+				text-align:right;
+		    	color:#fff;
+		    	margin-bottom:2rem;
+			}
 			.decision{
-				a{
-					float:right;
-				}
-			}
-			li{
-				position: relative;
-				div{
-					float:left;
-				}
-				.img{
-					// background-image: url(/images/wine.jpg);
-					background-color:olive;
-					width:50px;
-					height:60px;
-					margin-right: 10px;
-				}
+				width:78%;
+				height:3.5rem;
+				background-color:#7c00ff;
+				color:white;
+				margin:0 auto;
+				border-radius: 1.7rem;
+				text-align: center;
 				span{
-					position:absolute;
-					bottom:10px;
-					right:0;
-					background-color: orange;
-    				color: white;
+					line-height:3.5rem;
 				}
+				margin-bottom: 1.5rem;
 			}
+			
+    		
 		}
 	}
+	.footer{
+		height: 4.35rem;
+		width: 100%;
+		background-color:black;
+		filter: apphs(opacity=90);
+		opacity:0.9;
+		position: relative;
+		padding:0 1rem;
+		font-weight: normal;
+		img{
+			width:2.7rem;
+			height:2.2rem;
+			margin-top: 1.05rem;
+			margin-right: 1rem;
+			float:left;
+		}
+		.shopping-num{
+			font-family:'HiraginoSansGB W6', Arial;
+			color:white;
+			font-size:.8rem;
+			position: absolute;
+			top: 1rem;
+			left: 2.9rem;
+			width: 1.4rem;
+		    height: 1.4rem;
+		    background-color: red;
+		    border-radius: .7rem;
+		    text-align: center;
+		    span{
+				line-height: 1.4rem;
+		    }
+		}
+		.shopping-word{
+			line-height: 4.35rem;
+			// width:27.3rem;
+			// float:left;
+			padding-right:1.7rem;
+			.shopping-spend{
+				color:white;
+				font-family:'HiraginoSansGB W3', Arial;
+				font-size:1.4rem;
+			}
+			.order-confirm{
+				font-family:'HiraginoSansGB W3', Arial;
+				font-size:1.4rem;
+				color:#7808ff;
+				float:right;
+				text-shadow: none;
+			}
+		}		
+	}
+	#confirm-leave-popup{
+		text-align:center;
+		width:89%;
+		height:14.5rem;		
+		#confirm-leave{
+			height:11.2rem;
+			padding:0 7.7%;
+			padding-top:3.3rem;
+			.ui-content{
+				padding:0;	
+				p{
+					margin-bottom:3.2rem;
+					font-family:$family_1;
+					font-size:1.3rem;
+					color:#333;
+				}			
+				div{
+					width:40%;
+					height:4rem;
+					border-radius: 35%; 
+					span{
+						line-height:4rem;
+						color:white;
+						font-size:1.5rem;
+						font-family:$family_1;
+					}
+				}
+				#order-leave{
+					float:left;
+					background-color:#7c00ff;
+				}
+				#order-stay{
+					float:right;
+					background-color:#0099ff;
+
+				}
+			}
+		}		
+	}	
 }
+
+
+// 在线点酒 结束

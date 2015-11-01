@@ -6,6 +6,11 @@ jQuery(function($){
   // bar_order
   var bo = {};
 
+  // html font-size
+  bo.fontSize = function(){
+    return +$('html').css('fontSize').replace('px','');
+  }
+
   // 页面跳转
   bo.toPage = function(url){
     $('#change-page').attr('href', url);
@@ -38,6 +43,36 @@ jQuery(function($){
       },{enableHighAccuracy: true})
 
   }
+
+  // 遮罩层呈现
+  bo.showOverlay = function(){
+    $('#overlay').height(bo.pageHeight());
+    $('#overlay').width(bo.pageWidth());
+
+    $('#overlay').fadeTo(200, 0.5);
+  }
+
+  // 遮罩层消失
+  bo.hideOverlay = function(){
+    $('#overlay').fadeOut(200);
+  }
+
+  // 返回页面高度
+  bo.pageHeight = function(){   
+    return document.body.clientHeight
+  }
+
+  // 返回页面宽度
+  bo.pageWidth = function(){
+    return document.body.scrollWidth;
+  }
+
+  $('#overlay').on('click',function(){
+    bo.hideOverlay();
+    // $('#confirm-leave').popup('close');
+    // $('#shopping-content').popup('close');
+    $('body').css('overflow', 'visible');
+  })
 
 
   /*
@@ -86,16 +121,54 @@ $('#login-page .content').css('height', document.body.clientHeight);
 $('#call-page .content').css('height', document.body.clientHeight);
 // 呼叫 结束
 
+/*
+* 在线点酒 开始
+*/
+$('#menu-content').css('height', document.body.clientHeight- 8.35 * $('html').css('fontSize').replace('px',''));
+
+$('#order-confirm').on('click',function(){
+    bo.showOverlay();
+    $('#confirm-leave').popup('open');
+    $('body').css('overflow', 'hidden');
+})
+
+
+
+$('#order-leave').on('click', function(){
+  bo.hideOverlay();
+  $('#confirm-leave').popup('close');
+})
+
+$('#order-stay').on('click', function(){
+  bo.hideOverlay();
+  $('#confirm-leave').popup('close');
+})
+
+$('#shopping-cart').on('click',function(){
+    bo.showOverlay();
+    // $('#shopping-content').popup('open');
+    $('#shopping-table').css('display','block');
+    $('body').css('overflow', 'hidden');
+})
+
+$('#order-confirm-31').on('click', function(){
+  bo.hideOverlay();
+    $('#shopping-table').css('display','none');
+  // $('#shopping-content').popup('close');
+    $('body').css('overflow', 'visible');
+})
+// 在线点酒 结束
+
+
+
+
+
   // 没有更多的信息，需要计算margin-top
   $('.no-more').css('marginTop', ($(document).height()-20-220)/2);
 
-  // 编辑资料 返回
-  $('#edit-profile-goback').on('click', function(){
-    if($('#uname').val() === '')
-      return;
-    $('#give-up-modify').popup();
-    $('#give-up-modify').popup('open');
-  })
+  
+
+
 
 
 
@@ -167,25 +240,7 @@ $('#call-page .content').css('height', document.body.clientHeight);
       }
  })
 
- function showOverlay(){
-    $('#overlay').height(pageHeight()-60);
-    $('#overlay').width(pageWidth());
-
-    $('#overlay').fadeTo(200, 0.5);
-  }
-
-  function hideOverlay(){
-    $('#overlay').fadeOut(200);
-  }
-
-  function pageHeight(){
-    // return document.body.scrollHeight;
-    return document.body.clientHeight
-  }
-
-  function pageWidth(){
-    return document.body.scrollWidth;
-  }
+ 
 
   $('#male-s').on('click', function(){
     $('#male-s').removeClass('opacition');
@@ -199,11 +254,7 @@ $('#call-page .content').css('height', document.body.clientHeight);
     $('#sex').val('女');
   })
 
-  $('#overlay').on('click',function(){
-    hideOverlay();
-    $('#select-sex').hide();
-    $('body').css('overflow', 'visible');
-  })
+  
 
   $('#select-sex-ok').on('click',function(){
     hideOverlay();

@@ -157,7 +157,7 @@
         </div>
         <div class='consume-div'>
             <p class='head'>已点酒水</p>        
-            <table data-role='table' id='shopping-table' class=''>
+            <table data-role='table' id='shopping-table2' class=''>
             <!-- ui-responsive table-stroke -->
                 <thead>
                     <tr>
@@ -319,17 +319,11 @@
     </div>  
 
     <!-- 在线点酒 -->
-    <div data-role='page' id='menu-page'>
-
-      <div data-role='header' class='header'>
-        <a href="#" data-role="none"><返回</a>
-        <a href="#give-up-modify" id='modify-dialog' data-rel="popup" data-position-to="window" data-transition="pop" style='display:none' ></a>
-        <h1>在线点酒</h1>
-        <a href="#" data-role="none" class="ui-btn-right">...</a>
-      </div>
+    <div data-role='page' id='menu-page'>      
 
       <div data-role='content' class='content'>
-        <div data-role="popup" id="give-up-modify" data-dismissible="false">
+        <!-- 订单确认 弹出框 -->
+        <div data-role="popup" id="confirm-leave" data-dismissible="false">
           <div role="main" class="ui-content">
             <p>购物篮不为空，确认离开吗？</p>             
             <div id='order-leave'>
@@ -340,9 +334,11 @@
             </div>
           </div>
         </div>
+
+        <!-- 订单详情弹出框 -->
         <div data-role="popup" id="shopping-content" class='shopping-content' data-dismissible="false">
-          <div role="main" class='ui-content' id=''>
-            <table data-role='table' id='shopping-table' class='ui-responsive table-stroke'>
+          <div role="main" class='ui-content'>
+            <table data-role='table' id='shopping-table1' class='ui-responsive table-stroke'>
                 <thead>
                     <tr>
                         <th></th>                
@@ -374,87 +370,119 @@
             </div>
           </div>
         </div>
-        <div class='loc-con'>
-          <!-- 设置相同的行高 --> 
-          <div class='loc-sign'>
-            <img src='/images/loc-1.png' />
-          </div>       
+        
+        <div class='loc-con'>          
+          <img src='/images/loc-1.png' />      
           <span class='loc'>正在定位</span>
-          <span class='re-loc'>重新定位</span>
+          <span class='re-loc' id='main-re-loc'>重新定位</span>
         </div>
         
-          <div data-role="tabs">
-            <div class='ui-block-a control-con'>
-                <ul data-role="listview" data-inset="true" class="tablist-left">        
-                  <li data-icon="false"><a href="#recommend" data-role='none' data-icon='none'>酒店推荐</a></li>
-                  <li data-icon="false"><a href="#set-meal" data-role='none' data-ajax="false">套餐</a></li>
-                  <li data-icon="false"><a href="#type1" data-role='none' data-ajax="false">类别1</a></li>
-                  <li data-icon="false"><a href="#type2" data-role='none' class='last-control' data-ajax="false">类别2</a></li>
-                  </ul>                      
-            </div>
-            <div class='ui-block-b set-con'>
-              <!-- <div> -->
-                <ul id="recommend" class="tablist-content" data-role="listview" data-inset="true">
-                    <li>
-                      <!-- <div class='img-con'> -->
-                        <div class='img'></div>
-                        <!-- <a href='#wine-detail'><img src='' /></a> -->
-                      <!-- </div>                 -->
-                      <div>
-                        <p class='rec-name'>畅饮套餐</p>
-                        <p class='rec-des'>详细描述</p>
-                        <p class='price-con'>
-                          <span class='rec-price'>&#165; 26.00</span> 
-                          <span class='discount-price'>&#165; 26.00</span>            
-                          <img class='add-order' src='/images/add.png' />
-                          <span class='order-number' >0</span>
-                          <img class='minus-order' src='/images/minus.png' />
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <div class='img'><a href='#wine-detail'></a></div>                
-                      <div>
-                        <p class='rec-name'>畅饮套餐</p>
-                        <p class='rec-des'>详细描述</p>
-                        <p class='price-con'>
-                          <span class='rec-price'>&#165; 26.00</span> 
-                          <span class='discount-price'>&#165; 26.00</span>            
-                          <img class='add-order' src='/images/add.png' />
-                          <span class='order-number'>0</span>
-                          <img class='minus-order' src='/images/minus.png' />
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <div class='img'><a href='#wine-detail'></a></div>                
-                      <div>
-                        <p class='rec-name'>畅饮套餐</p>
-                        <p class='rec-des'>详细描述</p>
-                        <p class='price-con'>
-                          <span class='rec-price'>&#165; 26.00</span> 
-                          <span class='discount-price'>&#165; 26.00</span>            
-                          <img class='add-order' src='/images/add.png' />
-                          <span class='order-number'>0</span>
-                          <img class='minus-order' src='/images/minus.png' />
-                        </p>
-                      </div>
-                    </li>                           
-                </ul>
+        <div data-role="tabs" id='menu-content'>
+          <div class='ui-block-a control-con'>
+              <ul data-role="listview" data-inset="true" class="tablist-left">        
+                <li data-icon="false"><a href="#recommend" data-role='none' data-icon='none'>酒店推荐</a></li>
+                <li data-icon="false"><a href="#set-meal" data-role='none' data-ajax="false">套餐</a></li>
+                <li data-icon="false"><a href="#type1" data-role='none' data-ajax="false">类别1</a></li>
+                <li data-icon="false"><a href="#type2" data-role='none' class='last-control' data-ajax="false">类别2</a></li>
+                </ul>                      
+          </div>
+          <div class='ui-block-b set-con'>            
+              <ul id="recommend" class="tablist-content" data-role="listview" data-inset="true">
+                  <li>                    
+                      <div class='img'></div>
+                    <div>
+                      <p class='rec-name'>畅饮套餐</p>
+                      <p class='rec-des'>详细描述</p>
+                      <p class='price-con'>
+                        <span class='rec-price'>&#165; 26.00</span> 
+                        <span class='discount-price'>&#165; 26.00</span>            
+                        <img class='add-order' src='/images/add.png' />
+                        <span class='order-number' >0</span>
+                        <img class='minus-order' src='/images/minus.png' />
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class='img'><a href='#wine-detail'></a></div>                
+                    <div>
+                      <p class='rec-name'>畅饮套餐</p>
+                      <p class='rec-des'>详细描述</p>
+                      <p class='price-con'>
+                        <span class='rec-price'>&#165; 26.00</span> 
+                        <span class='discount-price'>&#165; 26.00</span>            
+                        <img class='add-order' src='/images/add.png' />
+                        <span class='order-number'>0</span>
+                        <img class='minus-order' src='/images/minus.png' />
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class='img'><a href='#wine-detail'></a></div>                
+                    <div>
+                      <p class='rec-name'>畅饮套餐</p>
+                      <p class='rec-des'>详细描述</p>
+                      <p class='price-con'>
+                        <span class='rec-price'>&#165; 26.00</span> 
+                        <span class='discount-price'>&#165; 26.00</span>            
+                        <img class='add-order' src='/images/add.png' />
+                        <span class='order-number'>0</span>
+                        <img class='minus-order' src='/images/minus.png' />
+                      </p>
+                    </div>
+                  </li>                           
+              </ul>
 
-                <ul id="set-meal" class="tablist-content" data-role="listview" data-inset="true">
-                    
-                </ul>
-                <ul id="type1" class="tablist-content" data-role="listview" data-inset="true">
-                    
-                </ul>
+              <ul id="set-meal" class="tablist-content" data-role="listview" data-inset="true">
+                  
+              </ul>
+              <ul id="type1" class="tablist-content" data-role="listview" data-inset="true">
+                  
+              </ul>
 
-                <ul id="type2" class="tablist-content" data-role="listview" data-inset="true">
-                    
-                </ul>            
-            </div>
-          </div>     
+              <ul id="type2" class="tablist-content" data-role="listview" data-inset="true">
+                  
+              </ul>            
+          </div>
+        </div>
+
+        <div id='shopping-table'>
+          <img id='' src='/images/shopping.png'>
+          <div class='shopping-num'><span>6</span></div>
+          
+          <table data-role='table' class='' border='0'>
+              <thead>
+                  <tr>
+                      <th></th>                
+                      <th></th>                
+                      <th></th>
+                  </tr>                
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>罗斯福十号</td>
+                      <td>X1</td>
+                      <td>￥13</td>
+                  </tr>
+                  <tr>
+                      <td>罗斯福十号</td>
+                      <td>X1</td>
+                      <td>￥13</td>
+                  </tr>
+                  <tr>
+                      <td>罗斯福十号</td>
+                      <td>X1</td>
+                      <td>￥13</td>
+                  </tr>                
+              </tbody>
+          </table>
+          <p>总金额：￥<span>88</span></p>
+          <div class='decision' id='order-confirm-31'>
+            <span>订单确认</span>
+          </div>
+        </div> 
+
       </div>
+
       <div data-role="footer" class='footer'>
           <img id='shopping-cart' src='/images/shopping.png'>
           <div class='shopping-num'><span>6</span></div>
@@ -464,6 +492,8 @@
           </div>
       </div>
     </div>  
+    
+    
     
 <script src="js/jquery/jquery-2.1.4.js"></script>
 <script src="js/jquerymobile/jquery.mobile-1.4.5.js"></script>
