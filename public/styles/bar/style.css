@@ -243,6 +243,38 @@ body p {
   #profile-page .upload-con {
     display: none; }
 
+/*
+* 呼叫 开始
+*/
+#call-page {
+  background-image: url("/images/call-bg.png");
+  background-size: cover; }
+  #call-page .icons {
+    margin: 0 auto;
+    margin-top: 8.5rem;
+    width: 7.6rem;
+    position: relative; }
+    #call-page .icons img {
+      position: absolute;
+      left: 110%;
+      width: 8.35rem;
+      height: 4.25rem; }
+    #call-page .icons div {
+      background-image: url("/images/call-1.png");
+      background-size: cover;
+      width: 7.6rem;
+      height: 7.6rem;
+      text-align: center;
+      margin-bottom: 2rem; }
+      #call-page .icons div span {
+        line-height: 7.6rem;
+        color: white;
+        font-size: 1.5rem;
+        font-family: "Microsoft YaHei"; }
+    #call-page .icons .already-call {
+      background-image: url("/images/call-2.png");
+      background-size: cover; }
+
 #menu-page .content .control-con {
   width: 30%;
   position: relative; }

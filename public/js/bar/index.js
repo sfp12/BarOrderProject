@@ -80,6 +80,12 @@ $('#register-page .content').css('height', document.body.clientHeight);
 $('#login-page .content').css('height', document.body.clientHeight);
 // 登陆 结束
 
+/*
+* 呼叫 开始
+*/
+$('#call-page .content').css('height', document.body.clientHeight);
+// 呼叫 结束
+
   // 没有更多的信息，需要计算margin-top
   $('.no-more').css('marginTop', ($(document).height()-20-220)/2);
 

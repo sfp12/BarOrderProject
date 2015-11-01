@@ -337,6 +337,46 @@ body{
 }
 // 个人页 结束
 
+/*
+* 呼叫 开始
+*/
+#call-page{
+	background-image: url('/images/call-bg.png');
+	background-size:cover;
+	.icons{
+		margin:0 auto;
+		margin-top: 8.5rem;
+		width: 7.6rem;
+		position:relative;
+		img{
+			position:absolute;
+			left:110%;
+			width:8.35rem;
+			height:4.25rem;
+		}
+		div{
+			background-image: url('/images/call-1.png');
+			background-size:cover;
+			width:7.6rem;
+			height:7.6rem;
+			text-align:center;
+			span{
+				line-height:7.6rem;
+				color:white;
+				font-size:1.5rem;
+				font-family: $family_1;
+			}
+			margin-bottom:2rem;
+		}
+		.already-call{
+			background-image: url('/images/call-2.png');
+			background-size:cover;
+		}
+	}
+}
+
+// 呼叫 结束
+
 #menu-page{
 	.content{
 		.control-con{
