@@ -62,6 +62,13 @@ jQuery(function($){
   // 首页 结束
 
 /*
+* 编辑资料1 开始
+*/
+
+$('#edit-1-page .content').css('height', document.body.clientHeight);
+// 编辑资料1 结束
+
+/*
 * 注册 开始
 */
 $('#register-page .content').css('height', document.body.clientHeight);

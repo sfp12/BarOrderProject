@@ -98,10 +98,23 @@ body p {
 * 编辑资料2
 */
 .edit-page .content {
-  background-color: #f8f8f8; }
+  background-color: #f8f8f8;
+  padding-top: 2.5rem; }
   .edit-page .content div {
-    margin-top: 2.5rem;
-    padding: 0 2rem; }
+    margin: 0 auto;
+    width: 87.5%; }
+    .edit-page .content div p {
+      color: #3a3736;
+      font-size: 1.4rem;
+      font-family: ""; }
+    .edit-page .content div input {
+      margin: 1.2rem 0;
+      width: 95%;
+      padding-left: 5%;
+      height: 3.5rem;
+      border: 1px solid #ccc;
+      background-color: white;
+      border-radius: .3rem; }
 
 /*
 * 注册 开始
