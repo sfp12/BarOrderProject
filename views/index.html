@@ -20,7 +20,7 @@
         <div class='loc-con'>          
           <img src='/images/loc-1.png' />      
           <span class='loc'>正在定位</span>
-          <span class='re-loc'>重新定位</span>
+          <span class='re-loc' id='main-re-loc'>重新定位</span>
         </div>
 
         <div class='icons' id='main-icons'>
@@ -50,23 +50,10 @@
     </div>
 
     <!-- 编辑资料1 -->
-    <div data-role='page' id='edit-1-page' class='edit-page'>
-
-      <div data-role='header' class='header'>
-        <a href="#" data-role="button">桌号16</a>
-        <h1>呼叫</h1>
-        <a href="#" data-role="button" class="ui-btn-right">图标</a>     
-      </div>
+    <div data-role='page' id='edit-1-page' class='edit-page'> 
 
       <div data-role='content' class='content' id='edit-1-content'>
-        <div class='loc-con'>
-          <!-- 设置相同的行高 --> 
-          <div class='loc-sign'>
-            <img src='/images/loc-1.png' />
-          </div>       
-          <span class='loc'>正在定位</span>
-          <span class='re-loc'>重新定位</span>
-        </div>
+        
         <div>
             <p>昵称</p>
             <input type='text' data-role='none' />        
@@ -84,23 +71,10 @@
     </div>
 
     <!-- 编辑资料2 -->
-    <div data-role='page' id='edit-2-page' class='edit-page'>
-
-      <div data-role='header' class='header'>
-        <a href="#" data-role="button">桌号16</a>
-        <h1>呼叫</h1>
-        <a href="#" data-role="button" class="ui-btn-right">图标</a>     
-      </div>
+    <div data-role='page' id='edit-2-page' class='edit-page'>    
 
       <div data-role='content' class='content' id='edit-1-content'>
-        <div class='loc-con'>
-          <!-- 设置相同的行高 --> 
-          <div class='loc-sign'>
-            <img src='/images/loc-1.png' />
-          </div>       
-          <span class='loc'>正在定位</span>
-          <span class='re-loc'>重新定位</span>
-        </div>
+        
         <div>
             <p>年龄</p>
             <input type='text' data-role='none' />        
@@ -122,27 +96,22 @@
     </div>
 
     <!-- 注册 -->
-    <div data-role='page' id='register-page'>
+    <div data-role='page' id='register-page'>      
       
-      <div data-role='header' class='header'>
-        <a href="#" data-role="none"><返回</a>
-        <h1>注册</h1>
-        <a href="#" data-role="none" class="ui-btn-right">...</a>
-      </div>
       <div data-role='content' class='content'>
         <form method="post" action="#">
           <div>
-            <input type='text' class='phone-r' data-role='none' placeholder='手机号码' />
+            <input type='text' class='' data-role='none' placeholder='手机号码' />
           </div>
           <div>
             <input type='text' class='valida-r' data-inline='true' data-role='none' placeholder='验证码' />
             <input type='text' readonly class='get-valida-r' data-inline='true' data-role='none' placeholder='获取验证码' />
           </div>
           <div>
-            <input type='password' class='pw-r' data-role='none' placeholder='密码6-20位字符' />
+            <input type='password' class='' data-role='none' placeholder='密码6-20位字符' />
           </div>
           <div>
-            <input type='password' class='login-r' data-role='none' placeholder='登陆' />
+            <input type='password' readonly class='login-r' data-role='none' placeholder='登陆' />
           </div>
         </form>
 
@@ -151,27 +120,22 @@
     </div>
 
     <!-- 登陆 -->
-    <div data-role='page' id='login-page'>
+    <div data-role='page' id='login-page'>      
       
-      <div data-role='header' class='header'>
-        <a href="#" data-role="none"><返回</a>
-        <h1>登陆</h1>
-        <a href="#" data-role="none" class="ui-btn-right">...</a>
-      </div>
       <div data-role='content' class='content'>
         <form method="post" action="#">
           <div>
-            <input type='text' class='phone-l' data-role='none' placeholder='手机号码' />
+            <input type='text' class='' data-role='none' placeholder='手机号码' />
           </div>
           <div>
-            <input type='password' class='pw-l' data-role='none' placeholder='密码6-20位字符' />
+            <input type='password' class='login-pw' data-role='none' placeholder='密码6-20位字符' />
           </div>
           <div>
-            <input type='password' class='login-l' data-role='none' placeholder='登陆' />
+            <input type='text' class='login' readonly data-role='none' placeholder='登陆' />
           </div>
           <div>
-            <a href='#register' class='free-register' data-role='none'>免费注册</a>
-            <a href='#modify-pw' class='forget-pw' data-role='none'>忘记密码</a>
+            <a href='#register-page' class='free-register' data-role='none'>免费注册</a>
+            <a href='#modify-pw-page' class='forget-pw' data-role='none'>忘记密码</a>
           </div>
         </form>
 

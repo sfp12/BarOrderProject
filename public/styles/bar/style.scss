@@ -31,6 +31,7 @@ body{
 	}
 	input{
 		outline:none;
+		border:none;
 	}
 	a{
 		text-decoration:none;
@@ -79,15 +80,14 @@ body{
 		float:left;
 	}
 	.loc{
-		// width:20.7rem;
+		width:15rem;
+		overflow: hidden;
+    	height: 4rem;
 	}
 	.re-loc{
 		float:right;
-		// width:5.5rem;
 	}
 }
-
-// 测试loc的width
 
 // content 不需要padding
 .content{
@@ -129,6 +129,120 @@ body{
 }
 
 // 首页 结束
+
+/*
+* 编辑资料1
+* 编辑资料2
+*/
+.edit-page{
+	.content{
+		
+		background-color: #f8f8f8;
+		div{
+			margin-top:2.5rem;
+			padding:0 2rem;
+		}
+	}
+}
+
+// 编辑资料结束
+
+/*
+* 注册 开始
+*/
+#register-page{
+	.content{
+		background-image: url('/images/login-bg.png');
+		background-size:cover;		
+		form{
+			padding-top: 26.3rem;
+			padding-bottom:2.5rem;
+			width:87%;
+			margin:0 auto;
+			div{
+				input{
+					width:95%;
+					padding-left:5%;
+					background-color:#22053e;
+					height:4rem;
+					border-radius: 1.7rem;
+					margin-bottom:2rem;
+					color:white;
+					font-size:1.5rem;
+					font-family: $family_2;
+				}
+				.valida-r{
+					width:50%;
+				}
+				.get-valida-r{
+					width: 40%;
+					padding-left:0;
+					text-align:center;
+					background-color:transparent;
+					border:2px solid #7a5c8b;
+				}
+				.login-r{
+					background-color:#5c53ff;
+					color:white;
+					text-align:center;
+				}
+			}
+		}
+	}
+}
+// 注册 结束
+
+/*
+* 登陆 开始
+*/
+#login-page{
+	.content{
+		background-image: url('/images/login-bg.png');
+		background-size:cover;		
+		form{
+			padding-top: 27.5rem;
+			padding-bottom:3rem;
+			width:87%;
+			margin:0 auto;
+			div{
+				input{
+					width:95%;
+					padding-left:5%;
+					background-color:#22053e;
+					height:4rem;
+					border-radius: 1.7rem;
+					margin-bottom:2rem;
+					color:white;
+					font-size:1.5rem;
+					font-family: $family_2;
+				}
+				.login-pw{
+					margin-bottom:3rem;
+				}
+				.login{
+					text-align:center;
+					background-color:#5e4fff;
+				}
+				a{
+					color:white;
+					font-size:1.5rem;
+					font-family: $family_2;
+				}
+				.free-register{
+					float:left;
+				}
+				.forget-pw{
+					float:right;
+				}
+			}
+		}
+	}
+}
+// 登陆 结束
+
+
+
+
 #menu-page{
 	.content{
 		.control-con{

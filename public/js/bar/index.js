@@ -6,9 +6,37 @@ jQuery(function($){
   // bar_order
   var bo = {};
 
+  // 页面跳转
   bo.toPage = function(url){
     $('#change-page').attr('href', url);
     $('#change-page').click();
+  }
+
+  // 定位
+  bo.locPos = function(){
+      // 百度地图API功能
+      var geolocation = new BMap.Geolocation();
+      geolocation.getCurrentPosition(function(r){
+
+          if(this.getStatus() == BMAP_STATUS_SUCCESS){
+              var mk = new BMap.Marker(r.point);
+
+              var gc = new BMap.Geocoder();
+            
+              var pt = new BMap.Point(r.point.lng,r.point.lat);
+              gc.getLocation(pt, function(rs){
+                var addComp = rs.addressComponents;
+                address = addComp.province +  addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+
+                $('.loc').text(address);
+              });
+          
+          }else {
+            alert('failed'+this.getStatus());
+          } 
+
+      },{enableHighAccuracy: true})
+
   }
 
 
@@ -24,10 +52,26 @@ jQuery(function($){
     }else{
       bo.toPage('#profile-page');
     }
-  })
+  });
 
+  bo.locPos();
+
+  $('#main-re-loc').on('click', function(){
+    bo.locPos();
+  });
   // 首页 结束
 
+/*
+* 注册 开始
+*/
+$('#register-page .content').css('height', document.body.clientHeight);
+// 注册 结束
+
+/*
+* 登陆 开始
+*/
+$('#login-page .content').css('height', document.body.clientHeight);
+// 登陆 结束
 
   // 没有更多的信息，需要计算margin-top
   $('.no-more').css('marginTop', ($(document).height()-20-220)/2);
@@ -40,44 +84,8 @@ jQuery(function($){
     $('#give-up-modify').popup('open');
   })
 
-  /*
-  * 重新定位
-  */
-  $('#re-loc').on('click', function(){
-    locPos();
-  });
 
-  /*
-  * 定位函数
-  */
-  var locPos = function(){
-      // 百度地图API功能
-      var geolocation = new BMap.Geolocation();
-      geolocation.getCurrentPosition(function(r){
 
-          if(this.getStatus() == BMAP_STATUS_SUCCESS){
-              var mk = new BMap.Marker(r.point);
-
-              var gc = new BMap.Geocoder();
-            
-              var pt = new BMap.Point(r.point.lng,r.point.lat);
-              gc.getLocation(pt, function(rs){
-                var addComp = rs.addressComponents;
-                address = addComp.province +  addComp.city + addComp.district + addComp.street + addComp.streetNumber;
-
-                $('#loc').text(address);
-              });
-          
-          }else {
-            alert('failed'+this.getStatus());
-          } 
-
-      },{enableHighAccuracy: true})
-
-  }
-
-  // 进行定位
-  locPos();
 
   var SHAKE_THRESHOLD = 3000;
   var last_update = 0;
