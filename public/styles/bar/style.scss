@@ -1,5 +1,9 @@
+$family_1: 'Microsoft YaHei';
+$family_2: '';
+
+
 html {
-	font-size: 62.5%;
+	font-size: 75%;
 }
 @media only screen and (min-width: 481px){
 	html {
@@ -19,25 +23,18 @@ html {
 }
 
 body{
-	text-shadow:none;
-	outline:none;
-}
+	span,
+	p,
+	a,{
+		text-shadow:none;
 
-// 每个页面的header
-.header{
-	background-color: transparent !important;
-	border-style: none;
-	border-bottom:1px solid black;
-	height: 59px;
-	a{
-		line-height: 56px;
-	    margin-left: 18px !important;
-	    margin-right: 18px !important;
-	    text-decoration: none;
-	    color: black;
 	}
-	h1{
-		line-height: 37px;
+	input{
+		outline:none;
+	}
+	a{
+		text-decoration:none;
+		font-weight:normal !important;
 	}
 }
 
@@ -63,18 +60,75 @@ body{
 
 // 定位模块
 .loc-con{
-	padding: 0 17px;
+	padding: 0 1.8rem;
+	background-image:-webkit-linear-gradient(to right, #5274b2, #8b00b2);
+    background-image:linear-gradient(to right,#5274b2, #8b00b2);
+	height:4rem;
+	img{
+		width:1.3rem;
+		height:1.6rem;
+		margin-top: 1.2rem;
+		float:left;
+		margin-right:0.8rem;
+	}
+	span{
+		line-height: 4rem;
+		font-family: $family_1;
+		color:white;
+		font-size: 1.4rem;
+		float:left;
+	}
+	.loc{
+		// width:20.7rem;
+	}
 	.re-loc{
 		float:right;
+		// width:5.5rem;
 	}
 }
+
+// 测试loc的width
 
 // content 不需要padding
 .content{
 	padding:0
 }
 
+/*
+* 首页 开始
+*/
+#main-page{
+	.icons{
+		background-image: url('/images/main-bg.png');
+		background-size:cover;
+		padding: 0 16%;
+		padding-top: 6.5rem;
+		width: 68%;
+		div{
+			float:left;
+			width:30%;
+			margin-right:40%;
+			img{
+				width:100%;
+			}
+			p{
+				margin-top:1.7rem;
+				margin-bottom: 2.8rem;
+				text-align:center;
+				a{
+					font-size:1.4rem;
+					font-family: $family_1;
+					color:white;
+				}
+			}			
+		}
+		.main-right{
+			margin-right:0;
+		}
+	}
+}
 
+// 首页 结束
 #menu-page{
 	.content{
 		.control-con{

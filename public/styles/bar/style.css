@@ -1,5 +1,6 @@
+@charset "UTF-8";
 html {
-  font-size: 62.5%; }
+  font-size: 75%; }
 
 @media only screen and (min-width: 481px) {
   html {
@@ -10,23 +11,15 @@ html {
 @media only screen and (min-width: 641px) {
   html {
     font-size: 125% !important; } }
-body {
-  text-shadow: none;
+body span,
+body p,
+body a {
+  text-shadow: none; }
+body input {
   outline: none; }
-
-.header {
-  background-color: transparent !important;
-  border-style: none;
-  border-bottom: 1px solid black;
-  height: 59px; }
-  .header a {
-    line-height: 56px;
-    margin-left: 18px !important;
-    margin-right: 18px !important;
-    text-decoration: none;
-    color: black; }
-  .header h1 {
-    line-height: 37px; }
+body a {
+  text-decoration: none;
+  font-weight: normal !important; }
 
 .overlay {
   background-color: #000;
@@ -45,12 +38,53 @@ body {
   opacity: 0.5; }
 
 .loc-con {
-  padding: 0 17px; }
+  padding: 0 1.8rem;
+  background-image: -webkit-linear-gradient(to right, #5274b2, #8b00b2);
+  background-image: linear-gradient(to right, #5274b2, #8b00b2);
+  height: 4rem; }
+  .loc-con img {
+    width: 1.3rem;
+    height: 1.6rem;
+    margin-top: 1.2rem;
+    float: left;
+    margin-right: 0.8rem; }
+  .loc-con span {
+    line-height: 4rem;
+    font-family: "Microsoft YaHei";
+    color: white;
+    font-size: 1.4rem;
+    float: left; }
   .loc-con .re-loc {
     float: right; }
 
 .content {
   padding: 0; }
+
+/*
+* 首页 开始
+*/
+#main-page .icons {
+  background-image: url("/images/main-bg.png");
+  background-size: cover;
+  padding: 0 16%;
+  padding-top: 6.5rem;
+  width: 68%; }
+  #main-page .icons div {
+    float: left;
+    width: 30%;
+    margin-right: 40%; }
+    #main-page .icons div img {
+      width: 100%; }
+    #main-page .icons div p {
+      margin-top: 1.7rem;
+      margin-bottom: 2.8rem;
+      text-align: center; }
+      #main-page .icons div p a {
+        font-size: 1.4rem;
+        font-family: "Microsoft YaHei";
+        color: white; }
+  #main-page .icons .main-right {
+    margin-right: 0; }
 
 #menu-page .content .control-con {
   width: 30%;

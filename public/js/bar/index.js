@@ -1,9 +1,33 @@
 // 不同的页面可能有相同的数据，用相同的id，一次全部赋值
 // 人民币符号&#165;
 
-
-
 jQuery(function($){
+  var w = window;
+  // bar_order
+  var bo = {};
+
+  bo.toPage = function(url){
+    $('#change-page').attr('href', url);
+    $('#change-page').click();
+  }
+
+
+  /*
+  * 首页 开始
+  */
+
+  $('#main-icons').css('height', document.body.clientHeight - 10.5 * $('html').css('fontSize').replace('px',''));
+
+  $('#main-my-img, #main-my-p').on('click', function(){
+    if(true){
+      bo.toPage('#login-page');
+    }else{
+      bo.toPage('#profile-page');
+    }
+  })
+
+  // 首页 结束
+
 
   // 没有更多的信息，需要计算margin-top
   $('.no-more').css('marginTop', ($(document).height()-20-220)/2);
@@ -167,43 +191,6 @@ jQuery(function($){
   })
 //-------------编辑资料 结束-----------------------
 
-
-
-})
-
-//需要 zepto.js支持
-var page=0;//当前页
-var pages=1;//总页数
-var ajax=!1;//是否加载中
-Zepto(function($){
-    $(window).scroll(function(){
-        if(($(window).scrollTop() + $(window).height() > $(document).height()-40) && !ajax && pages > page){
-            //滚动条拉到离底40像素内，而且没ajax中，而且没超过总页数
-            //json_ajax(cla,++page);
-            page++;//当前页增加1
-            ajax=!0;//注明开始ajax加载中
-            // $(".list").append('<div class="loading"><img src="/template/mobile/loading.gif" alt="" /></div> ');//出现加载图片
-            $(".loading").html("暂无内容！");
-            // $.ajax({
-            //     type: 'GET',
-            //     url: './json.php?page='+page+'&'+Math.random(),
-            //     dataType: 'json',
-            //     success: function(json){
-            //         pages=json.pages;//更新总页数
-            //         page=json.page;//更新当前页（js不太可靠）
-            //         for(var i= 0,l = list.length;i<l;i++){
-            //             //处理数据并插入
-            //         }
-            //         $(".loading").remove();//删除加载图片
-            //         ajax=!1;//注明已经完成ajax加载
-            //     },
-            //     error: function(xhr, type){
-            //         $(".loading").html("暂无内容！");
-            //     }
-            // });
-        }
-    });
-
-
+  w.bo = bo || {};
 
 })

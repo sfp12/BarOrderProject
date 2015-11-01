@@ -10,30 +10,20 @@
 </head>
 <body>
     <div id='overlay' class='overlay'></div>
-    <a id='change-page' href=''></a>
-
-    
-    
+    <a id='change-page' href=''></a>    
 
     <!-- 首页 -->
     <div data-role='page' id='main-page'>
 
-      <div data-role='header' class='header'>
-        <a href="#" data-role="button">桌号16</a>
-        <h1>小美</h1>
-        <a href="#" data-role="button" class="ui-btn-right">图标</a>     
-      </div>
-
       <div data-role='content' class='content'>
-        <div class='loc-con'>
-          <!-- 设置相同的行高 --> 
-          <div class='loc-sign'>
-            <img src='/images/loc-1.png' />
-          </div>       
+
+        <div class='loc-con'>          
+          <img src='/images/loc-1.png' />      
           <span class='loc'>正在定位</span>
           <span class='re-loc'>重新定位</span>
         </div>
-        <div class='icons' id='icons'>
+
+        <div class='icons' id='main-icons'>
           <div>
             <a href='#menu-page'><img src='images/order-icon.png' /></a>
             <p><a href='#menu-page'>点餐</a></p>
@@ -44,15 +34,15 @@
           </div>
           <div>
             <img src='images/game-icon.png' />
-            <p>游戏</p>
+            <p><a href='#'>游戏</a></p>
           </div>
           <div class='main-right'>
             <img src='images/chat-icon.png'/>
-            <p>聊天室</p>
+            <p><a href='#'>聊天室</a></p>
           </div>
           <div>
             <img id='main-my-img' src='images/profile-icon.png' />
-            <p id='main-my-p'>我的</p>
+            <p id='main-my-p'><a href='#'>我的</a></p>
           </div>
         </div>
       </div>
