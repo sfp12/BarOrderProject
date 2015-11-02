@@ -177,7 +177,11 @@ $('#recommend li').on('click', function(){
 })
 // 在线点酒 结束
 
-
+/*
+* 聊天 开始
+*/
+$('#chat-page .content').css('height', document.body.clientHeight);
+// 聊天 结束
 
 
 

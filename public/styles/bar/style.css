@@ -631,4 +631,71 @@ body p {
         float: right;
         background-color: #0099ff; }
 
+/*
+* 聊天 开始
+*/
+#chat-page .content {
+  clear: both;
+  background-color: #f8f8f8;
+  padding: 1.4rem 1.2rem 1.4rem 1.2rem; }
+  #chat-page .content .item {
+    clear: both; }
+    #chat-page .content .item .u-img {
+      width: 12%;
+      float: left;
+      margin-bottom: 1.5rem; }
+      #chat-page .content .item .u-img img {
+        width: 100%;
+        border-radius: 50%; }
+    #chat-page .content .item div .uname {
+      color: #8e8e93;
+      font-size: 0.9rem;
+      font-family: "Microsoft YaHei";
+      padding-left: 19%;
+      margin-bottom: .5rem; }
+    #chat-page .content .item div .chat-content {
+      margin: 0;
+      padding-left: 3.75%;
+      padding-right: 3.125%;
+      background-color: #39aafa;
+      border-radius: 1.4rem;
+      margin-left: 3.6%;
+      float: left;
+      max-width: 76.56%;
+      margin-bottom: 1.5rem; }
+      #chat-page .content .item div .chat-content span {
+        line-height: 2.7rem;
+        color: white;
+        font-size: 1.3rem;
+        font-family: "HiraginoSansGB W3"; }
+  #chat-page .content .item-r .u-img {
+    float: right; }
+  #chat-page .content .item-r div .uname {
+    text-align: right;
+    padding-left: 0;
+    padding-right: 19%; }
+  #chat-page .content .item-r div .chat-content {
+    padding-left: 3.125%;
+    padding-right: 3.75%;
+    margin-right: 3.6%;
+    float: right; }
+  #chat-page .content .my-chat {
+    border-top: 1px solid #d9d9d9;
+    padding-top: 1.2rem;
+    float: left;
+    width: 100%;
+    position: relative;
+    margin-top: .7rem; }
+    #chat-page .content .my-chat .current-time-con {
+      position: absolute;
+      top: -8px;
+      width: 100%;
+      text-align: center; }
+      #chat-page .content .my-chat .current-time-con .current-time {
+        color: #d9d9d9;
+        font-size: 0.9rem;
+        font-family: "Microsoft YaHei";
+        background-color: #f8f8f8;
+        padding: 0 5px; }
+
 /*# sourceMappingURL=style.css.map */

@@ -713,18 +713,7 @@ body{
 			    span{
 					line-height: 1.4rem;
 			    }
-			}
-			// table{
-			// 	margin-bottom:2rem;
-			// 	tr{
-			// 		margin-bottom: 2rem;
-			// 		td{
-		 //    			padding:0;
-		 //    			float:left;
-		 //    			color:#999;
-		 //    		}
-			// 	}
-			// }
+			}			
 			table{
 				margin-bottom:2rem;
 				thead{
@@ -852,6 +841,96 @@ body{
 		}		
 	}	
 }
+
+/*
+* 聊天 开始
+*/
+#chat-page{
+	.content{
+		clear:both;
+		background-color:#f8f8f8;
+		padding: 1.4rem 1.2rem 1.4rem 1.2rem;
+		.item{
+			clear:both;
+			.u-img{
+				width:12%;
+				float:left;
+				margin-bottom: 1.5rem;
+				img{
+					width:100%;					
+					border-radius:50%;					
+				}
+			}			
+			div{
+				.uname{
+					color:#8e8e93;
+					font-size:0.9rem;
+					font-family:$family_1;
+					padding-left:19%;
+					margin-bottom:.5rem;
+				}
+				.chat-content{
+					margin:0;
+					padding-left:3.75%;
+					padding-right:3.125%;
+					background-color:#39aafa;
+					border-radius:1.4rem;
+					margin-left: 3.6%;
+					float:left;
+					max-width:76.56%;
+					margin-bottom:1.5rem;
+					span{
+						line-height:2.7rem;
+						color:white;
+						font-size:1.3rem;
+						font-family:$family_2;
+					}			
+				}
+			}
+		}
+		.item-r{
+			.u-img{
+				float:right;
+			}
+			div{
+				.uname{
+					text-align:right;
+					padding-left:0;
+					padding-right:19%;
+				}
+				.chat-content{
+					padding-left:3.125%;
+					padding-right:3.75%;
+					margin-right: 3.6%;
+					float:right;
+				}
+			}
+		}
+		.my-chat{
+			border-top:1px solid #d9d9d9;
+			padding-top:1.2rem;
+			float: left;
+    		width: 100%;
+    		position:relative;
+    		margin-top:.7rem;
+    		.current-time-con{
+    			position:absolute;
+				top:-8px;
+				width: 100%;
+    			text-align: center;
+    			.current-time{
+					color:#d9d9d9;
+					font-size:0.9rem;
+					font-family:$family_1;
+					background-color: #f8f8f8;
+    				padding: 0 5px;
+				}
+    		}
+			
+		}		
+	}	
+}
+// 聊天 结束
 
 
 // 在线点酒 结束
