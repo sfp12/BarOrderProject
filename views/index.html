@@ -286,13 +286,8 @@
     </div>    
 
     <!-- 密码重置 -->
-    <div data-role='page' id='modify-pw-page'>
+    <div data-role='page' id='modify-pw-page'>      
       
-      <div data-role='header' class='header'>
-        <a href="#" data-role="none"><返回</a>
-        <h1>注册</h1>
-        <a href="#" data-role="none" class="ui-btn-right">...</a>
-      </div>
       <div data-role='content' class='content'>
         <form method="post" action="#">
           <div>
@@ -303,10 +298,10 @@
             <input type='text' readonly class='get-valida-r' data-inline='true' data-role='none' placeholder='12s后重发' />
           </div>
           <div>
-            <input type='password' class='pw-r' data-role='none' placeholder='新密码6-20位字符' />
+            <input type='password' class='' data-role='none' placeholder='新密码6-20位字符' />
           </div>
           <div>
-            <input type='password' class='login-r' data-role='none' placeholder='完成修改' />
+            <input type='password' readonly class='login-r' data-role='none' placeholder='完成修改' />
           </div>
         </form>
 

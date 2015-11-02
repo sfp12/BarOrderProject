@@ -122,6 +122,13 @@ $('#call-page .content').css('height', document.body.clientHeight);
 // 呼叫 结束
 
 /*
+* 密码重置 开始
+*/
+$('#modify-pw-page .content').css('height', document.body.clientHeight);
+// 密码重置 结束
+
+
+/*
 * 在线点酒 开始
 */
 $('#menu-content').css('height', document.body.clientHeight- 8.35 * $('html').css('fontSize').replace('px',''));
