@@ -110,7 +110,7 @@ body p {
     .edit-page .content div p {
       color: #3a3736;
       font-size: 1.4rem;
-      font-family: ""; }
+      font-family: "HiraginoSansGB W3"; }
     .edit-page .content div input {
       margin: 1.2rem 0;
       width: 95%;
@@ -140,7 +140,7 @@ body p {
       margin-bottom: 2rem;
       color: white;
       font-size: 1.5rem;
-      font-family: ""; }
+      font-family: "HiraginoSansGB W3"; }
     #register-page .content form div .valida-r {
       width: 50%; }
     #register-page .content form div .get-valida-r {
@@ -174,7 +174,7 @@ body p {
       margin-bottom: 2rem;
       color: white;
       font-size: 1.5rem;
-      font-family: ""; }
+      font-family: "HiraginoSansGB W3"; }
     #login-page .content form div .login-pw {
       margin-bottom: 3rem; }
     #login-page .content form div .login {
@@ -183,7 +183,7 @@ body p {
     #login-page .content form div a {
       color: white;
       font-size: 1.5rem;
-      font-family: ""; }
+      font-family: "HiraginoSansGB W3"; }
     #login-page .content form div .free-register {
       float: left; }
     #login-page .content form div .forget-pw {
@@ -221,14 +221,14 @@ body p {
       #profile-page .content-head .user-img-con p {
         padding-left: 7.8rem;
         font-size: 1.4rem;
-        font-family: "";
+        font-family: "HiraginoSansGB W3";
         color: white;
         margin-bottom: 1.8rem; }
   #profile-page .consume-div {
     margin-top: 2rem;
     padding: 0 2rem;
     font-size: 1.4rem;
-    font-family: ""; }
+    font-family: "HiraginoSansGB W3"; }
     #profile-page .consume-div p {
       margin-bottom: 2rem; }
       #profile-page .consume-div p a img {
@@ -239,7 +239,7 @@ body p {
   #profile-page .profile-link {
     color: #8826ff;
     font-size: 1.4rem;
-    font-family: "";
+    font-family: "HiraginoSansGB W3";
     padding: 0 2rem;
     margin-bottom: 2rem; }
     #profile-page .profile-link a {
@@ -278,6 +278,51 @@ body p {
     #call-page .icons .already-call {
       background-image: url("/images/call-2.png");
       background-size: cover; }
+
+/*
+* 酒品详情 开始
+*/
+#wine-detail-page img {
+  width: 100%;
+  height: 30rem; }
+#wine-detail-page .wine-info {
+  padding: 0 1.3rem;
+  padding-top: 1.8rem; }
+  #wine-detail-page .wine-info .head {
+    font-family: "HiraginoSansGB W3";
+    font-size: 1.6rem;
+    color: #3a3736; }
+    #wine-detail-page .wine-info .head .discount {
+      color: #ff3333;
+      font-size: 1.2rem;
+      float: right;
+      margin-left: 2rem; }
+    #wine-detail-page .wine-info .head .price {
+      color: #ccc;
+      font-size: 1.2rem;
+      float: right;
+      text-decoration: line-through; }
+  #wine-detail-page .wine-info .a-m-con {
+    margin-bottom: 1rem;
+    margin-top: 1.4rem;
+    height: 2.45rem; }
+    #wine-detail-page .wine-info .a-m-con img {
+      width: 2.45rem;
+      height: 2.45rem;
+      float: right; }
+    #wine-detail-page .wine-info .a-m-con span {
+      color: #333333;
+      font-size: 1.2rem;
+      float: right;
+      line-height: 2.35rem;
+      margin: 0 1rem; }
+  #wine-detail-page .wine-info .wine-des {
+    color: #666666;
+    font-size: 1.2rem;
+    padding-top: 1.4rem;
+    padding-bottom: 1.4rem;
+    border-top: 1px solid #e5e5e4;
+    line-height: 24px; }
 
 /*
 * 在线点酒 开始

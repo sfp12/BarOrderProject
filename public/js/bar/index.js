@@ -157,6 +157,10 @@ $('#order-confirm-31').on('click', function(){
   // $('#shopping-content').popup('close');
     $('body').css('overflow', 'visible');
 })
+
+$('#recommend li').on('click', function(){
+  bo.toPage('#wine-detail-page');
+})
 // 在线点酒 结束
 
 

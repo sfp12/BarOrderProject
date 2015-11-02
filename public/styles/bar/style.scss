@@ -1,5 +1,5 @@
 $family_1: 'Microsoft YaHei';
-$family_2: '';
+$family_2: 'HiraginoSansGB W3';
 
 
 html {
@@ -380,6 +380,64 @@ body{
 }
 
 // 呼叫 结束
+
+/*
+* 酒品详情 开始
+*/
+#wine-detail-page{
+	img{
+		width:100%;
+		height:30rem;
+	}
+	.wine-info{
+		padding:0 1.3rem;
+		padding-top: 1.8rem;
+		.head{
+			font-family: $family_2;
+			font-size:1.6rem;
+			color:#3a3736;
+			.discount{
+				color:#ff3333;
+				font-size:1.2rem;
+				float:right;	
+				margin-left: 2rem;			
+			}
+			.price{
+				color:#ccc;
+				font-size:1.2rem;
+				float:right;
+				text-decoration: line-through;
+			}
+		}
+		.a-m-con{
+			margin-bottom:1rem;
+			margin-top:1.4rem;
+			height:2.45rem;
+			img{
+				width:2.45rem;
+				height:2.45rem;
+				float:right;
+			}
+			span{
+				color:#333333;
+				font-size:1.2rem;
+				float:right;
+				line-height: 2.35rem;
+    			margin: 0 1rem;
+			}
+		}
+		.wine-des{
+			color:#666666;
+			font-size:1.2rem;
+			padding-top:1.4rem;
+			padding-bottom:1.4rem;
+			border-top:1px solid #e5e5e4;
+			line-height:24px;
+		}
+		
+	}
+}
+// 酒品详情 结束
 
 /*
 * 在线点酒 开始
