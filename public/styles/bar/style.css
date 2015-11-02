@@ -46,8 +46,14 @@ body p {
 
 .loc-con {
   padding: 0 1.8rem;
-  background-image: -webkit-linear-gradient(to right, #5274b2, #8b00b2);
-  background-image: linear-gradient(to right, #5274b2, #8b00b2);
+  background: -webkit-linear-gradient(left, #6280b8, #9619ba);
+  /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #6280b8, #9619ba);
+  /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #6280b8, #9619ba);
+  /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #6280b8, #9619ba);
+  /* 标准的语法 */
   height: 4rem; }
   .loc-con img {
     width: 1.3rem;
@@ -244,6 +250,21 @@ body p {
     #order-confirm-page .content .place-order p {
       color: #999999;
       font-size: 1.3rem; }
+
+/*
+* 定位失败 开始
+*/
+#scope-page {
+  padding-top: 13.5rem;
+  text-align: center; }
+  #scope-page img {
+    width: 5.7rem;
+    height: 5.4rem;
+    margin-bottom: 1.4rem; }
+  #scope-page p {
+    color: #050b0a;
+    font-size: 1.3rem;
+    font-family: "Microsoft YaHei"; }
 
 /*
 * 个人页 开始

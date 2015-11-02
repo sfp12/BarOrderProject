@@ -38,6 +38,7 @@ jQuery(function($){
           
           }else {
             alert('failed'+this.getStatus());
+            bo.toPage('#scope-page');
           } 
 
       },{enableHighAccuracy: true})
