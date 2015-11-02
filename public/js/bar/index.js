@@ -116,6 +116,13 @@ $('#login-page .content').css('height', document.body.clientHeight);
 // 登陆 结束
 
 /*
+* 订单确认 开始
+*/
+$('#order-confirm-page .content').css('height', document.body.clientHeight);
+
+// 订单确认 结束
+
+/*
 * 呼叫 开始
 */
 $('#call-page .content').css('height', document.body.clientHeight);

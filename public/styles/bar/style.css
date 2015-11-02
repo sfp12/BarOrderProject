@@ -190,6 +190,62 @@ body p {
       float: right; }
 
 /*
+* 订单确认 开始
+*/
+#order-confirm-page .content {
+  background-image: url("/images/order-confirm-bg.png");
+  background-size: cover;
+  font-family: "Microsoft YaHei";
+  position: relative; }
+  #order-confirm-page .content .consume-div {
+    margin-top: 2rem;
+    padding: 0 2rem;
+    font-size: 1.4rem; }
+    #order-confirm-page .content .consume-div p {
+      margin-bottom: 2rem; }
+      #order-confirm-page .content .consume-div p a img {
+        width: 2.4rem;
+        float: right; }
+    #order-confirm-page .content .consume-div .head {
+      color: #8826ff; }
+    #order-confirm-page .content .consume-div table {
+      margin-bottom: 2rem; }
+      #order-confirm-page .content .consume-div table thead {
+        display: none; }
+      #order-confirm-page .content .consume-div table tr {
+        height: 4rem; }
+        #order-confirm-page .content .consume-div table tr td {
+          width: 33.33%;
+          float: left;
+          padding: 0; }
+  #order-confirm-page .content .amount {
+    color: #ff3333;
+    font-size: 1.4rem;
+    text-align: right;
+    padding: 0 2rem;
+    margin-bottom: 12.5rem; }
+  #order-confirm-page .content .place-order {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2.45rem; }
+    #order-confirm-page .content .place-order a {
+      padding: 0;
+      margin: 0 auto;
+      text-align: center;
+      background-color: #5e4fff;
+      width: 86%;
+      background-color: #7c00ff;
+      height: 4rem;
+      border-radius: 1.7rem;
+      margin-bottom: 1rem;
+      color: white;
+      font-size: 1.5rem;
+      line-height: 4rem; }
+    #order-confirm-page .content .place-order p {
+      color: #999999;
+      font-size: 1.3rem; }
+
+/*
 * 个人页 开始
 */
 #profile-page {
@@ -228,7 +284,7 @@ body p {
     margin-top: 2rem;
     padding: 0 2rem;
     font-size: 1.4rem;
-    font-family: "HiraginoSansGB W3"; }
+    font-family: "Microsoft YaHei"; }
     #profile-page .consume-div p {
       margin-bottom: 2rem; }
       #profile-page .consume-div p a img {
@@ -479,12 +535,14 @@ body p {
       line-height: 1.4rem; }
   #menu-page .content #shopping-table table {
     margin-bottom: 2rem; }
+    #menu-page .content #shopping-table table thead {
+      display: none; }
     #menu-page .content #shopping-table table tr {
-      margin-bottom: 2rem; }
+      height: 4rem; }
       #menu-page .content #shopping-table table tr td {
-        padding: 0;
+        width: 33.33%;
         float: left;
-        color: #999; }
+        padding: 0; }
   #menu-page .content #shopping-table p {
     text-align: right;
     color: #fff;

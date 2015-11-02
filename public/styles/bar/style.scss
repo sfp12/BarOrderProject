@@ -261,6 +261,82 @@ body{
 }
 // 登陆 结束
 
+/*
+* 订单确认 开始
+*/
+#order-confirm-page{
+	.content{
+		background-image: url('/images/order-confirm-bg.png');
+		background-size:cover;
+		font-family:$family_1;
+		position:relative;
+		.consume-div{
+			margin-top:2rem;
+			padding:0 2rem;
+			font-size:1.4rem;
+			// font-family:$family_2;
+			p{
+				margin-bottom:2rem;
+				a{
+					img{
+						width:2.4rem;
+						float:right;
+					}
+				}
+			}
+			.head{
+				color:#8826ff;
+			}
+			table{
+				margin-bottom:2rem;
+				thead{
+					display:none;
+				}
+				tr{
+					height:4rem;
+					td{
+						width:33.33%;
+						float: left;
+	    				padding: 0;
+					}
+				}				
+			}
+		}
+		.amount{
+			color:#ff3333;
+			font-size:1.4rem;			
+			text-align:right;
+			padding:0 2rem;
+			margin-bottom:12.5rem;
+		}
+		.place-order{
+			width: 100%;
+			text-align:center;	
+			margin-bottom:2.45rem;		
+			a{
+				padding:0;
+				margin:0 auto;
+				text-align:center;
+				background-color:#5e4fff;
+				width:86%;
+				background-color:#7c00ff;
+				height:4rem;
+				border-radius: 1.7rem;
+				margin-bottom:1rem;
+				color:white;
+				font-size:1.5rem;
+				line-height: 4rem;
+			}
+			p{
+				color:#999999;
+				font-size:1.3rem;
+
+			}
+		}
+	}
+	
+}
+// 订单确认 结束
 
 /*
 * 个人页 开始
@@ -309,7 +385,7 @@ body{
 		margin-top:2rem;
 		padding:0 2rem;
 		font-size:1.4rem;
-		font-family:$family_2;
+		font-family:$family_1;
 		p{
 			margin-bottom:2rem;
 			a{
@@ -638,16 +714,30 @@ body{
 					line-height: 1.4rem;
 			    }
 			}
+			// table{
+			// 	margin-bottom:2rem;
+			// 	tr{
+			// 		margin-bottom: 2rem;
+			// 		td{
+		 //    			padding:0;
+		 //    			float:left;
+		 //    			color:#999;
+		 //    		}
+			// 	}
+			// }
 			table{
 				margin-bottom:2rem;
-				tr{
-					margin-bottom: 2rem;
-					td{
-		    			padding:0;
-		    			float:left;
-		    			color:#999;
-		    		}
+				thead{
+					display:none;
 				}
+				tr{
+					height:4rem;
+					td{
+						width:33.33%;
+						float: left;
+	    				padding: 0;
+					}
+				}				
 			}
 			p{
 				text-align:right;
