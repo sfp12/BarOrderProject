@@ -11,22 +11,24 @@ html {
 @media only screen and (min-width: 641px) {
   html {
     font-size: 125% !important; } }
-body span,
-body p,
-body a,
-body td {
-  text-shadow: none; }
-body ul {
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important; }
-body input {
-  outline: none;
-  border: none; }
-body a {
-  text-decoration: none;
-  font-weight: normal !important; }
-body p {
-  margin: 0; }
+body {
+  display: none; }
+  body span,
+  body p,
+  body a,
+  body td {
+    text-shadow: none !important; }
+  body ul {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important; }
+  body input {
+    outline: none;
+    border: none; }
+  body a {
+    text-decoration: none;
+    font-weight: normal !important; }
+  body p {
+    margin: 0; }
 
 .overlay {
   background-color: #000;
@@ -80,28 +82,29 @@ body p {
 /*
 * 首页 开始
 */
-#main-page .icons {
+#main-page .content {
   background-image: url("/images/main-bg.png");
-  background-size: cover;
-  padding: 0 16%;
-  padding-top: 6.5rem;
-  width: 68%; }
-  #main-page .icons div {
-    float: left;
-    width: 30%;
-    margin-right: 40%; }
-    #main-page .icons div img {
-      width: 100%; }
-    #main-page .icons div p {
-      margin-top: 1.7rem;
-      margin-bottom: 2.8rem;
-      text-align: center; }
-      #main-page .icons div p a {
-        font-size: 1.4rem;
-        font-family: "Microsoft YaHei";
-        color: white; }
-  #main-page .icons .main-right {
-    margin-right: 0; }
+  background-size: cover; }
+  #main-page .content .icons {
+    padding: 0 16%;
+    padding-top: 6.5rem;
+    width: 68%; }
+    #main-page .content .icons div {
+      float: left;
+      width: 30%;
+      margin-right: 40%; }
+      #main-page .content .icons div img {
+        width: 100%; }
+      #main-page .content .icons div p {
+        margin-top: 1.7rem;
+        margin-bottom: 2.8rem;
+        text-align: center; }
+        #main-page .content .icons div p a {
+          font-size: 1.4rem;
+          font-family: "Microsoft YaHei";
+          color: white; }
+    #main-page .content .icons .main-right {
+      margin-right: 0; }
 
 /*
 * 编辑资料1
@@ -224,6 +227,8 @@ body p {
           width: 33.33%;
           float: left;
           padding: 0; }
+        #order-confirm-page .content .consume-div table tr .money {
+          text-align: right; }
   #order-confirm-page .content .amount {
     color: #ff3333;
     font-size: 1.4rem;
@@ -438,219 +443,227 @@ body p {
 /*
 * 在线点酒 开始
 */
-#menu-page .content div.ui-tabs {
-  padding: 0; }
-  #menu-page .content div.ui-tabs .control-con {
-    width: 25%;
-    height: 100%;
-    background-color: #f1f1f1; }
-    #menu-page .content div.ui-tabs .control-con ul {
-      margin: 0; }
-    #menu-page .content div.ui-tabs .control-con .tablist-left li a {
-      background-color: #f1f1f1;
-      padding-top: 0;
-      padding-bottom: 0;
-      height: 5rem;
-      line-height: 5rem;
-      font-family: "Microsoft YaHei";
-      color: #999;
-      font-size: 1.4rem;
-      font-weight: normal !important; }
-    #menu-page .content div.ui-tabs .control-con .tablist-left li a:hover {
-      background-color: white;
-      color: #8826ff;
-      border-right: none; }
-    #menu-page .content div.ui-tabs .control-con .tablist-left li a.ui-btn-active {
-      text-shadow: none; }
-    #menu-page .content div.ui-tabs .control-con .tablist-left li .last-control {
-      border-bottom-width: 0; }
-  #menu-page .content div.ui-tabs .set-con {
-    width: 75%;
-    height: 100%;
-    background-color: white; }
-    #menu-page .content div.ui-tabs .set-con ul#recommend {
-      margin: 0; }
-      #menu-page .content div.ui-tabs .set-con ul#recommend li {
-        height: 8.7rem;
-        border: none;
-        border-bottom: 1px solid #e5e5e5;
-        padding: 0;
-        margin: 1.2rem 1.2rem 0 1rem; }
-        #menu-page .content div.ui-tabs .set-con ul#recommend li p {
-          margin: 0; }
-        #menu-page .content div.ui-tabs .set-con ul#recommend li .rec-name {
-          font-family: "Microsoft YaHei";
-          color: #3a3736;
-          font-size: 1.3rem; }
-        #menu-page .content div.ui-tabs .set-con ul#recommend li .rec-des {
-          font-family: "Microsoft YaHei";
-          color: #999;
-          font-size: 0.9rem;
-          margin-top: 10px; }
-        #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con {
-          margin-top: .5rem; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con span {
-            float: left;
-            line-height: 2.5rem; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con img {
-            float: right;
-            width: 2.4rem; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .rec-price {
-            font-family: 'Arial';
-            color: #333;
-            font-size: 1.2rem;
-            margin-right: .5rem; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .discount-price {
-            font-family: 'Arial';
-            color: #ccc;
-            font-size: 1.2rem;
-            text-decoration: line-through;
-            display: none; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .order-number {
-            float: right;
-            font-family: 'Arial';
-            color: white;
-            font-size: 1.2rem;
-            margin: 0 1rem;
-            display: none; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .minus-order {
-            display: none; }
-        #menu-page .content div.ui-tabs .set-con ul#recommend li div.img {
-          background: url(/images/food.png) no-repeat;
-          border-radius: 1.2rem;
-          width: 6rem;
-          height: 6rem;
-          margin-right: 1rem;
-          float: left; }
-#menu-page .content #shopping-table {
-  display: none;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  background-color: black;
-  opacity: 0.9;
-  z-index: 100;
-  width: 90%;
-  color: white;
-  padding: 0 5%;
-  padding-top: 1.7rem;
-  font-size: 1.4rem;
-  font-family: "Microsoft YaHei"; }
-  #menu-page .content #shopping-table img {
-    width: 2.7rem;
-    height: 2.2rem;
-    margin-bottom: 2rem; }
-  #menu-page .content #shopping-table .shopping-num {
-    font-family: 'HiraginoSansGB W6', Arial;
-    color: white;
-    font-size: .8rem;
-    position: absolute;
-    top: 1.7rem;
-    left: 2.9rem;
-    width: 1.4rem;
-    height: 1.4rem;
-    background-color: red;
-    border-radius: .7rem;
-    text-align: center; }
-    #menu-page .content #shopping-table .shopping-num span {
-      line-height: 1.4rem; }
-  #menu-page .content #shopping-table table {
-    margin-bottom: 2rem; }
-    #menu-page .content #shopping-table table thead {
-      display: none; }
-    #menu-page .content #shopping-table table tr {
-      height: 4rem; }
-      #menu-page .content #shopping-table table tr td {
-        width: 33.33%;
-        float: left;
-        padding: 0; }
-  #menu-page .content #shopping-table p {
-    text-align: right;
-    color: #fff;
-    margin-bottom: 2rem; }
-  #menu-page .content #shopping-table .decision {
-    width: 78%;
-    height: 3.5rem;
-    background-color: #7c00ff;
-    color: white;
-    margin: 0 auto;
-    border-radius: 1.7rem;
-    text-align: center;
-    margin-bottom: 1.5rem; }
-    #menu-page .content #shopping-table .decision span {
-      line-height: 3.5rem; }
-#menu-page .footer {
-  height: 4.35rem;
-  width: 100%;
-  background-color: black;
-  filter: apphs(opacity=90);
-  opacity: 0.9;
-  position: relative;
-  padding: 0 1rem;
-  font-weight: normal; }
-  #menu-page .footer img {
-    width: 2.7rem;
-    height: 2.2rem;
-    margin-top: 1.05rem;
-    margin-right: 1rem;
-    float: left; }
-  #menu-page .footer .shopping-num {
-    font-family: 'HiraginoSansGB W6', Arial;
-    color: white;
-    font-size: .8rem;
-    position: absolute;
-    top: 1rem;
-    left: 2.9rem;
-    width: 1.4rem;
-    height: 1.4rem;
-    background-color: red;
-    border-radius: .7rem;
-    text-align: center; }
-    #menu-page .footer .shopping-num span {
-      line-height: 1.4rem; }
-  #menu-page .footer .shopping-word {
-    line-height: 4.35rem;
-    padding-right: 1.7rem; }
-    #menu-page .footer .shopping-word .shopping-spend {
-      color: white;
-      font-family: 'HiraginoSansGB W3', Arial;
-      font-size: 1.4rem; }
-    #menu-page .footer .shopping-word .order-confirm {
-      font-family: 'HiraginoSansGB W3', Arial;
-      font-size: 1.4rem;
-      color: #7808ff;
-      float: right;
-      text-shadow: none; }
-#menu-page #confirm-leave-popup {
-  text-align: center;
-  width: 89%;
-  height: 14.5rem; }
-  #menu-page #confirm-leave-popup #confirm-leave {
-    height: 11.2rem;
-    padding: 0 7.7%;
-    padding-top: 3.3rem; }
-    #menu-page #confirm-leave-popup #confirm-leave .ui-content {
-      padding: 0; }
-      #menu-page #confirm-leave-popup #confirm-leave .ui-content p {
-        margin-bottom: 3.2rem;
+#menu-page {
+  position: relative; }
+  #menu-page .content div.ui-tabs {
+    padding: 0; }
+    #menu-page .content div.ui-tabs .control-con {
+      width: 25%;
+      height: 100%;
+      background-color: #f1f1f1; }
+      #menu-page .content div.ui-tabs .control-con ul {
+        margin: 0; }
+      #menu-page .content div.ui-tabs .control-con .tablist-left li a {
+        background-color: #f1f1f1;
+        padding-top: 0;
+        padding-bottom: 0;
+        height: 5rem;
+        line-height: 5rem;
         font-family: "Microsoft YaHei";
-        font-size: 1.3rem;
-        color: #333; }
-      #menu-page #confirm-leave-popup #confirm-leave .ui-content div {
-        width: 40%;
-        height: 4rem;
-        border-radius: 35%; }
-        #menu-page #confirm-leave-popup #confirm-leave .ui-content div span {
-          line-height: 4rem;
-          color: white;
-          font-size: 1.5rem;
-          font-family: "Microsoft YaHei"; }
-      #menu-page #confirm-leave-popup #confirm-leave .ui-content #order-leave {
-        float: left;
-        background-color: #7c00ff; }
-      #menu-page #confirm-leave-popup #confirm-leave .ui-content #order-stay {
+        color: #999;
+        font-size: 1.4rem;
+        font-weight: normal !important;
+        padding: 0;
+        text-align: center; }
+      #menu-page .content div.ui-tabs .control-con .tablist-left li a:hover {
+        background-color: white;
+        color: #8826ff;
+        border-right: none; }
+      #menu-page .content div.ui-tabs .control-con .tablist-left li a.ui-btn-active {
+        text-shadow: none; }
+      #menu-page .content div.ui-tabs .control-con .tablist-left li .last-control {
+        border-bottom-width: 0; }
+    #menu-page .content div.ui-tabs .set-con {
+      width: 75%;
+      height: 100%;
+      background-color: white; }
+      #menu-page .content div.ui-tabs .set-con ul#recommend {
+        margin: 0; }
+        #menu-page .content div.ui-tabs .set-con ul#recommend li {
+          height: 9.7rem;
+          border: none;
+          border-bottom: 1px solid #e5e5e5;
+          padding: 0;
+          margin: 1.2rem 1.2rem 0 1rem; }
+          #menu-page .content div.ui-tabs .set-con ul#recommend li p {
+            margin: 0; }
+          #menu-page .content div.ui-tabs .set-con ul#recommend li .rec-name {
+            font-family: "Microsoft YaHei";
+            color: #3a3736;
+            font-size: 1.3rem; }
+          #menu-page .content div.ui-tabs .set-con ul#recommend li .rec-des {
+            font-family: "Microsoft YaHei";
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 10px; }
+          #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con {
+            margin-top: .5rem; }
+            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con span {
+              float: left;
+              line-height: 2.5rem; }
+            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con img {
+              float: right;
+              width: 2.4rem; }
+            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .rec-price {
+              font-family: 'Arial';
+              color: #333;
+              font-size: 1.2rem;
+              margin-right: .5rem; }
+            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .discount-price {
+              font-family: 'Arial';
+              color: #ccc;
+              font-size: 1.2rem;
+              text-decoration: line-through; }
+            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .order-number {
+              float: right;
+              font-family: 'Arial';
+              font-size: 1.2rem;
+              margin: 0 1rem;
+              display: none; }
+            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .minus-order {
+              display: none; }
+          #menu-page .content div.ui-tabs .set-con ul#recommend li div.img {
+            background: url(/images/food.png) no-repeat;
+            border-radius: 1.2rem;
+            width: 6rem;
+            height: 6rem;
+            margin-right: 1rem;
+            float: left; }
+  #menu-page .content #shopping-table {
+    display: none;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0.9;
+    z-index: 100;
+    width: 90%;
+    color: white;
+    padding: 0 5%;
+    padding-top: 1.7rem;
+    font-size: 1.4rem;
+    font-family: "Microsoft YaHei"; }
+    #menu-page .content #shopping-table img {
+      width: 2.7rem;
+      height: 2.2rem;
+      margin-bottom: 2rem; }
+    #menu-page .content #shopping-table .shopping-num {
+      font-family: 'HiraginoSansGB W6', Arial;
+      color: white;
+      font-size: .8rem;
+      position: absolute;
+      top: 1.7rem;
+      left: 2.9rem;
+      width: 1.4rem;
+      height: 1.4rem;
+      background-color: red;
+      border-radius: .7rem;
+      text-align: center; }
+      #menu-page .content #shopping-table .shopping-num span {
+        line-height: 1.4rem; }
+    #menu-page .content #shopping-table table {
+      margin-bottom: 2rem; }
+      #menu-page .content #shopping-table table thead {
+        display: none; }
+      #menu-page .content #shopping-table table tr {
+        height: 4rem; }
+        #menu-page .content #shopping-table table tr td {
+          width: 33.33%;
+          float: left;
+          padding: 0;
+          color: #999; }
+        #menu-page .content #shopping-table table tr .money {
+          text-align: right; }
+    #menu-page .content #shopping-table p {
+      text-align: right;
+      color: #fff;
+      margin-bottom: 2rem; }
+    #menu-page .content #shopping-table .decision {
+      width: 78%;
+      height: 3.5rem;
+      background-color: #7c00ff;
+      color: white;
+      margin: 0 auto;
+      border-radius: 1.7rem;
+      text-align: center;
+      margin-bottom: 1.5rem; }
+      #menu-page .content #shopping-table .decision span {
+        line-height: 3.5rem; }
+  #menu-page .footer {
+    height: 4.35rem;
+    width: 100%;
+    background-color: black;
+    filter: apphs(opacity=90);
+    opacity: 0.9;
+    position: absolute;
+    padding: 0 1rem;
+    font-weight: normal;
+    border: none;
+    bottom: 0; }
+    #menu-page .footer img {
+      width: 2.7rem;
+      height: 2.2rem;
+      margin-top: 1.05rem;
+      margin-right: 1rem;
+      float: left; }
+    #menu-page .footer .shopping-num {
+      font-family: 'HiraginoSansGB W6', Arial;
+      color: white;
+      font-size: .8rem;
+      position: absolute;
+      top: 1rem;
+      left: 2.9rem;
+      width: 1.4rem;
+      height: 1.4rem;
+      background-color: red;
+      border-radius: .7rem;
+      text-align: center; }
+      #menu-page .footer .shopping-num span {
+        line-height: 1.4rem; }
+    #menu-page .footer .shopping-word {
+      line-height: 4.35rem;
+      height: 100%;
+      padding-right: 1.7rem; }
+      #menu-page .footer .shopping-word .shopping-spend {
+        color: white;
+        font-family: 'HiraginoSansGB W3', Arial;
+        font-size: 1.4rem; }
+      #menu-page .footer .shopping-word .order-confirm {
+        font-family: 'HiraginoSansGB W3', Arial;
+        font-size: 1.4rem;
+        color: #7808ff;
         float: right;
-        background-color: #0099ff; }
+        text-shadow: none; }
+  #menu-page #confirm-leave-popup {
+    text-align: center;
+    width: 89%;
+    height: 14.5rem; }
+    #menu-page #confirm-leave-popup #confirm-leave {
+      height: 11.2rem;
+      padding: 0 7.7%;
+      padding-top: 3.3rem; }
+      #menu-page #confirm-leave-popup #confirm-leave .ui-content {
+        padding: 0; }
+        #menu-page #confirm-leave-popup #confirm-leave .ui-content p {
+          margin-bottom: 3.2rem;
+          font-family: "Microsoft YaHei";
+          font-size: 1.3rem;
+          color: #333; }
+        #menu-page #confirm-leave-popup #confirm-leave .ui-content div {
+          width: 40%;
+          height: 4rem;
+          border-radius: 35%; }
+          #menu-page #confirm-leave-popup #confirm-leave .ui-content div span {
+            line-height: 4rem;
+            color: white;
+            font-size: 1.5rem;
+            font-family: "Microsoft YaHei"; }
+        #menu-page #confirm-leave-popup #confirm-leave .ui-content #order-leave {
+          float: left;
+          background-color: #7c00ff; }
+        #menu-page #confirm-leave-popup #confirm-leave .ui-content #order-stay {
+          float: right;
+          background-color: #0099ff; }
 
 /*
 * 聊天 开始

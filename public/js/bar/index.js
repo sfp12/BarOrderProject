@@ -1,10 +1,13 @@
 // 不同的页面可能有相同的数据，用相同的id，一次全部赋值
 // 人民币符号&#165;
+// ×
 
 jQuery(function($){
   var w = window;
   // bar_order
   var bo = {};
+
+  $('body').css('display', 'block');
 
   // html font-size
   bo.fontSize = function(){
@@ -80,7 +83,7 @@ jQuery(function($){
   * 首页 开始
   */
 
-  $('#main-icons').css('height', document.body.clientHeight - 10.5 * $('html').css('fontSize').replace('px',''));
+  $('#main-page .content').css('min-height', document.body.clientHeight+1);
 
   $('#main-my-img, #main-my-p').on('click', function(){
     if(false){
@@ -130,9 +133,39 @@ $('#call-page .content').css('height', document.body.clientHeight);
 // 呼叫 结束
 
 /*
+* 酒品详情 开始
+*/
+$('.add-order').on('click', function(e){
+  e.stopPropagation();
+  var num = +$(e.target).next().text();  
+  if(++num > 0){
+    $(e.target).next().show();
+    $(e.target).next().next().show();
+    $(e.target).next().text(num);
+  }
+});
+
+$('.minus-order').on('click', function(e){
+  e.stopPropagation();
+  var num = +$(e.target).prev().text();
+  --num;
+  if(num > 0){
+    $(e.target).prev().text(num);
+  }else if(num === 0){
+    $(e.target).prev().text(num);
+    $(e.target).prev().hide();
+    $(this).hide();
+  }else{
+    $(this).hide();
+    $(e.target).prev().hide();
+  }  
+})
+// 酒品详情 结束
+
+/*
 * 密码重置 开始
 */
-$('#modify-pw-page .content').css('height', document.body.clientHeight);
+$('#modify-pw-page .content').css('min-height', document.body.clientHeight+2);
 // 密码重置 结束
 
 
@@ -176,6 +209,7 @@ $('#order-confirm-31').on('click', function(){
 $('#recommend li').on('click', function(){
   bo.toPage('#wine-detail-page');
 })
+
 // 在线点酒 结束
 
 /*

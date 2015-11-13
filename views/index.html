@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id='overlay' class='overlay'></div>
-    <a id='change-page' href=''></a>    
+    <a id='change-page' href='' data-transition="slide"></a>    
 
     <!-- 首页 -->
     <div data-role='page' id='main-page'>
@@ -18,31 +18,31 @@
       <div data-role='content' class='content'>
 
         <div class='loc-con'>          
-          <img src='/images/loc-1.png' />      
+          <img src='images/loc-1.png' />      
           <span class='loc'>正在定位</span>
           <span class='re-loc' id='main-re-loc'>重新定位</span>
         </div>
 
         <div class='icons' id='main-icons'>
           <div>
-            <a href='#menu-page'><img src='images/order-icon.png' /></a>
-            <p><a href='#menu-page'>点餐</a></p>
+            <a href='#menu-page' data-transition="slide"><img src='images/order-icon.png' /></a>
+            <p><a href='#menu-page' data-transition="slide">点餐</a></p>
           </div>
           <div class='main-right'>
-            <a href='#call-page'><img src='images/call-icon.png' /></a>
-            <p><a href='#call-page'>呼叫</a></p>
+            <a href='#call-page' data-transition="slide"><img src='images/call-icon.png' /></a>
+            <p><a href='#call-page' data-transition="slide">呼叫</a></p>
           </div>
           <div>
             <img src='images/game-icon.png' />
-            <p><a href='#'>游戏</a></p>
+            <p><a href='#' >游戏</a></p>
           </div>
           <div class='main-right'>
-            <a href='#chat-page'><img src='images/chat-icon.png'/></a>
-            <p><a href='#chat-page'>聊天室</a></p>
+            <a href='#chat-page' data-transition="slide"><img src='images/chat-icon.png'/></a>
+            <p><a href='#chat-page' data-transition="slide">聊天室</a></p>
           </div>
           <div>
             <img id='main-my-img' src='images/profile-icon.png' />
-            <p id='main-my-p'><a href='#'>我的</a></p>
+            <p id='main-my-p'><a href='#'>我</a></p>
           </div>
         </div>
       </div>
@@ -75,19 +75,19 @@
       <div data-role='content' class='content' id='edit-1-content'>
         
         <div>
-            <p>年龄</p>
+            <p>年龄:</p>
             <input type='text' data-role='none' />        
         </div>
         <div>
-            <p>星座</p>
+            <p>星座:</p>
             <input type='text' data-role='none' />        
         </div>
         <div>
-            <p>爱好</p>
+            <p>爱好:</p>
             <input type='text' data-role='none' />        
         </div>
         <div>
-            <p>签名</p>
+            <p>签名:</p>
             <input type='text' data-role='none' />        
         </div>
       </div>
@@ -133,8 +133,8 @@
             <input type='text' class='login' readonly data-role='none' placeholder='登陆' />
           </div>
           <div>
-            <a href='#register-page' class='free-register' data-role='none'>免费注册</a>
-            <a href='#modify-pw-page' class='forget-pw' data-role='none'>忘记密码</a>
+            <a href='#register-page' data-transition="slide" class='free-register' data-role='none'>免费注册</a>
+            <a href='#modify-pw-page' data-transition="slide" class='forget-pw' data-role='none'>忘记密码</a>
           </div>
         </form>
 
@@ -147,9 +147,9 @@
       
       <div data-role='content' class='content'>
         <div class='consume-div'>
-            <p class='head'>消费信息</p>              
-            <p>今日消费：<span id='today-consume'>&#165;135</span></p>
-            <p class='last-t'>历史消费：<span id='all-cousume'>&#165;135</span></p>       
+            <p class='head'>所在位置</p>              
+            <p>酒吧：<span>位置</span></p>
+            <p class='last-t'>桌号：<span>16</span></p>       
         </div>
         <div class='consume-div'>
             <p class='head'>已点酒水</p>        
@@ -165,23 +165,23 @@
                 <tbody>
                     <tr>
                         <td>罗斯福十号</td>
-                        <td>X1</td>
-                        <td>￥13</td>
+                        <td>×1</td>
+                        <td class='money'>&#165;13</td>
                     </tr>
                     <tr>
                         <td>罗斯福十号</td>
-                        <td>X1</td>
-                        <td>￥13</td>
+                        <td>×1</td>
+                        <td class='money'>&#165;13</td>
                     </tr>
                     <tr>
                         <td>罗斯福十号</td>
-                        <td>X1</td>
-                        <td>￥13</td>
+                        <td>×1</td>
+                        <td class='money'>&#165;13</td>
                     </tr>                
                 </tbody>
             </table>
         </div>
-        <p class='amount'>总金额：<span>￥52</span></p>
+        <p class='amount'>总金额：<span>&#165;52</span></p>
         <div class='place-order'>
           
           <a href="#" data-role="button" class='' data-role='none' data-inline="true">立即下单</a>
@@ -205,10 +205,10 @@
 
       <div data-role='content' class='content'>
           <div class='content-head'>
-            <a href='#edit-1-page'><img class='user-edit' src='images/edit.png'/></a>
+            <a href='#edit-1-page' data-transition="slide"><img class='user-edit' src='images/edit.png'/></a>
             <div class='user-img-con'>
-              <img class='user-img' id='user-img' src='/images/head.png'/>
-              <a href='#edit-1-page'><img class='camera' src='/images/camera.png'></a>
+              <img class='user-img' id='user-img' src='images/head.png'/>
+              <a href=''><img class='camera' src='/images/camera.png'></a>
               <p>昵称：<span>昵称</span></p>
               <p>性别：<span>性别</span></p>
               <p>电话：<span>18811111111</span></p>
@@ -221,15 +221,15 @@
           </div>        
 
           <div class='consume-div'>
-              <p class='head'>更多信息<a href='#edit-2-page'><img src='images/edit.png'></a></p>
+              <p class='head'>更多信息<a href='#edit-2-page' data-transition="slide"><img src='images/edit.png'></a></p>
               <p>年龄：<span id='user-age'>26</span></p>         
               <p>星座：<span id='user-horo'>狮子座</span></p>         
               <p>爱好：<span id='hobby'>26</span></p>         
               <p class='last-t'>签名：<span id='user-sign'>26</span></p>
           </div>
                    
-          <p class='profile-link'>修改密码<a href='#modify-pw-page'>></a></p>
-          <p class='profile-link'>我的订单<a href='#order-confirm-page'>></a></p>      
+          <p class='profile-link'>修改密码<a href='#modify-pw-page' data-transition="slide">></a></p>
+          <p class='profile-link'>我的订单<a href='#order-confirm-page' data-transition="slide">></a></p>      
           
           <div class='upload-con' id='upload-con'>
             <a href="#" data-role="button" class='' data-inline="true">来自相册</a>
@@ -268,11 +268,11 @@
       <div data-role='content' class='content'>
          <img src='images/wine-head.png' />
          <div class='wine-info'>
-           <p class='head'>罗斯福十号<span class='discount'>套餐价￥88</span><span class='price'>原价￥98</span></p>
+           <p class='head'>罗斯福十号<span class='discount'>套餐价&#165;88</span><span class='price'>原价&#165;98</span></p>
            <p class='a-m-con'>
-              <img class='add' src='images/add.png'/>
-              <span class='wine-num'>26</span>              
-              <img class='minus' src='images/minus-1.png'/>
+              <img class='add-order' src='images/add.png'/>
+              <span class='wine-num'>1</span>              
+              <img class='minus-order' src='images/minus-1.png'/>
            </p>
            <p class='wine-des'>
              Rochefort啤酒是著名的7大修道院啤酒品牌（trappist beer）中的一员。Rochefort啤酒生产于比利时de Saint Remy（圣雷米）修道院内，这个修道院坐落于名叫Rochefort的城镇，所以这个修道院的啤酒就以此地名命名了。Rochefort brewery的主要产品有三种：6，8，10，其中Rochefort 10是最浓烈的一款，也是外界评价最高的一款，这款酒有几乎和葡萄酒一样的酒精度（11.3% ABV）和厚重浓郁的口感，非常适合秋冬季节引用。
@@ -321,45 +321,9 @@
             </div>
           </div>
         </div>
-
-        <!-- 订单详情弹出框 -->
-        <div data-role="popup" id="shopping-content" class='shopping-content' data-dismissible="false">
-          <div role="main" class='ui-content'>
-            <table data-role='table' id='shopping-table1' class='ui-responsive table-stroke'>
-                <thead>
-                    <tr>
-                        <th></th>                
-                        <th></th>                
-                        <th></th>
-                    </tr>                
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>罗斯福十号</td>
-                        <td>X1</td>
-                        <td>￥13</td>
-                    </tr>
-                    <tr>
-                        <td>罗斯福十号</td>
-                        <td>X1</td>
-                        <td>￥13</td>
-                    </tr>
-                    <tr>
-                        <td>罗斯福十号</td>
-                        <td>X1</td>
-                        <td>￥13</td>
-                    </tr>                
-                </tbody>
-            </table>
-            <p>总金额：￥<span>88</span></p>
-            <div class='decision' id='order-confirm-31'>
-              <span>订单确认</span>
-            </div>
-          </div>
-        </div>
         
         <div class='loc-con'>          
-          <img src='/images/loc-1.png' />      
+          <img src='images/loc-1.png' />      
           <span class='loc'>正在定位</span>
           <span class='re-loc' id='main-re-loc'>重新定位</span>
         </div>
@@ -383,37 +347,37 @@
                       <p class='price-con'>
                         <span class='rec-price'>&#165; 26.00</span> 
                         <span class='discount-price'>&#165; 26.00</span>            
-                        <img class='add-order' src='/images/add.png' />
+                        <img class='add-order' src='images/add.png' />
                         <span class='order-number' >0</span>
-                        <img class='minus-order' src='/images/minus.png' />
+                        <img class='minus-order' src='images/minus.png' />
                       </p>
                     </div>
                   </li>
                   <li>
-                    <div class='img'><a href='#wine-detail'></a></div>                
+                    <div class='img'><a href='#wine-detail' data-transition="slide"></a></div>                
                     <div>
                       <p class='rec-name'>畅饮套餐</p>
                       <p class='rec-des'>详细描述</p>
                       <p class='price-con'>
                         <span class='rec-price'>&#165; 26.00</span> 
                         <span class='discount-price'>&#165; 26.00</span>            
-                        <img class='add-order' src='/images/add.png' />
+                        <img class='add-order' src='images/add.png' />
                         <span class='order-number'>0</span>
-                        <img class='minus-order' src='/images/minus.png' />
+                        <img class='minus-order' src='images/minus.png' />
                       </p>
                     </div>
                   </li>
                   <li>
-                    <div class='img'><a href='#wine-detail'></a></div>                
+                    <div class='img'><a href='#wine-detail' data-transition="slide"></a></div>                
                     <div>
                       <p class='rec-name'>畅饮套餐</p>
                       <p class='rec-des'>详细描述</p>
                       <p class='price-con'>
                         <span class='rec-price'>&#165; 26.00</span> 
                         <span class='discount-price'>&#165; 26.00</span>            
-                        <img class='add-order' src='/images/add.png' />
+                        <img class='add-order' src='images/add.png' />
                         <span class='order-number'>0</span>
-                        <img class='minus-order' src='/images/minus.png' />
+                        <img class='minus-order' src='images/minus.png' />
                       </p>
                     </div>
                   </li>                           
@@ -433,7 +397,7 @@
         </div>
 
         <div id='shopping-table'>
-          <img id='' src='/images/shopping.png'>
+          <img id='' src='images/shopping.png'>
           <div class='shopping-num'><span>6</span></div>
           
           <table data-role='table' class='' border='0'>
@@ -447,22 +411,22 @@
               <tbody>
                   <tr>
                       <td>罗斯福十号</td>
-                      <td>X1</td>
-                      <td>￥13</td>
+                      <td>×1</td>
+                      <td class='money'>&#165;13</td>
                   </tr>
                   <tr>
                       <td>罗斯福十号</td>
-                      <td>X1</td>
-                      <td>￥13</td>
+                      <td>×1</td>
+                      <td class='money'>&#165;13</td>
                   </tr>
                   <tr>
                       <td>罗斯福十号</td>
-                      <td>X1</td>
-                      <td>￥13</td>
+                      <td>×1</td>
+                      <td class='money'>&#165;13</td>
                   </tr>                
               </tbody>
           </table>
-          <p>总金额：￥<span>88</span></p>
+          <p>总金额：&#165;<span>88</span></p>
           <div class='decision' id='order-confirm-31'>
             <span>订单确认</span>
           </div>
@@ -471,7 +435,7 @@
       </div>
 
       <div data-role="footer" class='footer'>
-          <img id='shopping-cart' src='/images/shopping.png'>
+          <img id='shopping-cart' src='images/shopping.png'>
           <div class='shopping-num'><span>6</span></div>
           <div class='shopping-word'>
               <span class='shopping-spend'>￥666.00</span>
