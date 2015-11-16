@@ -86,7 +86,7 @@ jQuery(function($){
   $('#main-page .content').css('min-height', document.body.clientHeight+1);
 
   $('#main-my-img, #main-my-p').on('click', function(){
-    if(false){
+    if(true){
       bo.toPage('#login-page');
     }else{
       bo.toPage('#profile-page');
@@ -104,32 +104,32 @@ jQuery(function($){
 * 编辑资料1 开始
 */
 
-$('#edit-1-page .content').css('height', document.body.clientHeight);
+// $('#edit-1-page .content').css('height', document.body.clientHeight);
 // 编辑资料1 结束
 
 /*
 * 注册 开始
 */
-$('#register-page .content').css('height', document.body.clientHeight);
+// $('#register-page .content').css('height', document.body.clientHeight);
 // 注册 结束
 
 /*
 * 登陆 开始
 */
-$('#login-page .content').css('height', document.body.clientHeight);
+// $('#login-page .content').css('height', document.body.clientHeight);
 // 登陆 结束
 
 /*
 * 订单确认 开始
 */
-$('#order-confirm-page .content').css('height', document.body.clientHeight);
+// $('#order-confirm-page .content').css('height', document.body.clientHeight);
 
 // 订单确认 结束
 
 /*
 * 呼叫 开始
 */
-$('#call-page .content').css('height', document.body.clientHeight);
+// $('#call-page .content').css('height', document.body.clientHeight);
 // 呼叫 结束
 
 /*
@@ -165,7 +165,7 @@ $('.minus-order').on('click', function(e){
 /*
 * 密码重置 开始
 */
-$('#modify-pw-page .content').css('min-height', document.body.clientHeight+2);
+$('#modify-pw-page .content').css('min-height', document.body.clientHeight - 4.4 * bo.fontSize());
 // 密码重置 结束
 
 
@@ -215,7 +215,7 @@ $('#recommend li').on('click', function(){
 /*
 * 聊天 开始
 */
-$('#chat-page .content').css('height', document.body.clientHeight);
+// $('#chat-page .content').css('height', document.body.clientHeight);
 // 聊天 结束
 
 
