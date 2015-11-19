@@ -86,7 +86,7 @@ jQuery(function($){
   $('#main-page .content').css('min-height', document.body.clientHeight+1);
 
   $('#main-my-img, #main-my-p').on('click', function(){
-    if(true){
+    if(false){
       bo.toPage('#login-page');
     }else{
       bo.toPage('#profile-page');
