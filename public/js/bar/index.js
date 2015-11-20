@@ -86,7 +86,7 @@ jQuery(function($){
   $('#main-page .content').css('min-height', document.body.clientHeight+1);
 
   $('#main-my-img, #main-my-p').on('click', function(){
-    if(false){
+    if(true){
       bo.toPage('#login-page');
     }else{
       bo.toPage('#profile-page');
@@ -105,18 +105,93 @@ jQuery(function($){
 */
 
 // $('#edit-1-page .content').css('height', document.body.clientHeight);
+$('#edit-1-back').on('click', function(){
+  var argu = {};
+  argu.uname = $('#edit-1-uname').val();
+  argu.sex = $('#edit-1-sex').val();
+  argu.phoneNumber = $('#edit-1-number').val();
+  argu.uid = 2;
+  argu.type = 1;
+  $.post('/modifyInfo', argu, function(data){
+    data = JSON.parse(data);
+
+    if(data.status === 1){
+      alert(data.data);
+    }
+    console.log('debug');
+  });
+})
+
+$('#edit-2-back').on('click', function(){
+  var argu = {};
+  argu.age = $('#edit-2-age').val();
+  argu.horo = $('#edit-2-horo').val();
+  argu.hobby = $('#edit-2-hobby').val();
+  argu.sign = $('#edit-2-sign').val();
+  argu.uid = 2;
+  argu.type = 2;
+  $.post('/modifyInfo', argu, function(data){
+    data = JSON.parse(data);
+
+    if(data.status === 1){
+      alert(data.data);
+    }
+    console.log('debug');
+  });
+})
 // 编辑资料1 结束
 
 /*
 * 注册 开始
 */
 // $('#register-page .content').css('height', document.body.clientHeight);
+// 获取验证码
+$('#validation').on('click', function(){
+  $(this).attr('src', '/getCode?'+new Date().getTime());
+})
+
+$('#login-r').on('click', function(data){
+  var argu = {};
+  argu.phoneNumber = $('#phone-number').val();
+  argu.validationCode = $('#validation-code').val();
+  argu.pw = $('#pw-r').val();
+  $.post('/login/register', argu, function(data){
+    data = JSON.parse(data);
+
+    if(data.status === 1){
+      alert(data.data);
+    }
+    console.log('debug');
+  });
+})
+
 // 注册 结束
 
 /*
 * 登陆 开始
 */
 // $('#login-page .content').css('height', document.body.clientHeight);
+// 登录
+$('#login-s').on('click', function(data){
+  var argu = {};
+  argu.phoneNumber = $('#login-number').val();
+  argu.pw= $('#login-pw').val();
+  $.post('/login/doLogin', argu, function(data){
+    data = JSON.parse(data);
+
+    if(data.status === 1){
+      alert(data.data);
+    }else{
+      $.cookie('username',data.data.userName);
+      $.cookie('userid', data.data.userId);
+      bo.toPage('#profile-page');
+      w.chat.init($.cookie('userid'), $.cookie('username'));
+    }
+    console.log('debug');
+  });
+})
+
+
 // 登陆 结束
 
 /*
@@ -166,6 +241,27 @@ $('.minus-order').on('click', function(e){
 * 密码重置 开始
 */
 $('#modify-pw-page .content').css('min-height', document.body.clientHeight - 4.4 * bo.fontSize());
+
+$('#forget-pw').on('click', function(e){
+  console.log('forget-pw');
+})
+
+// 登录
+$('#m-login').on('click', function(data){
+  var argu = {};
+  argu.phoneNumber = $('#m-number').val();
+  argu.pw= $('#m-pw').val();
+  $.post('/modifyPW', argu, function(data){
+    data = JSON.parse(data);
+
+    if(data.status === 1){
+      alert(data.data);
+    }else{
+      bo.toPage('#profile-page');
+    }
+    console.log('debug');
+  });
+})
 // 密码重置 结束
 
 
@@ -215,7 +311,7 @@ $('#recommend li').on('click', function(){
 /*
 * 聊天 开始
 */
-// $('#chat-page .content').css('height', document.body.clientHeight);
+$('#chat-page .content').css('height', document.body.clientHeight - 11.2 * bo.fontSize());
 // 聊天 结束
 
 

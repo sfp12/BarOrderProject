@@ -58,22 +58,22 @@
     <div data-role='page' id='edit-1-page' class='edit-page'> 
 
       <div data-role='header' class='header'>
-        <a data-role='none' data-rel='back'><img src='images/return.png'></a>
+        <a data-role='none' id='edit-1-back' data-rel='back'><img src='images/return.png'></a>
         <h1>小美</h1>
       </div>
 
       <div data-role='content' class='content'>        
         <div>
             <p>昵称:</p>
-            <input type='text' data-role='none' />        
+            <input type='text' id='edit-1-uname' data-role='none' />        
         </div>
         <div>
             <p>性别:</p>
-            <input type='text' data-role='none' />        
+            <input type='text' id='edit-1-sex' data-role='none' />        
         </div>
         <div>
             <p>电话:</p>
-            <input type='text' data-role='none' />        
+            <input type='text' id='edit-1-number' data-role='none' />        
         </div>
       </div>
 
@@ -83,7 +83,7 @@
     <div data-role='page' id='edit-2-page' class='edit-page'>    
 
       <div data-role='header' class='header'>
-        <a data-role='none' data-rel='back'><img src='images/return.png'></a>
+        <a data-role='none' id='edit-2-back' data-rel='back'><img src='images/return.png'></a>
         <h1>小美</h1>
       </div>
 
@@ -91,19 +91,19 @@
         
         <div>
             <p>年龄:</p>
-            <input type='text' data-role='none' />        
+            <input type='text' id='edit-2-age' data-role='none' />        
         </div>
         <div>
             <p>星座:</p>
-            <input type='text' data-role='none' />        
+            <input type='text' id='edit-2-horo' data-role='none' />        
         </div>
         <div>
             <p>爱好:</p>
-            <input type='text' data-role='none' />        
+            <input type='text' id='edit-2-hobby' data-role='none' />        
         </div>
         <div>
             <p>签名:</p>
-            <input type='text' data-role='none' />        
+            <input type='text' id='edit-2-sign' data-role='none' />        
         </div>
       </div>
 
@@ -120,17 +120,20 @@
       <div data-role='content' class='content'>
         <form method="post" action="#">
           <div>
-            <input type='text' class='' data-role='none' placeholder='手机号码' />
+            <input type='text' class='' id='phone-number' name='phone-number' data-role='none' placeholder='手机号码' />
           </div>
           <div>
-            <input type='text' class='valida-r' data-inline='true' data-role='none' placeholder='验证码' />
-            <input type='text' readonly class='get-valida-r' data-inline='true' data-role='none' placeholder='获取验证码' />
+            <input type='text' class='valida-r' id='validation-code' name='validation-code' data-inline='true' data-role='none' placeholder='验证码' />
+            <div class='validation-con'>
+              <img src='/getCode' id='validation' class='get-valida-r'>
+            </div>
+            
           </div>
           <div>
-            <input type='password' class='' data-role='none' placeholder='密码6-20位字符' />
+            <input type='password' class='' id='pw-r' name='pw-r' data-role='none' placeholder='密码6-20位字符' />
           </div>
           <div>
-            <input type='password' readonly class='login-r' data-role='none' placeholder='登陆' />
+            <input type='password' id='login-r' readonly class='login-r' data-role='none' placeholder='注册' />
           </div>
         </form>
 
@@ -149,17 +152,17 @@
       <div data-role='content' class='content'>
         <form method="post" action="#">
           <div>
-            <input type='text' class='' data-role='none' placeholder='手机号码' />
+            <input type='text' class='' id='login-number' data-role='none' placeholder='手机号码' />
           </div>
           <div>
-            <input type='password' class='login-pw' data-role='none' placeholder='密码6-20位字符' />
+            <input type='password' id='login-pw' class='login-pw' data-role='none' placeholder='密码6-20位字符' />
           </div>
           <div>
-            <input type='text' class='login' readonly data-role='none' placeholder='登陆' />
+            <input type='text' class='login' id='login-s' readonly data-role='none' placeholder='登陆' />
           </div>
           <div>
             <a href='#register-page' data-transition="slide" class='free-register' data-role='none'>免费注册</a>
-            <a href='#modify-pw-page' data-transition="slide" class='forget-pw' data-role='none'>忘记密码</a>
+            <a href='#modify-pw-page' data-transition="slide" id='forget-pw' class='forget-pw' data-role='none'>忘记密码</a>
           </div>
         </form>
 
@@ -342,17 +345,17 @@
       <div data-role='content' class='content'>
         <form method="post" action="#">
           <div>
-            <input type='text' class='phone-r' data-role='none' placeholder='手机号码' />
+            <input type='text' class='phone-r' id='m-number' data-role='none' placeholder='手机号码' />
           </div>
           <div>
             <input type='text' class='valida-r' data-inline='true' data-role='none' placeholder='验证码' />
             <input type='text' readonly class='get-valida-r' data-inline='true' data-role='none' placeholder='12s后重发' />
           </div>
           <div>
-            <input type='password' class='' data-role='none' placeholder='新密码6-20位字符' />
+            <input type='password' id='m-pw' class='' data-role='none' placeholder='新密码6-20位字符' />
           </div>
           <div>
-            <input type='password' readonly class='login-r' data-role='none' placeholder='完成修改' />
+            <input type='password' id='m-login' readonly class='login-r' data-role='none' placeholder='完成修改' />
           </div>
         </form>
 
@@ -551,6 +554,66 @@
             </div>
           </div>
 
+          <div class='item'>
+            <div class='u-img'>
+              <img src='images/head.png'/>
+            </div>
+            <div>
+              <p class='uname'>眼镜男</p>
+              <div class='chat-content'>
+                <span>消息采用div+float布局，每条消息用一个DIV标签包裹，</span>
+              </div>              
+            </div>
+          </div>
+
+          <div class='item'>
+            <div class='u-img'>
+              <img src='images/head.png'/>
+            </div>
+            <div>
+              <p class='uname'>眼镜男</p>
+              <div class='chat-content'>
+                <span>消息采用div+float布局，每条消息用一个DIV标签包裹，</span>
+              </div>              
+            </div>
+          </div>
+
+          <div class='item'>
+            <div class='u-img'>
+              <img src='images/head.png'/>
+            </div>
+            <div>
+              <p class='uname'>眼镜男</p>
+              <div class='chat-content'>
+                <span>消息采用div+float布局，每条消息用一个DIV标签包裹，</span>
+              </div>              
+            </div>
+          </div>
+
+          <div class='item'>
+            <div class='u-img'>
+              <img src='images/head.png'/>
+            </div>
+            <div>
+              <p class='uname'>眼镜男</p>
+              <div class='chat-content'>
+                <span>消息采用div+float布局，每条消息用一个DIV标签包裹，</span>
+              </div>              
+            </div>
+          </div>
+
+          <div class='item'>
+            <div class='u-img'>
+              <img src='images/head.png'/>
+            </div>
+            <div>
+              <p class='uname'>眼镜男</p>
+              <div class='chat-content'>
+                <span>消息采用div+float布局，每条消息用一个DIV标签包裹，</span>
+              </div>              
+            </div>
+          </div>
+
           
           
           <div class='my-chat'>
@@ -572,13 +635,21 @@
           
       </div>
 
+      <div data-role="footer" class='footer'>
+          <input type='text' id='chat-input' data-role='none' />
+          <input type='button' id='chat-submit' data-role='none' value='提交'/>
+      </div>
+
     </div>
     
     
     
 <script src="js/jquery/jquery-2.1.4.js"></script>
+<script src="js/jquery/jquery.cookie.js"></script>
+<script src="js/bar/socket.io.js"></script>
 <script src="js/jquerymobile/jquery.mobile-1.4.5.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B4aa49233be137b159257762c65652fd"></script>
 <script src="js/bar/index.js"></script>
+<script src="js/bar/chat.js"></script>
 </body>
 </html>

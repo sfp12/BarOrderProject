@@ -172,12 +172,13 @@ body {
       font-family: "HiraginoSansGB W3"; }
     #register-page .content form div .valida-r {
       width: 50%; }
-    #register-page .content form div .get-valida-r {
+    #register-page .content form div .validation-con {
       width: 40%;
       padding-left: 0;
-      text-align: center;
-      background-color: transparent;
-      border: 2px solid #7a5c8b; }
+      float: right; }
+      #register-page .content form div .validation-con .get-valida-r {
+        border-radius: .5rem;
+        width: 100%; }
     #register-page .content form div .login-r {
       background-color: #5c53ff;
       color: white;
@@ -691,7 +692,8 @@ body {
 #chat-page .content {
   clear: both;
   background-color: #f8f8f8;
-  padding: 1.4rem 1.2rem 1.4rem 1.2rem; }
+  padding: 1.4rem 1.2rem 1.4rem 1.2rem;
+  overflow: scroll; }
   #chat-page .content .item {
     clear: both; }
     #chat-page .content .item .u-img {
@@ -751,5 +753,24 @@ body {
         font-family: "Microsoft YaHei";
         background-color: #f8f8f8;
         padding: 0 5px; }
+#chat-page .footer {
+  height: 4rem;
+  opacity: 1;
+  border: none; }
+  #chat-page .footer #chat-input {
+    height: 3rem;
+    margin-top: .5rem;
+    margin-left: 5%;
+    float: left;
+    width: 65%;
+    border-radius: .5rem;
+    padding-left: 5%; }
+  #chat-page .footer #chat-submit {
+    float: right;
+    margin-right: 5%;
+    height: 3rem;
+    margin-top: .5rem;
+    width: 15%;
+    background-color: white; }
 
 /*# sourceMappingURL=style.css.map */
