@@ -1,4 +1,6 @@
 var io = require('socket.io')();
+var user_m = require('./models/user');
+var async = require('async');
 
 var onlineUsers = {};
 var onlineCount = 0;
@@ -33,8 +35,25 @@ io.on('connection', function(socket){
 
     socket.on('message', function(obj){
         console.log('server receive str')
-        io.emit('message', obj);
-        console.log(obj.username+'说：'+obj.content);
+
+        async.waterfall([
+            function(cb){
+                user_m.addChat(obj, cb);
+            },
+            function(r){
+                // 添加成功
+                if(r){              
+                    io.emit('message', obj);
+                    console.log(obj.username+'说：'+obj.content);
+                }
+            }
+
+            ], function(err, value){
+                console.log('err:'+err);
+                console.log('value:'+value);
+        })
+
+        
     });
 
 });

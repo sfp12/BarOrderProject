@@ -4,25 +4,9 @@ var cryptoUtil = require('../utils/cryptoUtil');
 
 var database = require('../config').mysql_db;
 var user_t = require('../config').user_t;
+var chat_t = require('../config').chat_t;
 
-Date.prototype.Format = function(fmt)   
-{ 
-  var o = {   
-    "M+" : this.getMonth()+1,                 //月份   
-    "d+" : this.getDate(),                    //日   
-    "H+" : this.getHours(),                   //小时   
-    "m+" : this.getMinutes(),                 //分   
-    "s+" : this.getSeconds(),                 //秒   
-    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
-    "S"  : this.getMilliseconds()             //毫秒   
-  };   
-  if(/(Y+)/.test(fmt))   
-    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
-  for(var k in o)   
-    if(new RegExp("("+ k +")").test(fmt))   
-  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
-  return fmt; 
-}
+
 
 
 // 登陆检查用户名和密码
@@ -67,6 +51,25 @@ exports.modifyPW = function(uname, pw, cb){
 		cb(null, true);
 	})
 
+}
+
+// 添加聊天内容
+exports.addChat = function(obj, cb){
+
+	var chat  = {user_id: obj.userid, chat_content: obj.content, add_time:new Date().Format('YYYY-MM-dd HH:mm:ss')};
+
+	var sql = 'insert into ' +chat_t;
+	sql += ' set ? ';
+	console.log(sql);
+	mysqlUtil.query(sql, chat, function(err, result){
+		if(err){
+			console.log('add chat error');
+		}
+
+		console.log(util.inspect({result: result}));
+		
+		cb(null, result.insertId);
+	});
 }
 
 // 修改用户信息

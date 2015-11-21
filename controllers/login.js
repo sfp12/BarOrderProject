@@ -56,8 +56,6 @@ exports.toPage = function(req, res, next){
 		data: '有登陆权限'
 	}
 
-	// console.log(util.inspect({session:req.session}));
-	// console.log(req.session.uid);
 	if(!req.session.uid){
 		result.status = 1;
 		result.data = '没有登录权限';

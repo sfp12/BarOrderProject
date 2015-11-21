@@ -497,54 +497,54 @@ body {
     #menu-page .content div.ui-tabs .set-con {
       width: 75%;
       height: 100%;
-      background-color: white; }
-      #menu-page .content div.ui-tabs .set-con ul#recommend {
+      background-color: white;
+      overflow: scroll; }
+      #menu-page .content div.ui-tabs .set-con ul.menu-type {
         margin: 0; }
-        #menu-page .content div.ui-tabs .set-con ul#recommend li {
+        #menu-page .content div.ui-tabs .set-con ul.menu-type li {
           height: 9.7rem;
           border: none;
           border-bottom: 1px solid #e5e5e5;
           padding: 0;
           margin: 1.2rem 1.2rem 0 1rem; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li p {
+          #menu-page .content div.ui-tabs .set-con ul.menu-type li p {
             margin: 0; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li .rec-name {
+          #menu-page .content div.ui-tabs .set-con ul.menu-type li .rec-name {
             font-family: "Microsoft YaHei";
             color: #3a3736;
             font-size: 1.3rem; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li .rec-des {
+          #menu-page .content div.ui-tabs .set-con ul.menu-type li .rec-des {
             font-family: "Microsoft YaHei";
             color: #999;
             font-size: 0.9rem;
             margin-top: 10px; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con {
+          #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con {
             margin-top: .5rem; }
-            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con span {
-              float: left;
-              line-height: 2.5rem; }
-            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con img {
+            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con span {
+              float: left; }
+            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con img {
               float: right;
               width: 2.4rem; }
-            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .rec-price {
+            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .rec-price {
               font-family: 'Arial';
               color: #333;
               font-size: 1.2rem;
               margin-right: .5rem; }
-            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .discount-price {
+            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .discount-price {
               font-family: 'Arial';
               color: #ccc;
               font-size: 1.2rem;
               text-decoration: line-through; }
-            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .order-number {
+            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .order-number {
               float: right;
               font-family: 'Arial';
               font-size: 1.2rem;
               margin: 0 1rem;
+              display: none;
+              line-height: 2.5rem; }
+            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .minus-order {
               display: none; }
-            #menu-page .content div.ui-tabs .set-con ul#recommend li .price-con .minus-order {
-              display: none; }
-          #menu-page .content div.ui-tabs .set-con ul#recommend li div.img {
-            background: url(/images/food.png) no-repeat;
+          #menu-page .content div.ui-tabs .set-con ul.menu-type li div.img {
             border-radius: 1.2rem;
             width: 6rem;
             height: 6rem;

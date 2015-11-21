@@ -86,7 +86,7 @@ jQuery(function($){
   $('#main-page .content').css('min-height', document.body.clientHeight+1);
 
   $('#main-my-img, #main-my-p').on('click', function(){
-    if(true){
+    if(!$.cookie('userid')){
       bo.toPage('#login-page');
     }else{
       bo.toPage('#profile-page');
@@ -109,6 +109,7 @@ jQuery(function($){
 
         if(data.status === 0){
           bo.toPage('#chat-page');
+          w.chat.scrollToBottom();
         }else{
           bo.toPage('#login-page');
         }
@@ -118,7 +119,7 @@ jQuery(function($){
     }else{
 
       bo.toPage('#login-page');
-      
+
     }
 
   })
@@ -222,6 +223,10 @@ $('#login-s').on('click', function(data){
 * 订单确认 开始
 */
 // $('#order-confirm-page .content').css('height', document.body.clientHeight);
+$('#order-confirm-submit').on('click', function(){
+  //订单确认 立即下单之后，会清空订单确认页的内容吗？
+
+})
 
 // 订单确认 结束
 
@@ -242,6 +247,36 @@ $('.add-order').on('click', function(e){
     $(e.target).next().next().show();
     $(e.target).next().text(num);
   }
+
+  // 加入购物车
+  console.log('debug');
+  if($(e.target).parent().attr('class') === 'price-con'){
+    // 在线点酒页面
+    
+    var wine_name = $(e.target).parent().parent().find('.rec-name').text();
+    var wine_price = $(e.target).parent().parent().find('.rec-price').text();
+
+    
+  }else{
+    // 酒品详情页面
+
+    var wine_name = $(e.target).parent().prev().find('.wine-name').text();
+    var wine_price = $(e.target).parent().prev().find('.price').text();
+
+    
+  }
+
+  var str = '<tr>';
+  str += '<td>'+ wine_name +'</td>';
+  str +=  '<td>×1</td>';
+  str += '<td class="money">'+ wine_price +'</td>'
+  str += '</tr>';
+  
+  $('#shopping-table tbody').append(str);
+
+
+  // 加入订单详情
+  $('#order-confirm-page tbody').append(str);
 });
 
 $('.minus-order').on('click', function(e){
@@ -292,7 +327,7 @@ $('#m-login').on('click', function(data){
 /*
 * 在线点酒 开始
 */
-$('#menu-content').css('height', document.body.clientHeight- 8.35 * $('html').css('fontSize').replace('px',''));
+$('#menu-content').css('height', document.body.clientHeight- 12.75 * $('html').css('fontSize').replace('px',''));
 
 $('#order-confirm').on('click',function(){
     bo.showOverlay();
@@ -326,7 +361,19 @@ $('#order-confirm-31').on('click', function(){
     $('body').css('overflow', 'visible');
 })
 
-$('#recommend li').on('click', function(){
+$('.menu-type li').on('click', function(e){
+
+  // var li = $(e.target).parent();
+  var parents = $(e.target).parentsUntil('ul');
+  var li = $(parents[parents.length-1]);
+
+  // 给酒品详情页面赋值
+  $('#wine-detail-page .content>img').attr('src', li.find('.img').css('backgroundImage').replace('url(', '').replace(')',''));
+  $('#wine-detail-page .content .wine-name').text(li.find('.rec-name').text());
+  $('#wine-detail-page .content .discount').text(li.find('.discount-price').text());
+  $('#wine-detail-page .content .price').text(li.find('.rec-price').text());
+  $('#wine-detail-page .content .wine-des').text(li.find('.rec-des').text());
+
   bo.toPage('#wine-detail-page');
 })
 

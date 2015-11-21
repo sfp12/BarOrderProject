@@ -1,5 +1,7 @@
 jQuery(function($){
 	var w = window;
+	var host = '172.18.223.2';
+	var port = 3002;
 
 	w.chat = {
 		msgObj: $('#chat-page .content'),
@@ -9,7 +11,7 @@ jQuery(function($){
 
 		//让浏览器滚动条保持在最底部
 		scrollToBottom: function(){
-			w.scrollTo(0, this.msgObj.height());
+			this.msgObj.scrollTop(this.msgObj.height());
 		},
 		// 退出
 		logout: function(){
@@ -49,11 +51,13 @@ jQuery(function($){
 			console.log('userid:'+$.cookie('userid'));
 			console.log('username:'+$.cookie('username'));
 
+			// chat.scrollToBottom();
+
 			this.userid = userid;
 			this.username = username;
 
 			// 链接后端服务器
-			this.socket = io.connect('ws://172.18.223.2:3002');
+			this.socket = io.connect('ws://'+host+':'+port);
 
 			// 告诉服务器都用户登录
 			this.socket.emit('login', {userid:this.userid, username: this.username});
@@ -71,9 +75,10 @@ jQuery(function($){
 			// 监听消息发送
 			this.socket.on('message', function(obj){
 				var isme = (obj.userid === chat.userid) ? true : false;
+				// 从个人主页找头像
 				var str = "<div class='item'>"
 			            + "<div class='u-img'>"
-			             + "<img src='images/head.png'/>"
+			             + "<img src='"+$('#user-img').attr('src')+"'/>"
 			            + "</div>"
 			            + "<div>"
 			             + "<p class='uname'>"+obj.username+"</p>"

@@ -672,7 +672,8 @@ body{
 				width: 75%;
 				height: 100%;
 				background-color:white;
-				ul#recommend{
+				overflow: scroll;
+				ul.menu-type{
 					margin:0;					
 					li{
 						height:9.7rem;
@@ -698,7 +699,7 @@ body{
 							margin-top:.5rem;
 							span{
 								float:left;
-								line-height:2.5rem;
+								
 							}
 							img{
 								float:right;
@@ -725,6 +726,7 @@ body{
 								font-size:1.2rem;
 								margin:0 1rem;
 								display:none;
+								line-height:2.5rem;
 							}
 							.minus-order{
 								// 没有位置了
@@ -732,7 +734,7 @@ body{
 							}
 						}						
 						div.img{
-							background: url(/images/food.png) no-repeat;
+							// background: url(/images/food.png) no-repeat;
 							border-radius: 1.2rem;
 							width:6rem;
 							height:6rem;

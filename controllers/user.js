@@ -65,3 +65,4 @@ exports.modifyInfo = function(req, res, next){
 	})	
 	
 }
+

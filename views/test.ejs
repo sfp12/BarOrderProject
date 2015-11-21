@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>ejs</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <form method='post' action='/login'>
-    	<label for='uname'>uname</label>
-    	<input id='uname' name='uname' type='text' />
-    	</br>
-    	<label for='pw'>pw</label>
-    	<input id='pw' type='password' name='pw' />
-    	<input type='submit' value='submit' />
-    	<p>response:<%= response %></p>
-    </form>
+    <% if(names.length){ %>
+      <ul>
+        <% names.forEach(function(name){ %>
+          <li foo='<%= name %>'><%= name %></li>
+        <% }) %>
+      </ul>
+    <% } %>
   </body>
 </html>

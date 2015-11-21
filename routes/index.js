@@ -5,11 +5,31 @@ var crypto = require('crypto');
 
 var login_c = require('../controllers/login');
 var user_c = require('../controllers/user');
+var wine_c = require('../controllers/wine');
 
-function md5(text) {
-	var str_1 = crypto.createHash('md5').update(text).digest('hex');
-	return crypto.createHash('md5').update(str_1+'darwin').digest('hex');
-};
+// function md5(text) {
+// 	var str_1 = crypto.createHash('md5').update(text).digest('hex');
+// 	return crypto.createHash('md5').update(str_1+'darwin').digest('hex');
+// };
+
+Date.prototype.Format = function(fmt)   
+{ 
+  var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "H+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+  };   
+  if(/(Y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  return fmt; 
+}
 
 
 
@@ -19,9 +39,7 @@ function md5(text) {
 // })
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index.html');
-});
+router.get('/', wine_c.wineList);
 
 
 // ---------------------权限管理--------------------
@@ -56,28 +74,10 @@ router.get('/tochat', login_c.toPage);
 
 router.get('/test', function(req, res, next) {
 
-	var ccap = require('ccap')({
-		width:128,
-		height:40,
-		offset:30,
-		quality:100,
-		fontsize:30,
-		generate:function(){
-			return '1234';
-		}
-	});
-
-	var ary = ccap.get();
-
-    var txt = ary[0];
-
-    var buf = ary[1];
-
-	res.end(buf);
-	// res.render('result', {
-	// 	success: buf,
-	// 	title: 'title'
-	// })
+	
+	res.render('test', {
+		names: ['foo', 'bar', 'baz']
+	})
 
 });
 
