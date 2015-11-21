@@ -46,6 +46,9 @@ router.post('/modifyPW', user_c.modifyPW);
 
 router.post('/modifyInfo', user_c.modifyInfo);
 
+// -------------------页面跳转-----------------------
+router.get('/tochat', login_c.toPage);	
+
 
 
 

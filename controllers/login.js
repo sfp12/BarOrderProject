@@ -49,6 +49,24 @@ exports.doLogin = function(req, res, next){
 	})	
 }
 
+// 登录页面，是否有权限
+exports.toPage = function(req, res, next){
+	var result = {
+		status: 0,
+		data: '有登陆权限'
+	}
+
+	// console.log(util.inspect({session:req.session}));
+	// console.log(req.session.uid);
+	if(!req.session.uid){
+		result.status = 1;
+		result.data = '没有登录权限';
+	}
+		
+	res.send(JSON.stringify(result))
+	
+}
+
 // 退出
 exports.logOut = function(req, res, next){
 	delete req.session.userinfo;

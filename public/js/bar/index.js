@@ -98,6 +98,30 @@ jQuery(function($){
   $('#main-re-loc').on('click', function(){
     bo.locPos();
   });
+
+  $('#main-chat-page').on('click', function(){
+
+    if($.cookie('userid')){
+      
+      $.get('/tochat', function(data){
+
+        data = JSON.parse(data);
+
+        if(data.status === 0){
+          bo.toPage('#chat-page');
+        }else{
+          bo.toPage('#login-page');
+        }
+
+      })
+
+    }else{
+
+      bo.toPage('#login-page');
+      
+    }
+
+  })
   // 首页 结束
 
 /*
