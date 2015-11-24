@@ -684,12 +684,12 @@ body{
 						p{
 							margin:0;
 						}						
-						.rec-name{
+						.wine-name{
 							font-family: $family_1;
 							color:#3a3736;
 							font-size:1.3rem;
 						}
-						.rec-des{
+						.wine-des{
 							font-family: $family_1;
 							color:#999;
 							font-size:0.9rem;
@@ -705,13 +705,13 @@ body{
 								float:right;
 								width:2.4rem;
 							}
-							.rec-price{
+							.wine-price{
 								font-family: 'Arial';
 								color:#333;
 								font-size:1.2rem;
 								margin-right:.5rem;
 							}
-							.discount-price{
+							.wine-discount-price{
 								font-family: 'Arial';
 								color:#ccc;
 								font-size:1.2rem;
@@ -719,7 +719,7 @@ body{
 								// 没有位置了
 								// display:none;
 							}
-							.order-number{
+							.num{
 								float:right;
 								font-family: 'Arial';
 								// color:white;
@@ -851,6 +851,7 @@ body{
 		    background-color: red;
 		    border-radius: .7rem;
 		    text-align: center;
+		    display: none;
 		    span{
 				line-height: 1.4rem;
 		    }

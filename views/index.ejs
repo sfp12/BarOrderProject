@@ -307,10 +307,10 @@
       <div data-role='content' class='content'>
          <img src='' />
          <div class='wine-info'>
-           <p class='head'><span class='wine-name'></span><span class='discount'></span><span class='price'></span></p>
+           <p class='head'><span class='wine-name'></span><span class='wine-discount-price'></span><span class='wine-price'></span></p>
            <p class='a-m-con'>
-              <img class='add-order' src='images/add.png'/>
-              <span class='wine-num'>1</span>              
+              <img class='add-order' src='images/add.png' />
+              <span class='num'>1</span>              
               <img class='minus-order' src='images/minus-1.png'/>
            </p>
            <p class='wine-des'>
@@ -397,16 +397,16 @@
                       <li>                    
                         <div style='background: url(../images/head/<%= item.wine_image %>) no-repeat; background-size:cover' class='img'></div>
                         <div>
-                          <p class='rec-name'><%= item.wine_name %></p>
-                          <p class='rec-des'><%= item.wine_describe %></p>
+                          <p class='wine-name'><%= item.wine_name %></p>
+                          <p class='wine-des'><%= item.wine_describe %></p>
                           <p class='price-con'>
-                            <span class='rec-price'>&#165;<%= item.wine_price %></span> 
-                            <span class='discount-price'>&#165;<%= item.wine_discount_price %></span>
+                            <span class='wine-price'>&#165;<%= item.wine_price %></span> 
+                            <span class='wine-discount-price'>&#165;<%= item.wine_discount_price %></span>
                           </p>
                           <p class='price-con'>            
-                            <img class='add-order' src='images/add.png' />
-                            <span class='order-number' >0</span>
-                            <img class='minus-order' src='images/minus.png' />
+                            <img class='add-order' src='images/add.png' data-id='<%= item.wine_id %>' />
+                            <span class='num' >0</span>
+                            <img class='minus-order' src='images/minus.png' data-id='<%= item.wine_id %>'/>
                           </p>
                         </div>
                       </li>
@@ -434,9 +434,9 @@
                             <span class='discount-price'>&#165;<%= item.wine_discount_price %></span> 
                           </p>
                           <p class='price-con'>           
-                            <img class='add-order' src='images/add.png' />
+                            <img class='add-order' src='images/add.png' data-id='<%= item.wine_id %>' />
                             <span class='order-number' >0</span>
-                            <img class='minus-order' src='images/minus.png' />
+                            <img class='minus-order' src='images/minus.png' data-id='<%= item.wine_id %>' />
                           </p>
                         </div>
                       </li>
@@ -458,7 +458,7 @@
 
         <div id='shopping-table'>
           <img id='' src='images/shopping.png'>
-          <div class='shopping-num'><span>6</span></div>
+          <div class='shopping-num'><span id='menu-num-modal'></span></div>
           
           <table data-role='table' class='' border='0'>
               <thead>
@@ -472,7 +472,7 @@
                              
               </tbody>
           </table>
-          <p>总金额：&#165;<span>88</span></p>
+          <p>总金额：&#165;<span id='menu-spend-modal'></span></p>
           <div class='decision' id='order-confirm-31'>
             <span>订单确认</span>
           </div>
@@ -482,9 +482,9 @@
 
       <div data-role="footer" class='footer'>
           <img id='shopping-cart' src='images/shopping.png'>
-          <div class='shopping-num'><span>6</span></div>
+          <div class='shopping-num'><span id='menu-num'></span></div>
           <div class='shopping-word'>
-              <span class='shopping-spend'>￥666.00</span>
+              <span class='shopping-spend' id='menu-spend'></span>
               <span class='order-confirm' id='order-confirm'>订单确认</span>
           </div>
       </div>

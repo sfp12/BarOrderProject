@@ -509,11 +509,11 @@ body {
           margin: 1.2rem 1.2rem 0 1rem; }
           #menu-page .content div.ui-tabs .set-con ul.menu-type li p {
             margin: 0; }
-          #menu-page .content div.ui-tabs .set-con ul.menu-type li .rec-name {
+          #menu-page .content div.ui-tabs .set-con ul.menu-type li .wine-name {
             font-family: "Microsoft YaHei";
             color: #3a3736;
             font-size: 1.3rem; }
-          #menu-page .content div.ui-tabs .set-con ul.menu-type li .rec-des {
+          #menu-page .content div.ui-tabs .set-con ul.menu-type li .wine-des {
             font-family: "Microsoft YaHei";
             color: #999;
             font-size: 0.9rem;
@@ -525,17 +525,17 @@ body {
             #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con img {
               float: right;
               width: 2.4rem; }
-            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .rec-price {
+            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .wine-price {
               font-family: 'Arial';
               color: #333;
               font-size: 1.2rem;
               margin-right: .5rem; }
-            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .discount-price {
+            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .wine-discount-price {
               font-family: 'Arial';
               color: #ccc;
               font-size: 1.2rem;
               text-decoration: line-through; }
-            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .order-number {
+            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .num {
               float: right;
               font-family: 'Arial';
               font-size: 1.2rem;
@@ -638,7 +638,8 @@ body {
       height: 1.4rem;
       background-color: red;
       border-radius: .7rem;
-      text-align: center; }
+      text-align: center;
+      display: none; }
       #menu-page .footer .shopping-num span {
         line-height: 1.4rem; }
     #menu-page .footer .shopping-word {
