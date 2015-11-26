@@ -22,3 +22,19 @@ exports.wineList = function(cb){
 	});	
 
 }
+
+//根据id获取酒品信息
+exports.getById = function(wine_id, cb){
+	var sql = 'select * from '+ wine_t;
+	sql += ' where ';
+	sql += ' wine_id = ?'; 
+	mysqlUtil.query(sql, [wine_id], function(err, rows, fields){
+		if(err){
+			console.log('get by wine id error');
+		}
+		console.log(util.inspect({rows: rows}));
+		// console.log(util.inspect({fields: fields}));
+		cb(null, rows);
+		
+	});
+}

@@ -21,6 +21,8 @@ body {
   body ul {
     box-shadow: none !important;
     -webkit-box-shadow: none !important; }
+    body ul li {
+      list-style: none !important; }
   body input {
     outline: none;
     border: none; }
@@ -29,6 +31,10 @@ body {
     font-weight: normal !important; }
   body p {
     margin: 0; }
+  body a, body button, body input {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    /* For some Androids */ }
 
 .overlay {
   background-color: #000;
@@ -90,7 +96,8 @@ body {
     padding: 0 !important;
     line-height: 4.4rem !important;
     display: inline-block;
-    margin: 0; }
+    margin: 0;
+    margin-left: -3rem; }
   .header .img-con {
     width: 3rem;
     height: 100%;
@@ -109,10 +116,11 @@ body {
 */
 #main-page .content {
   background-image: url("/images/main-bg.png");
-  background-size: cover; }
+  background-size: cover;
+  overflow: hidden; }
   #main-page .content .icons {
     padding: 0 16%;
-    padding-top: 6.5rem;
+    padding-top: 1rem;
     width: 68%; }
     #main-page .content .icons div {
       float: left;
@@ -121,8 +129,8 @@ body {
       #main-page .content .icons div img {
         width: 100%; }
       #main-page .content .icons div p {
-        margin-top: 1.7rem;
-        margin-bottom: 2.8rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
         text-align: center; }
         #main-page .content .icons div p a {
           font-size: 1.4rem;
@@ -196,7 +204,7 @@ body {
   background-image: url("/images/login-bg.png");
   background-size: cover; }
   #login-page .content form {
-    padding-top: 27.5rem;
+    padding-top: 20.5rem;
     padding-bottom: 3rem;
     width: 87%;
     margin: 0 auto; }
@@ -244,7 +252,8 @@ body {
     #order-confirm-page .content .consume-div .head {
       color: #8826ff; }
     #order-confirm-page .content .consume-div table {
-      margin-bottom: 2rem; }
+      margin-bottom: 2rem;
+      width: 100%; }
       #order-confirm-page .content .consume-div table thead {
         display: none; }
       #order-confirm-page .content .consume-div table tr {
@@ -360,10 +369,12 @@ body {
 #call-page {
   background-image: url("/images/call-bg.png");
   background-size: cover; }
+  #call-page .content {
+    overflow: hidden; }
   #call-page .icons {
     margin: 0 auto;
-    margin-top: 31%;
-    width: 7.6rem;
+    margin-top: 1rem;
+    width: 6.6rem;
     position: relative; }
     #call-page .icons img {
       position: absolute;
@@ -373,8 +384,8 @@ body {
     #call-page .icons div {
       background-image: url("/images/call-1.png");
       background-size: cover;
-      width: 7.6rem;
-      height: 7.6rem;
+      width: 6.6rem;
+      height: 6.6rem;
       text-align: center;
       margin-bottom: 2rem; }
       #call-page .icons div span {
@@ -399,12 +410,12 @@ body {
     font-family: "HiraginoSansGB W3";
     font-size: 1.6rem;
     color: #3a3736; }
-    #wine-detail-page .wine-info .head .discount {
+    #wine-detail-page .wine-info .head .wine-discount-price {
       color: #ff3333;
       font-size: 1.2rem;
       float: right;
       margin-left: 2rem; }
-    #wine-detail-page .wine-info .head .price {
+    #wine-detail-page .wine-info .head .wine-price {
       color: #ccc;
       font-size: 1.2rem;
       float: right;
@@ -630,6 +641,7 @@ body {
       #menu-page .content #shopping-table .shopping-num span {
         line-height: 1.4rem; }
     #menu-page .content #shopping-table table {
+      width: 100%;
       margin-bottom: 2rem; }
       #menu-page .content #shopping-table table thead {
         display: none; }

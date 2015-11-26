@@ -1,6 +1,7 @@
 var util = require('util');
 var async = require('async');
 var user_m = require('../models/user');
+var wine_m = require('../models/wine');
 
 exports.call = function(req, res, next){
 	res.render('call');
@@ -90,7 +91,15 @@ exports.order_confirm = function(req, res, next){
 	res.render('order-confirm');
 };
 
+// exports.to_order_confirm = function(req, res, next){
+// 	res.redirect('/order-confirm');
+// };
+
 exports.profile_1 = function(req, res, next){
+	if(!req.session.uid){
+		res.redirect('/login');
+		return false;
+	}
 	var uid = req.session.uid;
 	console.log(util.inspect({session:req.session}));
 
@@ -131,7 +140,42 @@ exports.scope_1 = function(req, res, next){
 };
 
 exports.wine_detail = function(req, res, next){
-	res.render('wine-detail');
+
+	if(!req.session.uid){
+		res.redirect('/login');
+		return false;
+	}
+
+	var wine_id = req.query.wine_id;
+	var num = req.query.num;
+	console.log('wine_id:'+wine_id);
+	console.log(util.inspect({query: req.session}));
+	async.waterfall([
+		function(cb){
+			wine_m.getById(wine_id, cb);
+		},
+		function(r){
+			// 登录成功
+			if(r.length !== 0){				
+				r = r[0];
+				console.log(r.wine_name);
+				res.render('wine-detail', {
+					wine_name: r.wine_name,
+					wine_price: r.wine_price,
+					wine_dis_price: r.wine_discount_price,
+					wine_num: num,
+					wine_des: r.wine_describe,
+					wine_image: r.wine_image
+				})
+			} 
+		}
+
+		], function(err, value){
+			console.log('err:'+err);
+			console.log('value:'+value);
+	})
+
+	
 };
 
 

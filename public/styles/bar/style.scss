@@ -35,6 +35,9 @@ body{
 	ul{
 		box-shadow: none !important;
 		-webkit-box-shadow: none !important;
+		li{
+			list-style: none !important;
+		}
 	}
 	input{
 		outline:none;
@@ -46,6 +49,11 @@ body{
 	}
 	p{
 		margin:0;
+	}
+	// 去掉手持设备点击时出现的透明层
+	a,button,input{
+	    -webkit-tap-highlight-color: rgba(0,0,0,0);
+	    -webkit-tap-highlight-color: transparent; /* For some Androids */
 	}
 }
 
@@ -112,6 +120,7 @@ body{
 	background-color:#ffffff !important;	
 	border:0;
 	text-align: center;
+	
 	h1{
 		font-size:1.6rem !important;
 		color:#333 !important;
@@ -119,7 +128,9 @@ body{
 		line-height:4.4rem !important;
 		display: inline-block;
 		margin:0;
-	}		
+		margin-left: -3rem;
+	}	
+		
 	.img-con{
 		width: 3rem;
 	    height: 100%;
@@ -143,9 +154,10 @@ body{
 	.content{
 		background-image: url('/images/main-bg.png');
 		background-size:cover;
+		overflow:hidden;
 		.icons{			
 			padding: 0 16%;
-			padding-top: 6.5rem;
+			padding-top: 1rem;
 			width: 68%;
 			// margin-bottom: 2rem;
 			div{
@@ -156,8 +168,8 @@ body{
 					width:100%;
 				}
 				p{
-					margin-top:1.7rem;
-					margin-bottom: 2.8rem;
+					margin-top:1rem;
+					margin-bottom: 2rem;
 					text-align:center;
 					a{
 						font-size:1.4rem;
@@ -262,7 +274,7 @@ body{
 		background-image: url('/images/login-bg.png');
 		background-size:cover;		
 		form{
-			padding-top: 27.5rem;
+			padding-top: 20.5rem;
 			padding-bottom:3rem;
 			width:87%;
 			margin:0 auto;
@@ -330,6 +342,7 @@ body{
 			}
 			table{
 				margin-bottom:2rem;
+				width:100%;
 				thead{
 					display:none;
 				}
@@ -491,10 +504,13 @@ body{
 #call-page{
 	background-image: url('/images/call-bg.png');
 	background-size:cover;
+	.content{
+		overflow: hidden;
+	}
 	.icons{
 		margin:0 auto;
-		margin-top: 31%;
-		width: 7.6rem;
+		margin-top: 1rem;
+		width: 6.6rem;
 		position:relative;
 		img{
 			position:absolute;
@@ -505,8 +521,8 @@ body{
 		div{
 			background-image: url('/images/call-1.png');
 			background-size:cover;
-			width:7.6rem;
-			height:7.6rem;
+			width:6.6rem;
+			height:6.6rem;
 			text-align:center;
 			span{
 				line-height:7.6rem;
@@ -542,13 +558,13 @@ body{
 			font-family: $family_2;
 			font-size:1.6rem;
 			color:#3a3736;
-			.discount{
+			.wine-discount-price{
 				color:#ff3333;
 				font-size:1.2rem;
 				float:right;	
 				margin-left: 2rem;			
 			}
-			.price{
+			.wine-price{
 				color:#ccc;
 				font-size:1.2rem;
 				float:right;
@@ -854,6 +870,7 @@ body{
 			    }
 			}			
 			table{
+				width:100%;
 				margin-bottom:2rem;
 				thead{
 					display:none;
