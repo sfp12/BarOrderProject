@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>酒吧</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <link rel="stylesheet" href="styles/bar/normalize.css"> 
+  <link rel="stylesheet" href="styles/bar/style.css">  
+</head>
+<body>
+  <div id='overlay' class='overlay'></div>
+	<div id='menu-page'>
+
+      <!-- 订单确认 弹出框 -->
+      <div id="confirm-leave">
+        <div role="main" class="ui-content">
+          <p>购物篮不为空，确认离开吗？</p>             
+          <div id='order-leave'>
+            <span>确定</span>
+          </div>
+          <div id='order-stay'>        
+            <span>取消</span>        
+          </div>
+        </div>
+      </div>
+        
+      <div class='header'>
+        <div class='img-con'><img src='images/return.png'></div>
+        <h1>在线点酒</h1>
+      </div>        
+
+      <div class='content'>
+        
+        
+        <div class='loc-con'>          
+          <img src='images/loc-1.png' />      
+          <span class='loc'>正在定位</span>
+          <span class='re-loc' id='main-re-loc'>重新定位</span>
+        </div>
+        
+        <div id='menu-content'>
+          <div class='control-con'>
+              <ul class="tablist-left">        
+                <li><a  >酒店推荐</a></li>
+                <li><a  >套餐</a></li>
+                <li><a >类别1</a></li>
+                <li><a   class='last-control'>类别2</a></li>
+                </ul>                      
+          </div>
+          <div class='set-con'>            
+              <ul id="recommend" class="tablist-content menu-type on" >
+
+                  <% if(content.status == 0){ 
+                     for(var i=0, l=content.data.length; i<l; i++){  
+                        var item = content.data[i]; 
+                        if(item.wine_type === 0){  %>               
+
+                      <li>                    
+                        <div style='background: url(../images/head/<%= item.wine_image %>) no-repeat; background-size:cover' class='img'></div>
+                        <div>
+                          <p class='wine-name'><%= item.wine_name %></p>
+                          <p class='wine-des'><%= item.wine_describe %></p>
+                          <p class='price-con'>
+                            <span class='wine-price'>&#165;<%= item.wine_price %></span> 
+                            <span class='wine-discount-price'>&#165;<%= item.wine_discount_price %></span>
+                          </p>
+                          <p class='price-con'>            
+                            <img class='add-order' src='images/add.png' data-id='<%= item.wine_id %>' />
+                            <span class='num' >0</span>
+                            <img class='minus-order' src='images/minus.png' data-id='<%= item.wine_id %>'/>
+                          </p>
+                        </div>
+                      </li>
+
+                  <%  }
+                    }
+                  } %>                  
+                                    
+              </ul>
+
+              <ul id="set-meal" class="tablist-content menu-type" >
+                  
+                <% if(content.status == 0){ 
+                     for(var i=0, l=content.data.length; i<l; i++){  
+                        var item = content.data[i]; 
+                        if(item.wine_type === 1){  %>               
+
+                      <li>                    
+                        <div style='background: url(../images/head/<%= item.wine_image %>) no-repeat; background-size:cover' class='img'></div>
+                        <div>
+                          <p class='wine-name'><%= item.wine_name %></p>
+                          <p class='wine-des'><%= item.wine_describe %></p>
+                          <p class='price-con'>
+                            <span class='wine-price'>&#165;<%= item.wine_price %></span> 
+                            <span class='wine-discount-price'>&#165;<%= item.wine_discount_price %></span> 
+                          </p>
+                          <p class='price-con'>           
+                            <img class='add-order' src='images/add.png' data-id='<%= item.wine_id %>' />
+                            <span class='num' >0</span>
+                            <img class='minus-order' src='images/minus.png' data-id='<%= item.wine_id %>' />
+                          </p>
+                        </div>
+                      </li>
+
+                <%  }
+                  }
+                } %> 
+
+              </ul>
+              <ul id="type1" class="tablist-content" >
+                  
+              </ul>
+
+              <ul id="type2" class="tablist-content" >
+                  
+              </ul>            
+          </div>
+        </div>
+
+        <div id='shopping-table'>
+          <img id='' src='images/shopping.png'>
+          <div class='shopping-num'><span id='menu-num-modal'></span></div>
+          
+          <table data-role='table' class='' border='0'>
+              <thead>
+                  <tr>
+                      <th></th>                
+                      <th></th>                
+                      <th></th>
+                  </tr>                
+              </thead>
+              <tbody>
+                             
+              </tbody>
+          </table>
+          <p>总金额：&#165;<span id='menu-spend-modal'></span></p>
+          <div class='decision' id='order-confirm-31'>
+            <span>订单确认</span>
+          </div>
+        </div> 
+
+      </div>
+
+      <div class='footer'>
+          <img id='shopping-cart' src='images/shopping.png'>
+          <div class='shopping-num'><span id='menu-num'></span></div>
+          <div class='shopping-word'>
+              <span class='shopping-spend' id='menu-spend'></span>
+              <span class='order-confirm' id='order-confirm'>订单确认</span>
+          </div>
+      </div>
+    </div> 
+	
+  <script src="js/zepto/zepto.js"></script>
+  <script src="js/bar/cookie.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B4aa49233be137b159257762c65652fd"></script>
+  <script>
+    Zepto(function($){
+      $('.control-con li').tap(function(){
+        var index = $(this).index();
+
+        var a_t = $('.set-con ul');
+        for(var i=0; i<a_t.length; i++){
+          var item = a_t[i];
+          $(item).removeClass('on');
+          if(i === index){
+            $(item).addClass('on');
+          }
+        }
+      })
+    });
+  </script>
+	<script src="js/bar/index.js"></script>
+	
+</body>

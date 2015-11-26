@@ -2,23 +2,25 @@
 // 人民币符号&#165;
 // ×
 
-jQuery(function($){
+Zepto(function($){
   var w = window;
   // bar_order
   var bo = {};
+  // edit-1, edit-2, 如果有修改，则为true
+  bo.modify = false;
+  // menu shopping cart, 如果有商品，则为true
+  bo.cart = false;
 
+  // 全部加载完，再显示
   $('body').css('display', 'block');
 
   // html font-size
   bo.fontSize = function(){
-    return +$('html').css('fontSize').replace('px','');
+    return +$('html').css('font-size').replace('px','');
   }
 
-  // 页面跳转
-  bo.toPage = function(url){
-    $('#change-page').attr('href', url);
-    $('#change-page').click();
-  }
+  bo.width = (window.innerWidth > 0) ? window.innerWidth : screen.width; 
+  bo.height = (window.innerHeight > 0) ? window.innerHeight : screen.height; 
 
   // 定位
   bo.locPos = function(){
@@ -41,7 +43,7 @@ jQuery(function($){
           
           }else {
             alert('failed'+this.getStatus());
-            bo.toPage('#scope-page');
+            window.location.href = '/scope';
           } 
 
       },{enableHighAccuracy: true})
@@ -50,32 +52,33 @@ jQuery(function($){
 
   // 遮罩层呈现
   bo.showOverlay = function(){
-    $('#overlay').height(bo.pageHeight());
-    $('#overlay').width(bo.pageWidth());
+    $('#overlay').height(bo.height);
+    $('#overlay').width(bo.width);
 
-    $('#overlay').fadeTo(200, 0.5);
+    $('#overlay').show(200, 0.5);
   }
 
   // 遮罩层消失
   bo.hideOverlay = function(){
-    $('#overlay').fadeOut(200);
-  }
+    $('#overlay').hide(200);
+  }  
 
-  // 返回页面高度
-  bo.pageHeight = function(){   
-    return document.body.clientHeight
-  }
+  // 点击遮罩层，不会消失
+  // $('#overlay').on('click',function(){
+  //   bo.hideOverlay();
+  //   // $('#confirm-leave').popup('close');
+  //   // $('#shopping-content').popup('close');
+  //   $('body').css('overflow', 'visible');
+  // })
 
-  // 返回页面宽度
-  bo.pageWidth = function(){
-    return document.body.scrollWidth;
-  }
+  // 回到上一页
+  $('.img-con').on('click', function(){
+    if(bo.cart){
+      bo.showConfirmLeave();
+      return false;
+    } 
 
-  $('#overlay').on('click',function(){
-    bo.hideOverlay();
-    // $('#confirm-leave').popup('close');
-    // $('#shopping-content').popup('close');
-    $('body').css('overflow', 'visible');
+    window.history.go(-1);
   })
 
 
@@ -83,13 +86,13 @@ jQuery(function($){
   * 首页 开始
   */
 
-  $('#main-page .content').css('min-height', document.body.clientHeight+1);
+  $('#main-page .content').css('height', bo.height+1);
 
   $('#main-my-img, #main-my-p').on('click', function(){
-    if(!$.cookie('userid')){
-      bo.toPage('#login-page');
+    if(!cookie.get('userid')){
+      window.location.href = '/login';
     }else{
-      bo.toPage('#profile-page');
+      window.location.href = '/profile';
     }
   });
 
@@ -101,28 +104,53 @@ jQuery(function($){
 
   $('#main-chat-page').on('click', function(){
 
-    if($.cookie('userid')){
+    if(cookie.get('userid')){
       
       $.get('/tochat', function(data){
 
         data = JSON.parse(data);
 
         if(data.status === 0){
-          bo.toPage('#chat-page');
+          window.location.href='/chat';
           w.chat.scrollToBottom();
         }else{
-          bo.toPage('#login-page');
+          window.location.href='/login';
         }
 
       })
 
     }else{
 
-      bo.toPage('#login-page');
+      window.location.href='/login';
 
     }
 
   })
+
+  $('#main-menu').on('click',function(){
+    window.location.href='/menu';
+  });
+
+  $('#main-call').on('click',function(){
+    window.location.href='/call';
+  });
+
+  // $('#main-chat-page').on('click',function(){
+  //   window.location.href='/chat';
+  // });
+
+  $('#main-profile').on('click',function(){
+    // var argu = {};
+    // argu.uid = cookie.get('userid');
+    // $.get('/profile', argu, function(data){
+
+    // });
+    window.location.href='/profile';
+  });
+
+  // $('#main-game').on('click',function(){
+  //   window.location.href='/game';
+  // });
   // 首页 结束
 
 /*
@@ -207,10 +235,11 @@ $('#login-s').on('click', function(data){
     if(data.status === 1){
       alert(data.data);
     }else{
-      $.cookie('username',data.data.userName);
-      $.cookie('userid', data.data.userId);
-      bo.toPage('#profile-page');
-      w.chat.init($.cookie('userid'), $.cookie('username'));
+      cookie.set('username',data.data.userName);
+      cookie.set('userid', data.data.userId);
+      cookie.set('userimg', data.data.userImg);
+      window.location.href='/profile';
+      // w.chat.init(cookie.get('userid'), cookie.get('username'));
     }
     console.log('debug');
   });
@@ -322,7 +351,7 @@ $('.add-order').on('click', function(e){
   $('#menu-spend').text(wine_spend);
   $('#menu-spend-modal').text(wine_spend);
   
-
+  bo.cart = true;
 });
 
 $('.minus-order').on('click', function(e){
@@ -394,8 +423,10 @@ $('.minus-order').on('click', function(e){
 
   // 加入购物车
   if(wine_num > 0){
+    bo.cart = true;
     $('#menu-num').parent().css('display','block');
   }else{
+    bo.cart = false;
     $('#menu-num').parent().css('display','none');
   }
 
@@ -413,7 +444,7 @@ $('.minus-order').on('click', function(e){
 /*
 * 密码重置 开始
 */
-$('#modify-pw-page .content').css('min-height', document.body.clientHeight - 4.4 * bo.fontSize());
+$('#modify-pw-page .content').css('min-height', bo.height - 4.4 * bo.fontSize());
 
 $('#forget-pw').on('click', function(e){
   console.log('forget-pw');
@@ -430,7 +461,7 @@ $('#m-login').on('click', function(data){
     if(data.status === 1){
       alert(data.data);
     }else{
-      bo.toPage('#profile-page');
+      window.location.href = '/profile';
     }
     console.log('debug');
   });
@@ -441,26 +472,22 @@ $('#m-login').on('click', function(data){
 /*
 * 在线点酒 开始
 */
-$('#menu-content').css('height', document.body.clientHeight- 12.75 * $('html').css('fontSize').replace('px',''));
 
-$('#order-confirm').on('click',function(){
-    bo.showOverlay();
-    $('#confirm-leave').popup('open');
-    $('body').css('overflow', 'hidden');
+
+$('#menu-content').css('height', bo.height- 12.75 * $('html').css('font-size').replace('px',''));
+
+bo.showConfirmLeave = function(){
+  bo.showOverlay();
+  $('#confirm-leave').css('top', (bo.height - 14.5 * bo.fontSize()) / 2);
+  $('#confirm-leave').show();
+}
+
+// 在线点酒页面
+$('#order-confirm').on('click',function(){    
+    window.location.href='/order-confirm';
 })
 
-
-
-$('#order-leave').on('click', function(){
-  bo.hideOverlay();
-  $('#confirm-leave').popup('close');
-})
-
-$('#order-stay').on('click', function(){
-  bo.hideOverlay();
-  $('#confirm-leave').popup('close');
-})
-
+// 点击购物车
 $('#shopping-cart').on('click',function(){
     bo.showOverlay();
     // $('#shopping-content').popup('open');
@@ -468,6 +495,22 @@ $('#shopping-cart').on('click',function(){
     $('body').css('overflow', 'hidden');
 })
 
+// 确定离开
+$('#order-leave').on('click', function(){
+  $('#confirm-leave').css('display', 'none');
+  bo.hideOverlay();
+  bo.cart = false;
+  $('.img-con').trigger('click');
+})
+
+// 不离开
+$('#order-stay').on('click', function(){
+  $('#confirm-leave').css('display', 'none');
+  bo.hideOverlay();
+})
+
+
+// 订单确认 购物车
 $('#order-confirm-31').on('click', function(){
   bo.hideOverlay();
     $('#shopping-table').css('display','none');
@@ -475,6 +518,7 @@ $('#order-confirm-31').on('click', function(){
     $('body').css('overflow', 'visible');
 })
 
+// 跳转到酒品详情
 $('.menu-type li').on('click', function(e){
 
   // li中有很多元素，都可触发此事件。所以这里先找到li
@@ -497,7 +541,7 @@ $('.menu-type li').on('click', function(e){
   $('#wine-detail-page .content .add-order').data('id', li.find('.add-order').data('id'));
   $('#wine-detail-page .content .minus-order').data('id', li.find('.minus-order').data('id'));
 
-  bo.toPage('#wine-detail-page');
+  window.location.href = '/wine-detail';
 })
 
 // 在线点酒 结束
@@ -505,7 +549,7 @@ $('.menu-type li').on('click', function(e){
 /*
 * 聊天 开始
 */
-$('#chat-page .content').css('height', document.body.clientHeight - 11.2 * bo.fontSize());
+$('#chat-page .content').css('height', bo.height - 11.2 * bo.fontSize());
 // 聊天 结束
 
 

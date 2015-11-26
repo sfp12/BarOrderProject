@@ -3,14 +3,26 @@
   <head>
     <title>ejs</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <style>
+    .con{
+      width:200px;
+      height:300px;
+    }
+    </style>
   </head>
   <body>
-    <% if(names.length){ %>
-      <ul>
-        <% names.forEach(function(name){ %>
-          <li foo='<%= name %>'><%= name %></li>
-        <% }) %>
-      </ul>
-    <% } %>
+    <div class='con'>
+      
+
+    </div>
+    <script src="js/zepto/zepto.js"></script>
+    <script>
+      Zepto(function($){
+
+
+
+
+      })
+    </script>
   </body>
 </html>

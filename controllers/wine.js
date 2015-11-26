@@ -23,7 +23,7 @@ exports.wineList = function(req, res, next){
 				result.status = 1;
 				result.data = '没有内容';				
 			}
-			res.render('index', {
+			res.render('menu', {
 				content: result
 			}); 
 			// res.render('index'); 

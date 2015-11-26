@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>酒吧</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <link rel="stylesheet" href="styles/bar/normalize.css"> 
+  <link rel="stylesheet" href="styles/bar/style.css">  
+</head>
+<body>
+	<div id='edit-2-page' class='edit-page'>    
+
+      <div class='header'>
+        <div class='img-con'><img src='images/return.png'></div>
+        <h1>我的小美</h1>
+      </div> 
+
+      <div class='content' id='edit-1-content'>
+        
+        <div>
+            <p>年龄:</p>
+            <input type='text' id='edit-2-age'  value='<%= uage%>'/>        
+        </div>
+        <div>
+            <p>星座:</p>
+            <input type='text' id='edit-2-horo' value='<%= uhoro%>'/>        
+        </div>
+        <div>
+            <p>爱好:</p>
+            <input type='text' id='edit-2-hobby' value='<%= uhobby%>'/>        
+        </div>
+        <div>
+            <p>签名:</p>
+            <input type='text' id='edit-2-sign' value='<%= usign%>'/>        
+        </div>
+      </div>
+
+    </div>
+	
+  <script src="js/zepto/zepto.min.js"></script>
+  <script src="js/bar/cookie.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B4aa49233be137b159257762c65652fd"></script>
+	<script src="js/bar/index.js"></script>
+	
+</body>

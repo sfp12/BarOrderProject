@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>酒吧</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <link rel="stylesheet" href="styles/bar/normalize.css"> 
+  <link rel="stylesheet" href="styles/bar/style.css">  
+</head>
+<body>
+	<div id='edit-1-page' class='edit-page'> 
+
+      <div class='header'>
+        <div class='img-con'><img src='images/return.png'></div>
+        <h1>我的小美</h1>
+      </div> 
+
+      <div class='content'>        
+        <div>
+            <p>昵称:</p>
+            <input type='text' id='edit-1-uname' value='<%= uname%>'/>        
+        </div>
+        <div>
+            <p>性别:</p>
+            <input type='text' id='edit-1-sex' value='<%= usex%>'/>        
+        </div>
+        <div>
+            <p>电话:</p>
+            <input type='text' id='edit-1-number' value='<%= unumber%>'/>        
+        </div>
+      </div>
+
+    </div>
+	<script src="js/zepto/zepto.min.js"></script>
+  <script src="js/bar/cookie.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B4aa49233be137b159257762c65652fd"></script>
+	<script src="js/bar/index.js"></script>
+	
+</body>

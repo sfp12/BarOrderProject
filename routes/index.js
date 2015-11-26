@@ -6,6 +6,7 @@ var crypto = require('crypto');
 var login_c = require('../controllers/login');
 var user_c = require('../controllers/user');
 var wine_c = require('../controllers/wine');
+var index_c = require('../controllers/index');
 
 // function md5(text) {
 // 	var str_1 = crypto.createHash('md5').update(text).digest('hex');
@@ -39,7 +40,7 @@ Date.prototype.Format = function(fmt)
 // })
 
 /* GET home page. */
-router.get('/', wine_c.wineList);
+// router.get('/', wine_c.wineList);
 
 
 // ---------------------权限管理--------------------
@@ -65,8 +66,23 @@ router.post('/modifyPW', user_c.modifyPW);
 router.post('/modifyInfo', user_c.modifyInfo);
 
 // -------------------页面跳转-----------------------
-router.get('/tochat', login_c.toPage);	
+router.get('/tochat', login_c.toPage);
 
+
+// ---------------------zepto-----------------------
+router.get('/main', index_c.main);
+router.get('/call', index_c.call);
+router.get('/chat', index_c.chat);
+router.get('/edit-1', index_c.edit_1);
+router.get('/edit-2', index_c.edit_2);
+router.get('/login', index_c.login);
+router.get('/menu', wine_c.wineList);
+router.get('/modify-pw', index_c.modify_pw);
+router.get('/order-confirm', index_c.order_confirm);
+router.get('/profile', index_c.profile_1);
+router.get('/register', index_c.register);
+router.get('/scope', index_c.scope_1);
+router.get('/wine-detail', index_c.wine_detail);
 
 
 
@@ -81,70 +97,6 @@ router.get('/test', function(req, res, next) {
 
 });
 
-router.get('/restricted', function(req, res, next) {
-	// 会话
-	if(req.session.user){
-		res.render('result', {
-			title: 'title',
-			success: req.session.success
-		})
-	}else{
-		console.log('error'+req.session.error);
-		req.session.error = 'access denied';
-		res.redirect('/login');
-	}
-});
-
-router.get('/logout', function(req, res, next) {
-	// 会话
-	req.session.destroy(function(){
-		res.redirect('/login');
-	})
-});
-
-router.get('/login', function(req, res, next) {
-	// 会话
-	if(req.session.user){
-		console.log('get login user');
-		res.redirect('/restricted');
-	}else if(req.session.error){
-		console.log('get login error');
-
-		res.render('test', {
-			title: 'login',
-			response: req.session.error
-		})
-	}else{
-		console.log('get login');
-		res.render('test', {
-			title: 'login',
-			response: 'get'
-		})
-	}	
-});
-
-router.post('/login', function(req, res, next) {
-
-	console.log(req.body.uname);
-	console.log(req.body.pw);
-	// 会话
-	var user = {name: req.body.uname, password:md5('test')};
-	if(user.password === md5(req.body.pw)){
-		console.log('post login success');
-		req.session.regenerate(function(){
-			req.session.user = user;
-			req.session.success = 'auth as '+user.name;
-			res.redirect('/restricted');
-		})
-	}else{
-		console.log('post login fail');
-		req.session.regenerate(function(){
-			req.session.error = 'auth faild';
-			res.redirect('/restricted');
-		})
-		
-	}
-});
 
 
 module.exports = router;

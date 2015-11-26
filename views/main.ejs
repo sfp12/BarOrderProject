@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>酒吧</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <link rel="stylesheet" href="styles/bar/normalize.css"> 
+  <link rel="stylesheet" href="styles/bar/style.css">  
+</head>
+<body>
+	<!-- 首页 -->
+    <div id='main-page'>
+
+      <div class='header'>
+        <div class='img-con'><img src='images/return.png'></div>
+        <h1>小美</h1>
+      </div> 
+
+      <div class='content'>
+
+        <div class='loc-con'>          
+          <img src='images/loc-1.png' />      
+          <span class='loc'>正在定位</span>
+          <span class='re-loc' id='main-re-loc'>重新定位</span>
+        </div>
+
+        <div class='icons' id='main-icons'>
+          <div id='main-menu'>
+            <a href='javascript:void(0);'><img src='images/order-icon.png' /></a>
+            <p><a href='javascript:void(0);'>点餐</a></p>
+          </div>
+          <div class='main-right' id='main-call'>
+            <a href='#call-page'><img src='images/call-icon.png' /></a>
+            <p><a href='#call-page'>呼叫</a></p>
+          </div>
+          <div id='main-game'>
+            <img src='images/game-icon.png' />
+            <p><a href='#' >游戏</a></p>
+          </div>
+          <div class='main-right' id='main-chat-page'>
+            <a href='javascript:void(0);'><img src='images/chat-icon.png'/></a>
+            <p><a href='javascript:void(0);'>聊天室</a></p>
+          </div>
+          <div id='main-profile'>
+            <img id='main-my-img' src='images/profile-icon.png' />
+            <p id='main-my-p'><a href='#'>我</a></p>
+          </div>
+        </div>
+      </div>
+
+    </div>	
+	
+  <script src="js/zepto/zepto.min.js"></script>
+  <script src="js/bar/cookie.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B4aa49233be137b159257762c65652fd"></script>
+	<script src="js/bar/index.js"></script>
+	
+</body>

@@ -27,6 +27,7 @@ exports.checkLogin = function(uname, pw, req, cb){
 		{	
 			req.session.uname = uname;
 			req.session.uid = results[0].user_id;
+			req.session.uimg = results[0].user_img;
 			console.log('login success');
 			cb(null, true);
 		}else{
@@ -107,6 +108,38 @@ exports.modifyInfo = function(req, cb){
 		
 	})
 
+}
+
+//根据id获取用户信息
+exports.getById = function(uid, cb){
+	var sql = 'select * from '+ user_t;
+	sql += ' where ';
+	sql += ' user_id = ?'; 
+	mysqlUtil.query(sql, [uid], function(err, rows, fields){
+		if(err){
+			console.log('get by uid error');
+		}
+		console.log(util.inspect({rows: rows}));
+		// console.log(util.inspect({fields: fields}));
+		cb(null, rows);
+		
+	});
+}
+
+//根据id获取某些列
+exports.getColById = function(cols, uid, cb){
+	var sql = 'select '+cols.join(',')+' from '+ user_t;
+	sql += ' where ';
+	sql += ' user_id = ?'; 
+	mysqlUtil.query(sql, [uid], function(err, rows, fields){
+		if(err){
+			console.log('get by item error');
+		}
+		// console.log(util.inspect({rows: rows}));
+		// console.log(util.inspect({fields: fields}));
+		cb(null, rows);
+		
+	});
 }
 
 // 获取管理员列表

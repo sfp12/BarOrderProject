@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>酒吧</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <link rel="stylesheet" href="styles/bar/normalize.css"> 
+  <link rel="stylesheet" href="styles/bar/style.css">  
+</head>
+<body>
+	<div id='order-confirm-page'> 
+
+      <div class='header'>
+        <div class='img-con'><img src='images/return.png'></div>
+        <h1>订单确认</h1>
+      </div>  
+      
+      <div class='content'>
+        <div class='consume-div'>
+            <p class='head'>所在位置</p>              
+            <p>酒吧：<span>位置</span></p>
+            <p class='last-t'>桌号：<span>16</span></p>       
+        </div>
+        <div class='consume-div'>
+            <p class='head'>已点酒水</p>        
+            <table id='shopping-table2' class=''>
+            <!-- ui-responsive table-stroke -->
+                <thead>
+                    <tr>
+                        <th></th>                
+                        <th></th>                
+                        <th></th>
+                    </tr>                
+                </thead>
+                <tbody>
+                                 
+                </tbody>
+            </table>
+        </div>
+        <p class='amount'>总金额：<span>&#165;52</span></p>
+        <div class='place-order'>
+          
+        <input type='button' id='order-confirm-submit' value='立即下单' /> 
+          <p>下单后会有服务员来跟您确认并收款</p>
+        </div>   
+      </div>
+    </div>
+  
+  <script src="js/zepto/zepto.min.js"></script>
+  <script src="js/bar/cookie.min.js"></script>  
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B4aa49233be137b159257762c65652fd"></script>
+	<script src="js/bar/index.js"></script>
+	
+</body>

@@ -82,22 +82,27 @@ body {
 .header {
   height: 4.4rem;
   background-color: #ffffff !important;
-  position: relative;
-  border: 0; }
+  border: 0;
+  text-align: center; }
   .header h1 {
     font-size: 1.6rem !important;
     color: #333 !important;
     padding: 0 !important;
-    line-height: 4.4rem !important; }
-  .header a {
-    width: 1.6rem;
-    height: 1.5rem;
-    top: 50%;
-    left: 0;
-    margin-top: -0.75rem !important;
-    margin-left: 1rem !important; }
-    .header a img {
-      width: 100%; }
+    line-height: 4.4rem !important;
+    display: inline-block;
+    margin: 0; }
+  .header .img-con {
+    width: 3rem;
+    height: 100%;
+    position: relative;
+    float: left;
+    text-align: center; }
+    .header .img-con img {
+      width: 1.6rem;
+      height: 1.6rem;
+      position: absolute;
+      top: 1.4rem;
+      left: .7rem; }
 
 /*
 * 首页 开始
@@ -260,11 +265,10 @@ body {
     width: 100%;
     text-align: center;
     margin-bottom: 2.45rem; }
-    #order-confirm-page .content .place-order a {
+    #order-confirm-page .content .place-order input {
       padding: 0;
       margin: 0 auto;
       text-align: center;
-      background-color: #5e4fff;
       width: 86%;
       background-color: #7c00ff;
       height: 4rem;
@@ -280,14 +284,14 @@ body {
 /*
 * 定位失败 开始
 */
-#scope-page {
-  padding-top: 13.5rem;
+#scope-page .content {
+  padding-top: 9.1rem;
   text-align: center; }
-  #scope-page img {
+  #scope-page .content img {
     width: 5.7rem;
     height: 5.4rem;
     margin-bottom: 1.4rem; }
-  #scope-page p {
+  #scope-page .content p {
     color: #050b0a;
     font-size: 1.3rem;
     font-family: "Microsoft YaHei"; }
@@ -358,7 +362,7 @@ body {
   background-size: cover; }
   #call-page .icons {
     margin: 0 auto;
-    margin-top: 8.5rem;
+    margin-top: 31%;
     width: 7.6rem;
     position: relative; }
     #call-page .icons img {
@@ -466,15 +470,55 @@ body {
 */
 #menu-page {
   position: relative; }
-  #menu-page .content div.ui-tabs {
+  #menu-page #confirm-leave {
+    height: 11.2rem;
+    padding: 0 7%;
+    padding-top: 3.3rem;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 76%;
+    z-index: 100;
+    background-color: white;
+    text-align: center;
+    margin: 0 5%; }
+    #menu-page #confirm-leave .ui-content {
+      padding: 0; }
+      #menu-page #confirm-leave .ui-content p {
+        margin-bottom: 3.2rem;
+        font-family: "Microsoft YaHei";
+        font-size: 1.3rem;
+        color: #333; }
+      #menu-page #confirm-leave .ui-content div {
+        width: 40%;
+        height: 4rem;
+        border-radius: 35%; }
+        #menu-page #confirm-leave .ui-content div span {
+          line-height: 4rem;
+          color: white;
+          font-size: 1.5rem;
+          font-family: "Microsoft YaHei"; }
+      #menu-page #confirm-leave .ui-content #order-leave {
+        float: left;
+        background-color: #7c00ff; }
+      #menu-page #confirm-leave .ui-content #order-stay {
+        float: right;
+        background-color: #0099ff; }
+  #menu-page .content div#menu-content {
     padding: 0; }
-    #menu-page .content div.ui-tabs .control-con {
+    #menu-page .content div#menu-content .control-con {
       width: 25%;
       height: 100%;
-      background-color: #f1f1f1; }
-      #menu-page .content div.ui-tabs .control-con ul {
-        margin: 0; }
-      #menu-page .content div.ui-tabs .control-con .tablist-left li a {
+      background-color: #f1f1f1;
+      float: left; }
+      #menu-page .content div#menu-content .control-con ul {
+        margin: 0;
+        padding: 0;
+        text-align: center; }
+        #menu-page .content div#menu-content .control-con ul li {
+          list-style: none; }
+      #menu-page .content div#menu-content .control-con .tablist-left li a {
         background-color: #f1f1f1;
         padding-top: 0;
         padding-bottom: 0;
@@ -486,70 +530,73 @@ body {
         font-weight: normal !important;
         padding: 0;
         text-align: center; }
-      #menu-page .content div.ui-tabs .control-con .tablist-left li a:hover {
+      #menu-page .content div#menu-content .control-con .tablist-left li a:hover {
         background-color: white;
         color: #8826ff;
         border-right: none; }
-      #menu-page .content div.ui-tabs .control-con .tablist-left li a.ui-btn-active {
+      #menu-page .content div#menu-content .control-con .tablist-left li a.ui-btn-active {
         text-shadow: none; }
-      #menu-page .content div.ui-tabs .control-con .tablist-left li .last-control {
+      #menu-page .content div#menu-content .control-con .tablist-left li .last-control {
         border-bottom-width: 0; }
-    #menu-page .content div.ui-tabs .set-con {
+    #menu-page .content div#menu-content .set-con {
       width: 75%;
       height: 100%;
       background-color: white;
-      overflow: scroll; }
-      #menu-page .content div.ui-tabs .set-con ul.menu-type {
-        margin: 0; }
-        #menu-page .content div.ui-tabs .set-con ul.menu-type li {
+      overflow: scroll;
+      float: right; }
+      #menu-page .content div#menu-content .set-con ul.menu-type {
+        margin: 0;
+        display: none;
+        padding: 0; }
+        #menu-page .content div#menu-content .set-con ul.menu-type li {
           height: 9.7rem;
           border: none;
           border-bottom: 1px solid #e5e5e5;
           padding: 0;
           margin: 1.2rem 1.2rem 0 1rem; }
-          #menu-page .content div.ui-tabs .set-con ul.menu-type li p {
+          #menu-page .content div#menu-content .set-con ul.menu-type li p {
             margin: 0; }
-          #menu-page .content div.ui-tabs .set-con ul.menu-type li .wine-name {
+          #menu-page .content div#menu-content .set-con ul.menu-type li .wine-name {
             font-family: "Microsoft YaHei";
             color: #3a3736;
             font-size: 1.3rem; }
-          #menu-page .content div.ui-tabs .set-con ul.menu-type li .wine-des {
+          #menu-page .content div#menu-content .set-con ul.menu-type li .wine-des {
             font-family: "Microsoft YaHei";
             color: #999;
             font-size: 0.9rem;
             margin-top: 10px; }
-          #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con {
+          #menu-page .content div#menu-content .set-con ul.menu-type li .price-con {
             margin-top: .5rem; }
-            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con span {
-              float: left; }
-            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con img {
+            #menu-page .content div#menu-content .set-con ul.menu-type li .price-con img {
               float: right;
               width: 2.4rem; }
-            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .wine-price {
+            #menu-page .content div#menu-content .set-con ul.menu-type li .price-con .wine-price {
               font-family: 'Arial';
               color: #333;
               font-size: 1.2rem;
               margin-right: .5rem; }
-            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .wine-discount-price {
+            #menu-page .content div#menu-content .set-con ul.menu-type li .price-con .wine-discount-price {
               font-family: 'Arial';
               color: #ccc;
               font-size: 1.2rem;
               text-decoration: line-through; }
-            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .num {
+            #menu-page .content div#menu-content .set-con ul.menu-type li .price-con .num {
               float: right;
               font-family: 'Arial';
               font-size: 1.2rem;
               margin: 0 1rem;
               display: none;
               line-height: 2.5rem; }
-            #menu-page .content div.ui-tabs .set-con ul.menu-type li .price-con .minus-order {
+            #menu-page .content div#menu-content .set-con ul.menu-type li .price-con .minus-order {
               display: none; }
-          #menu-page .content div.ui-tabs .set-con ul.menu-type li div.img {
+          #menu-page .content div#menu-content .set-con ul.menu-type li div.img {
             border-radius: 1.2rem;
             width: 6rem;
             height: 6rem;
             margin-right: 1rem;
             float: left; }
+      #menu-page .content div#menu-content .set-con ul.on {
+        display: block; }
   #menu-page .content #shopping-table {
     display: none;
     position: absolute;
@@ -616,16 +663,15 @@ body {
     background-color: black;
     filter: apphs(opacity=90);
     opacity: 0.9;
-    position: absolute;
-    padding: 0 1rem;
     font-weight: normal;
     border: none;
-    bottom: 0; }
+    position: relative; }
     #menu-page .footer img {
       width: 2.7rem;
       height: 2.2rem;
       margin-top: 1.05rem;
       margin-right: 1rem;
+      margin-left: 1rem;
       float: left; }
     #menu-page .footer .shopping-num {
       font-family: 'HiraginoSansGB W6', Arial;
@@ -645,7 +691,8 @@ body {
     #menu-page .footer .shopping-word {
       line-height: 4.35rem;
       height: 100%;
-      padding-right: 1.7rem; }
+      padding-right: 1.7rem;
+      margin-right: 1rem; }
       #menu-page .footer .shopping-word .shopping-spend {
         color: white;
         font-family: 'HiraginoSansGB W3', Arial;
@@ -656,36 +703,6 @@ body {
         color: #7808ff;
         float: right;
         text-shadow: none; }
-  #menu-page #confirm-leave-popup {
-    text-align: center;
-    width: 89%;
-    height: 14.5rem; }
-    #menu-page #confirm-leave-popup #confirm-leave {
-      height: 11.2rem;
-      padding: 0 7.7%;
-      padding-top: 3.3rem; }
-      #menu-page #confirm-leave-popup #confirm-leave .ui-content {
-        padding: 0; }
-        #menu-page #confirm-leave-popup #confirm-leave .ui-content p {
-          margin-bottom: 3.2rem;
-          font-family: "Microsoft YaHei";
-          font-size: 1.3rem;
-          color: #333; }
-        #menu-page #confirm-leave-popup #confirm-leave .ui-content div {
-          width: 40%;
-          height: 4rem;
-          border-radius: 35%; }
-          #menu-page #confirm-leave-popup #confirm-leave .ui-content div span {
-            line-height: 4rem;
-            color: white;
-            font-size: 1.5rem;
-            font-family: "Microsoft YaHei"; }
-        #menu-page #confirm-leave-popup #confirm-leave .ui-content #order-leave {
-          float: left;
-          background-color: #7c00ff; }
-        #menu-page #confirm-leave-popup #confirm-leave .ui-content #order-stay {
-          float: right;
-          background-color: #0099ff; }
 
 /*
 * 聊天 开始

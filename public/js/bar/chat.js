@@ -1,4 +1,4 @@
-jQuery(function($){
+Zepto(function($){
 	var w = window;
 	var host = '172.18.223.2';
 	var port = 3002;
@@ -48,8 +48,8 @@ jQuery(function($){
 			// 添加系统消息
 		},
 		init:function(userid, username){
-			console.log('userid:'+$.cookie('userid'));
-			console.log('username:'+$.cookie('username'));
+			console.log('userid:'+cookie.get('userid'));
+			console.log('username:'+cookie.get('username'));
 
 			// chat.scrollToBottom();
 
@@ -64,7 +64,7 @@ jQuery(function($){
 
 			// 监听新用户登录
 			this.socket.on('login', function(o){
-				// chat.updateSysMsg(o, 'login');
+				// chat.updatdeSysMsg(o, 'login');
 			})
 
 			// 监听用户退出
@@ -78,7 +78,7 @@ jQuery(function($){
 				// 从个人主页找头像
 				var str = "<div class='item'>"
 			            + "<div class='u-img'>"
-			             + "<img src='"+$('#user-img').attr('src')+"'/>"
+			             + "<img src='/images/"+cookie.get('userimg')+"'/>"
 			            + "</div>"
 			            + "<div>"
 			             + "<p class='uname'>"+obj.username+"</p>"
@@ -99,9 +99,7 @@ jQuery(function($){
 		}
 
 	};
-	// console.log('userid:'+$.cookie('userid'));
-	// console.log('username:'+$.cookie('username'));
-	w.chat.init($.cookie('userid'), $.cookie('username'));
+	w.chat.init(cookie.get('userid'), cookie.get('username'));
 
 	$('#chat-submit').on('click', function(e){
 		chat.submit();

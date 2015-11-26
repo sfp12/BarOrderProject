@@ -11,11 +11,11 @@ var users = require('./routes/users');
 var app = express();
 
 
-var http = require('http');
-var server = http.createServer(app);
-var io = require('socket.io').listen(server);
+// var http = require('http');
+// var server = http.createServer(app);
+// var io = require('socket.io').listen(server);
 
-server.listen(3000);
+// server.listen(3000);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

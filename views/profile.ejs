@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>酒吧</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">  
+  <link rel="stylesheet" href="styles/bar/normalize.css"> 
+  <link rel="stylesheet" href="styles/bar/style.css">  
+</head>
+<body>
+	<div id='profile-page'>
+
+      <div class='header'>
+        <div class='img-con'><img src='images/return.png'></div>
+        <h1>我的小美</h1>
+      </div>    
+
+      <div class='content'>
+          <div class='content-head'>
+            <a href='/edit-1'><img class='user-edit' src='images/edit.png'/></a>
+            <div class='user-img-con'>
+              <img class='user-img' id='user-img' src='images/head.png'/>
+              <a href=''><img class='camera' src='/images/camera.png'></a>
+              <p>昵称：<span><%= uname %></span></p>
+              <p>性别：<span><%= usex %></span></p>
+              <p>电话：<span><%= unumber %></span></p>
+            </div>
+          </div>
+          <div class='consume-div'>
+              <p class='head'>消费信息</p>              
+              <p>今日消费：<span id='today-consume'>&#165;135</span></p>
+              <p class='last-t'>历史消费：<span id='all-cousume'>&#165;135</span></p>       
+          </div>        
+
+          <div class='consume-div'>
+              <p class='head'>更多信息<a href='/edit-2'><img src='images/edit.png'></a></p>
+              <p>年龄：<span id='user-age'><%= uage %></span></p>         
+              <p>星座：<span id='user-horo'><%= uhoro %></span></p>         
+              <p>爱好：<span id='hobby'><%= uhobby %></span></p>         
+              <p class='last-t'>签名：<span id='user-sign'><%= usign %></span></p>
+          </div>
+                   
+          <p class='profile-link'>修改密码<a href='/modify-pw'>></a></p>
+          <p class='profile-link'>我的订单<a href='#'>></a></p>      
+          
+          <!-- <div class='upload-con' id='upload-con'>
+            <a href="#" data-role="button" class=''>来自相册</a>
+            <a href="#" data-role="button" class=''>拍照</a>
+            <a href="#" data-role="button" class=''>取消</a>
+          </div> -->
+      </div>
+    </div>
+	
+  <script src="js/zepto/zepto.min.js"></script>
+  <script src="js/bar/cookie.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B4aa49233be137b159257762c65652fd"></script>
+	<script src="js/bar/index.js"></script>
+	
+</body>

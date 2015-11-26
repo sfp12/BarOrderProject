@@ -37,9 +37,10 @@ exports.doLogin = function(req, res, next){
 				result.data = {};
 				result.data.userName = req.session.uname;
 				result.data.userId = req.session.uid; 
+				result.data.userImg = req.session.uimg;
 				res.send(JSON.stringify(result));
 			}else{
-				res.send(JSON.stringify(result));
+				// res.send(JSON.stringify(result));
 			} 
 		}
 
