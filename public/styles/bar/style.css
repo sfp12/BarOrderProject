@@ -706,7 +706,8 @@ body {
       height: 1.4rem;
       background-color: red;
       border-radius: .7rem;
-      text-align: center; }
+      text-align: center;
+      display: none; }
       #menu-page .content #shopping-table .shopping-num span {
         line-height: 1.4rem; }
     #menu-page .content #shopping-table table {
@@ -726,7 +727,8 @@ body {
     #menu-page .content #shopping-table p {
       text-align: right;
       color: #fff;
-      margin-bottom: 2rem; }
+      margin-bottom: 2rem;
+      display: none; }
     #menu-page .content #shopping-table .decision {
       width: 78%;
       height: 3.5rem;
@@ -777,7 +779,8 @@ body {
       #menu-page .footer .shopping-word .shopping-spend {
         color: white;
         font-family: 'HiraginoSansGB W3', Arial;
-        font-size: 1.4rem; }
+        font-size: 1.4rem;
+        display: none; }
       #menu-page .footer .shopping-word .order-confirm {
         font-family: 'HiraginoSansGB W3', Arial;
         font-size: 1.4rem;

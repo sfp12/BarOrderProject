@@ -967,6 +967,7 @@ body{
 			    background-color: red;
 			    border-radius: .7rem;
 			    text-align: center;
+			    display:none;
 			    span{
 					line-height: 1.4rem;
 			    }
@@ -994,6 +995,7 @@ body{
 				text-align:right;
 		    	color:#fff;
 		    	margin-bottom:2rem;
+		    	display:none
 			}
 			.decision{
 				width:78%;
@@ -1057,6 +1059,7 @@ body{
 				color:white;
 				font-family:'HiraginoSansGB W3', Arial;
 				font-size:1.4rem;
+				display:none;
 			}
 			.order-confirm{
 				font-family:'HiraginoSansGB W3', Arial;

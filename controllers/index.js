@@ -141,10 +141,10 @@ exports.scope_1 = function(req, res, next){
 
 exports.wine_detail = function(req, res, next){
 
-	if(!req.session.uid){
-		res.redirect('/login');
-		return false;
-	}
+	// if(!req.session.uid){
+	// 	res.redirect('/login');
+	// 	return false;
+	// }
 
 	var wine_id = req.query.wine_id;
 	var num = req.query.num;
@@ -165,7 +165,8 @@ exports.wine_detail = function(req, res, next){
 					wine_dis_price: r.wine_discount_price,
 					wine_num: num,
 					wine_des: r.wine_describe,
-					wine_image: r.wine_image
+					wine_image: r.wine_image,
+					wine_id : wine_id
 				})
 			} 
 		}

@@ -20,9 +20,9 @@
          <div class='wine-info'>
            <p class='head'><span class='wine-name'><%= wine_name %></span><span class='wine-discount-price'>&#165;<%= wine_dis_price %></span><span class='wine-price'>&#165;<%= wine_price %></span></p>
            <p class='a-m-con'>
-              <img class='add-order' src='images/add.png' />
+              <img class='add-order' src='images/add.png' data-id='<%= wine_id %>' />
               <span class='num'><%= wine_num %></span>              
-              <img class='minus-order' src='images/minus-1.png'/>
+              <img class='minus-order' src='images/minus-1.png' data-id='<%= wine_id %>'/>
            </p>
            <p class='wine-des'>
               <%= wine_des %>
