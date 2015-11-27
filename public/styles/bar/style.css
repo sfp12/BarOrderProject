@@ -291,6 +291,75 @@ body {
       font-size: 1.3rem; }
 
 /*
+* 我的订单 开始
+*/
+#my-order-page .content {
+  background-image: url("/images/order-confirm-bg.png");
+  background-size: cover;
+  font-family: "Microsoft YaHei"; }
+  #my-order-page .content ul {
+    padding: 1rem;
+    margin: 0 !important;
+    font-size: 1.2rem; }
+    #my-order-page .content ul li {
+      margin-bottom: 2rem;
+      height: 4rem; }
+      #my-order-page .content ul li .order-info {
+        float: left; }
+        #my-order-page .content ul li .order-info p {
+          height: 2rem;
+          line-height: 2rem; }
+        #my-order-page .content ul li .order-info .order-time {
+          color: #545454;
+          font-size: 1rem; }
+      #my-order-page .content ul li .order-spend {
+        float: right; }
+        #my-order-page .content ul li .order-spend p {
+          height: 4rem;
+          line-height: 4rem;
+          font-size: 1.6rem; }
+          #my-order-page .content ul li .order-spend p a {
+            color: #000 !important; }
+
+/*
+* 订单详情 开始
+*/
+#order-detail-page .content {
+  background-image: url("/images/order-confirm-bg.png");
+  background-size: cover;
+  font-family: "Microsoft YaHei";
+  position: relative; }
+  #order-detail-page .content .consume-div {
+    margin-bottom: 2rem;
+    padding: 0 2rem;
+    font-size: 1.4rem; }
+    #order-detail-page .content .consume-div p {
+      margin-bottom: 2rem; }
+      #order-detail-page .content .consume-div p a img {
+        width: 2.4rem;
+        float: right; }
+    #order-detail-page .content .consume-div .head {
+      color: #8826ff; }
+    #order-detail-page .content .consume-div table {
+      margin-bottom: 2rem;
+      width: 100%; }
+      #order-detail-page .content .consume-div table thead {
+        display: none; }
+      #order-detail-page .content .consume-div table tr {
+        height: 4rem; }
+        #order-detail-page .content .consume-div table tr td {
+          width: 33.33%;
+          float: left;
+          padding: 0; }
+        #order-detail-page .content .consume-div table tr .money {
+          text-align: right; }
+  #order-detail-page .content .amount {
+    color: #ff3333;
+    font-size: 1.4rem;
+    text-align: right;
+    padding: 0 2rem; }
+
+/*
 * 定位失败 开始
 */
 #scope-page .content {
@@ -794,13 +863,15 @@ body {
     float: left;
     width: 65%;
     border-radius: .5rem;
-    padding-left: 5%; }
+    padding-left: 5%;
+    border: 1px solid #dadada; }
   #chat-page .footer #chat-submit {
     float: right;
     margin-right: 5%;
     height: 3rem;
     margin-top: .5rem;
     width: 15%;
-    background-color: white; }
+    background-color: white;
+    border: 1px solid #dadada; }
 
 /*# sourceMappingURL=style.css.map */

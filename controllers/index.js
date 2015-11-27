@@ -178,6 +178,14 @@ exports.wine_detail = function(req, res, next){
 	
 };
 
+exports.my_order = function(req, res, next){
+	res.render('my-order');
+};
+
+exports.order_detail = function(req, res, next){
+	res.render('order-detail');
+};
+
 
 
 

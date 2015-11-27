@@ -396,6 +396,108 @@ body{
 // 订单确认 结束
 
 /*
+* 我的订单 开始
+*/
+#my-order-page{
+	.content{
+		background-image: url('/images/order-confirm-bg.png');
+		background-size:cover;
+		font-family:$family_1;
+		ul{
+			padding: 1rem;
+			margin: 0!important;
+			font-size: 1.2rem;
+
+			li{
+				margin-bottom:2rem;
+				height:4rem;
+				.order-info{
+					float:left;
+					p{
+						height:2rem;
+						line-height:2rem;
+					}
+					.order-time{
+						color:#545454;
+						font-size: 1rem;
+					}
+				}
+				.order-spend{
+					float:right;
+					p{
+						height:4rem;
+						line-height:4rem;
+						font-size:1.6rem;
+						a{
+							color:#000 !important;
+						}
+					}
+				}
+			}
+		}
+
+	}
+	
+}
+// 我的订单 结束
+
+/*
+* 订单详情 开始
+*/
+#order-detail-page{
+	.content{
+		background-image: url('/images/order-confirm-bg.png');
+		background-size:cover;
+		font-family:$family_1;
+		position:relative;
+		.consume-div{
+			margin-bottom:2rem;
+			padding:0 2rem;
+			font-size:1.4rem;
+			// font-family:$family_2;
+			p{
+				margin-bottom:2rem;
+				a{
+					img{
+						width:2.4rem;
+						float:right;
+					}
+				}
+			}
+			.head{
+				color:#8826ff;
+			}
+			table{
+				margin-bottom:2rem;
+				width:100%;
+				thead{
+					display:none;
+				}
+				tr{
+					height:4rem;
+					td{
+						width:33.33%;
+						float: left;
+	    				padding: 0;
+					}
+					.money{
+						text-align:right;
+					}
+				}				
+			}
+		}
+		.amount{
+			color:#ff3333;
+			font-size:1.4rem;			
+			text-align:right;
+			padding:0 2rem;
+			// margin-bottom:12.5rem;
+		}		
+	}	
+}
+// 订单详情 结束
+
+/*
 * 定位失败 开始
 */
 #scope-page{	
@@ -1107,6 +1209,7 @@ body{
 		    width: 65%;
 		    border-radius: .5rem;
 		    padding-left: 5%;
+		    border: 1px solid #dadada;
 		}
 		#chat-submit{
 			float: right;
@@ -1115,6 +1218,7 @@ body{
 		    margin-top: .5rem;
 		    width: 15%;
 		    background-color: white;
+		    border: 1px solid #dadada;
 		}
 	}	
 }

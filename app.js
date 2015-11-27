@@ -30,12 +30,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
   secret:'bar',
   resave: false,
-  saveUninitialized: true,
-  store: new MongoStore({   
-         host: 'localhost',    
-         port: 27017,          
-         db: 'bar'        
-     })
+  saveUninitialized: true
+  // store: new MongoStore({   
+  //        host: 'localhost',    
+  //        port: 27017,          
+  //        db: 'bar'        
+  //    })
 
 }));
 app.use(express.static(path.join(__dirname, 'public')));

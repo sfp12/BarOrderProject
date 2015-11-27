@@ -84,6 +84,8 @@ router.get('/profile', index_c.profile_1);
 router.get('/register', index_c.register);
 router.get('/scope', index_c.scope_1);
 router.get('/wine-detail', index_c.wine_detail);
+router.get('/my-order', index_c.my_order);
+router.get('/order-detail', index_c.order_detail);
 
 
 
