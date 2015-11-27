@@ -75,6 +75,20 @@ Zepto(function($){
 
   // 回到上一页
   $('.img-con').on('click', function(){
+
+    bo.cart = cookie.get('cart') ? true : false;
+
+    if(document.location.pathname === '/wine-detail' && bo.cart){
+      window.history.go(-1);
+      return false;
+    }
+
+    if(document.location.pathname === '/order-confirm' && bo.cart){
+      window.history.go(-1);
+      return false;
+    }
+
+
     if(bo.cart){
       bo.showConfirmLeave();
       return false;
@@ -139,43 +153,43 @@ Zepto(function($){
     data = data ? JSON.parse(data) : [];
     if(data.length !== 0){
       
-      num = data.reduce(function(item, num){
+      num = data.reduce(function(num, item){
               return +item.wine_num + num;
             }, 0);
-      spend = data.reduce(function(item, money){
+      spend = data.reduce(function(money, item){
               return (+item.wine_num) * (+item.wine_price) + money;
             }, 0);
 
-      $('#menu-num').css('display','block');
+      $('#menu-num').parent().css('display','block');
       $('#menu-num').text(num);
       $('#menu-spend').css('display','inline-block');
-      $('#menu-spend').text(spend);
+      $('#menu-spend').text('￥'+spend);
     }
   }
 
   // 从cookie中计算个数和总价
-  bo.cookieToOrder = function(){
+  // bo.cookieToOrder = function(){
 
-    var num = 0;
-    var spend = 0;
+  //   var num = 0;
+  //   var spend = 0;
 
-    var data = cookie.get('cart');
-    data = data ? JSON.parse(data) : [];
-    if(data.length !== 0){
+  //   var data = cookie.get('cart');
+  //   data = data ? JSON.parse(data) : [];
+  //   if(data.length !== 0){
       
-      num = data.reduce(function(item, num){
-              return +item.wine_num + num;
-            }, 0);
-      spend = data.reduce(function(item, money){
-              return (+item.wine_num) * (+item.wine_price) + money;
-            }, 0);
+  //     num = data.reduce(function(item, num){
+  //             return +item.wine_num + num;
+  //           }, 0);
+  //     spend = data.reduce(function(item, money){
+  //             return (+item.wine_num) * (+item.wine_price) + money;
+  //           }, 0);
 
-      $('#menu-num').css('display','block');
-      $('#menu-num').text(num);
-      $('#menu-spend').css('display','inline-block');
-      $('#menu-spend').text(spend);
-    }
-  }
+  //     $('#menu-num').css('display','block');
+  //     $('#menu-num').text(num);
+  //     $('#menu-spend').css('display','inline-block');
+  //     $('#menu-spend').text(spend);
+  //   }
+  // }
 
   // 从cookie中计算总的个数和总价
   bo.cookieToModal = function(){
@@ -191,7 +205,7 @@ Zepto(function($){
               return +item.wine_num + num;
             }, 0);
       spend = data.reduce(function(money, item){
-              return (+item.wine_num) * (+item.wine_price.slice(1)) + money;
+              return (+item.wine_num) * (+item.wine_price) + money;
             }, 0);
 
       $('#menu-num-modal').parent().css('display','block');
@@ -199,6 +213,7 @@ Zepto(function($){
       $('#menu-spend-modal').parent().css('display','block');
       $('#menu-spend-modal').text(spend);
     }
+
   }
 
   // 从cookie中取出购物车的内容
@@ -221,7 +236,7 @@ Zepto(function($){
     return result;
   }
 
-  // 从cookie中取出wine num; menu
+  // 从cookie中取出每个wine num; menu
   bo.cookieToMenuNum = function(){
     var data = cookie.get('cart');
     data = data ? JSON.parse(data) : [];
@@ -236,7 +251,7 @@ Zepto(function($){
         $(add_order).next().css('display', 'none');
         $(add_order).next().next().css('display', 'none');
       }
-      $(add_order).next().text(id);
+      $(add_order).next().text(item.wine_num);
     })
   }
 
@@ -257,6 +272,23 @@ Zepto(function($){
         $(add_order).next().text(item.wine_num);
       }
     })
+  }
+
+  // OC order-confirm 从cookie中获取总价
+  bo.cookieToOC = function(){
+    var spend = 0;
+
+    var data = cookie.get('cart');
+    data = data ? JSON.parse(data) : [];
+    if(data.length !== 0){
+      
+      spend = data.reduce(function(money, item){
+              return (+item.wine_num) * (+item.wine_price) + money;
+            }, 0);
+      
+      $('#order-confirm-page .amount').css('display','block');
+      $('#order-confirm-page .amount span').text('￥'+spend);
+    }
   }
 
   /*
@@ -437,6 +469,9 @@ if(document.location.pathname === '/order-confirm'){
   // 从cookie中获取tbody
   $('#shopping-table2 tbody').html(bo.cookieToTbody());
 
+  // 从cookie中获取总价
+  bo.cookieToOC();
+
 }
 
 // 订单确认 结束
@@ -612,8 +647,7 @@ $('#shopping-cart').on('click',function(){
 $('#order-leave').on('click', function(){
   $('#confirm-leave').css('display', 'none');
   bo.hideOverlay();
-  bo.cart = false;
-  $('.img-con').trigger('click');
+  window.location.href='/main';
 })
 
 // 不离开
@@ -700,8 +734,6 @@ $('#menu-page .add-order').on('click', function(e){
   $('#menu-spend').css('display','inline-block');
   $('#menu-spend').text(wine_spend);
   
-  bo.cart = true;
-
   // 把购物车的内容，添加到cookie cart中
   var item = {};
   item.wine_name = wine_name;
@@ -747,11 +779,9 @@ $('#menu-page .minus-order').on('click', function(e){
 
   // 加入购物车
   if(wine_num > 0){
-    bo.cart = true;
     $('#menu-num').parent().css('display','block');
     $('#menu-spend').parent().css('display','block');
   }else{
-    bo.cart = false;
     $('#menu-num').parent().css('display','none');
     $('#menu-spend').parent().css('display','none');
   }
