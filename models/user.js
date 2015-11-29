@@ -5,6 +5,9 @@ var cryptoUtil = require('../utils/cryptoUtil');
 var database = require('../config').mysql_db;
 var user_t = require('../config').user_t;
 var chat_t = require('../config').chat_t;
+var wine_t = require('../config').wine_t;
+var menu_wine_t = require('../config').menu_wine_t;
+var menu_t = require('../config').menu_t;
 
 
 
@@ -140,6 +143,37 @@ exports.getColById = function(cols, uid, cb){
 		cb(null, rows);
 		
 	});
+}
+
+// 获取order
+exports.getSpend = function(uid, cb){
+
+	var sql = 'SELECT menu_wine.menu_id, menu_wine.wine_id, wine_num, wine.wine_price FROM  '+ menu_wine_t;
+	sql += ' JOIN ' + wine_t;
+	sql += ' ON ' + menu_wine_t + '.wine_id='+wine_t+'.wine_id '; 
+	sql += ' AND '+ menu_wine_t + '.menu_id in ';
+	sql += ' (SELECT menu_id FROM '+ menu_t +' where user_id = ?) '
+	var result = {};
+
+	mysqlUtil.query(sql, [uid], function(err, rows, fields){
+		if(err){
+			console.log('get order error');
+		}
+
+		if(rows.length !== 0){
+			for(var i=0, l=rows.length; i<l; i++){
+				var spend = result[rows[i].menu_id];
+				if(!spend){
+					spend = 0;
+				}
+				spend += +rows[i].wine_num * +rows[i].wine_price;
+				result[rows[i].menu_id] = spend;
+			}
+			console.log(util.inspect({result:result}));
+			cb(null, result);
+
+		}  // rows
+	})  // get menu
 }
 
 // 获取管理员列表

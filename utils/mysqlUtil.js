@@ -7,8 +7,8 @@ var pool = mysql.createPool({
     port: config.mysql_port,
     database: config.mysql_db,
     user: config.mysql_user,
-    password: config.mysql_pw
-    
+    password: config.mysql_pw,
+    dateStrings: true
 });
 
 module.exports = pool;

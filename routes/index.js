@@ -7,6 +7,7 @@ var login_c = require('../controllers/login');
 var user_c = require('../controllers/user');
 var wine_c = require('../controllers/wine');
 var index_c = require('../controllers/index');
+var menu_c = require('../controllers/menu');
 
 // function md5(text) {
 // 	var str_1 = crypto.createHash('md5').update(text).digest('hex');
@@ -79,13 +80,16 @@ router.get('/login', index_c.login);
 router.get('/menu', wine_c.wineList);
 router.get('/modify-pw', index_c.modify_pw);
 router.get('/order-confirm', index_c.order_confirm);
+
+router.post('/order-confirm', menu_c.addOrder);
+
 // router.get('/to-order-confirm', index_c.to_order_confirm);
 router.get('/profile', index_c.profile_1);
 router.get('/register', index_c.register);
 router.get('/scope', index_c.scope_1);
 router.get('/wine-detail', index_c.wine_detail);
 router.get('/my-order', index_c.my_order);
-router.get('/order-detail', index_c.order_detail);
+router.get('/order-detail/:id', index_c.order_detail);
 
 
 

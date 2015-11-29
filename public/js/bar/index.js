@@ -89,7 +89,7 @@ Zepto(function($){
     }
 
 
-    if(bo.cart){
+    if(document.location.pathname === '/menu' && bo.cart){
       bo.showConfirmLeave();
       return false;
     } 
@@ -461,7 +461,17 @@ $('#login-s').on('click', function(data){
 // $('#order-confirm-page .content').css('height', document.body.clientHeight);
 $('#order-confirm-submit').on('click', function(){
   //订单确认 立即下单之后，会清空订单确认页的内容吗？
+  var argu = {};
+  argu.cart = cookie.get('cart');
+  $.post('/order-confirm', argu, function(){
 
+    data = JSON.parse(JSON);
+    if(data.status === 0){
+      console.log('order submit success');
+    }else{
+      console.log('order submit fail');
+    }
+  })
 })
 
 if(document.location.pathname === '/order-confirm'){

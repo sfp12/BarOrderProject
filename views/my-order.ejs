@@ -17,37 +17,21 @@
       
       <div class='content'>
         <ul>
-          <li>
-            <div class='order-info'>
-            <p>订单号：<span>1</span>-<span>01</span></p>
-            <p class='order-time'><span>2014-08-06</span> <span>19:26:56</span></p>
-            </div>
-            <div class='order-spend'>
-              <p>&#165;<span>26.00</span>  <a href='/order-detail'>></a></p>
-            </div>
-          </li>
+
+          <% for(var key in spend){  %>                               
 
           <li>
             <div class='order-info'>
-            <p>订单号：<span>1</span>-<span>01</span></p>
-            <p class='order-time'><span>2014-08-06</span> <span>19:26:56</span></p>
+            <p>订单号：<span>1</span>-<span><%= key %></span></p>
+            <p class='order-time'><%= spend[key].split(',')[1] == 'null' ? '' : spend[key].split(',')[1] %></span></p>
             </div>
             <div class='order-spend'>
-              <p>&#165;<span>26.00</span>  <a href='/order-detail'>></a></p>
+              <p>&#165;<span><%= spend[key].split(',')[0] %></span>  <a href='/order-detail/<%= key %>'>></a></p>
             </div>
           </li>
 
-          <li>
-            <div class='order-info'>
-            <p>订单号：<span>1</span>-<span>01</span></p>
-            <p class='order-time'><span>2014-08-06</span> <span>19:26:56</span></p>
-            </div>
-            <div class='order-spend'>
-              <p>&#165;<span>26.00</span>  <a href='/order-detail'>></a></p>
-            </div>
-          </li>
-
-          
+          <%  }  %> 
+         
         </ul>
         
       </div>
