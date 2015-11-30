@@ -675,32 +675,6 @@ $('#order-confirm-31').on('click', function(){
     $('body').css('overflow', 'visible');
 })
 
-// 跳转到酒品详情
-// $('.menu-type li').on('click', function(e){
-
-//   // li中有很多元素，都可触发此事件。所以这里先找到li
-//   var parents = $(e.target).parentsUntil('ul');
-//   var li = $(parents[parents.length-1]);
-
-//   // 给酒品详情页面赋值
-//   $('#wine-detail-page .content>img').attr('src', li.find('.img').css('backgroundImage').replace('url(', '').replace(')',''));
-//   $('#wine-detail-page .content .wine-name').text(li.find('.wine-name').text());
-//   $('#wine-detail-page .content .wine-discount-price').text(li.find('.wine-discount-price').text());
-//   $('#wine-detail-page .content .wine-price').text(li.find('.wine-price').text());
-//   $('#wine-detail-page .content .wine-des').text(li.find('.wine-des').text());
-//   $('#wine-detail-page .content .num').text(li.find('.num').text());
-//   // 如果数目>0,则显示出来。
-//   if(+li.find('.num').text() === 0){
-//     $('#wine-detail-page .content .num').css('display', 'none');
-//   }else{
-//     $('#wine-detail-page .content .num').css('display', 'block');
-//   }
-//   $('#wine-detail-page .content .add-order').data('id', li.find('.add-order').data('id'));
-//   $('#wine-detail-page .content .minus-order').data('id', li.find('.minus-order').data('id'));
-
-//   window.location.href = '/wine-detail';
-// })
-
 $('.menu-type li .img').on('click', function(){
   var wine_id = +$(this).parent().find('.add-order').data('id');
   var argu = {};
@@ -742,7 +716,7 @@ $('#menu-page .add-order').on('click', function(e){
 
   // 加入购物车modal
   $('#menu-spend').css('display','inline-block');
-  $('#menu-spend').text(wine_spend);
+  $('#menu-spend').text('￥'+wine_spend);
   
   // 把购物车的内容，添加到cookie cart中
   var item = {};
