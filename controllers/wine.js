@@ -1,9 +1,11 @@
 var util = require('util');
 var async = require('async');
 var validator = require('validator');
+
+// models
 var wine_m = require('../models/wine');
 
-// 返回wine_t的内容
+// 返回wine的内容
 exports.wineList = function(req, res, next){
 
 	var result = {
@@ -17,7 +19,6 @@ exports.wineList = function(req, res, next){
 		},
 		function(r){
 			if(r){
-			console.log(util.inspect({r: r}));				
 				result.data = r;
 			}else{
 				result.status = 1;
@@ -26,7 +27,6 @@ exports.wineList = function(req, res, next){
 			res.render('menu', {
 				content: result
 			}); 
-			// res.render('index'); 
 		}
 
 		], function(err, value){

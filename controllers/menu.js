@@ -1,25 +1,24 @@
-var menu_m = require('../models/menu');
 var async = require('async');
 var util = require('util');
 
+// models
+var menu_m = require('../models/menu');
 
+// 添加订单
 exports.addOrder = function(req, res, next){
 
-	console.log(util.inspect({session: req.session}));
-
-	// if(!req.session.uid){
-	// 	res.redirect('/login');
-	// 	return false;
-	// }
+	if(!req.session.uid){
+		res.redirect('/login');
+		return false;
+	}
 
 	var cart = req.body.cart;
 	var uid = req.session.uid;
+
 	var result = {};
 	result.status = 0;
 	result.data = '添加成功';
 	
-
-	// 用transaction来作。
 	async.waterfall([
 		function(cb){
 			menu_m.addOrder(uid, cart, cb);

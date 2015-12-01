@@ -1,9 +1,12 @@
 var util = require('util');
 var async = require('async');
 var validator = require('validator');
+
+// models
 var user_m = require('../models/user');
 
 // 变量
+
 
 // 修改密码
 exports.modifyPW = function(req, res, next){
@@ -34,7 +37,6 @@ exports.modifyPW = function(req, res, next){
 			console.log('err:'+err);
 			console.log('value:'+value);
 	})	
-	
 }
 
 // 修改用户信息
@@ -63,6 +65,5 @@ exports.modifyInfo = function(req, res, next){
 			console.log('err:'+err);
 			console.log('value:'+value);
 	})	
-	
 }
 
