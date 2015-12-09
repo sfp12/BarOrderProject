@@ -13,7 +13,7 @@ exports.modifyPW = function(req, res, next){
 
 	var result = {
 		status: 0,
-		data: '修改成功'
+		data: '密码重置成功'
 	}
 
 	var number = req.body.phoneNumber;
@@ -28,7 +28,7 @@ exports.modifyPW = function(req, res, next){
 			if(r){				
 				res.send(JSON.stringify(result));
 			}else{
-				result.data = '修改失败';
+				result.data = '提交失败,请重新尝试';
 				res.send(JSON.stringify(result));
 			} 
 		}

@@ -676,8 +676,35 @@ $('#forget-pw').on('click', function(e){
   console.log('forget-pw');
 })
 
+$('#m-number').on('blur', function(){
+    var t = validator.isMobilePhone($(this).val(), 'zh-CN');
+    if(!t){
+      bo.toast('请输入正确的手机号码');
+    }
+})
+
+$('#m-pw').on('blur', function(){
+    var t = $(this).val();
+    if(t < 6){
+      bo.toast('请设置密码为6-20位字符');
+    }
+})
+
 // 登录
 $('#m-login').on('click', function(data){
+
+  var t = validator.isMobilePhone($('#m-number').val(), 'zh-CN');
+  if(!t){
+    bo.toast('请输入正确的手机号码');
+    return false;
+  }
+
+  var t = $('#m-pw').val();
+  if(t < 6){
+    bo.toast('请设置密码为6-20位字符');
+    return false;
+  }
+
   var argu = {};
   argu.phoneNumber = $('#m-number').val();
   argu.pw= $('#m-pw').val();
@@ -685,9 +712,10 @@ $('#m-login').on('click', function(data){
     data = JSON.parse(data);
 
     if(data.status === 1){
-      alert(data.data);
+      bo.toast(data.data);
     }else{
-      window.location.href = '/profile';
+      bo.toast(data.data);
+      // window.location.href = '/profile';
     }
     console.log('debug');
   });
