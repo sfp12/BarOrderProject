@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
 });
 
 // 上线的时候，这样设置
-app.set('env', 'production');
+// app.set('env', 'production');
 
 // 开发模式下的错误处理
 if (app.get('env') === 'development') {

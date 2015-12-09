@@ -16,22 +16,25 @@
       </div>      
       
       <div class='content'>
+        <div id="toast-content" class="toast-content" style="display: none; opacity: 0;">
+          <span style="color:#000;padding: 2px;text-align: center;margin: 0 auto;font-size:1.8rem;border-radius:1rem"></span>
+        </div>
         <form method="post" action="#">
           <div>
-            <input type='text' class='' id='phone-number' name='phone-number' placeholder='手机号码' />
+            <input type='text' class='' id='phone-number-r' name='phone-number' placeholder='手机号码' maxlength='11'/>
           </div>
           <div>
-            <input type='text' class='valida-r' id='validation-code' name='validation-code' placeholder='验证码' />
+            <input type='text' class='valida-r' id='validation-code-r' name='validation-code' placeholder='验证码' maxlength='6'/>
             <div class='validation-con'>
-              <img src='/getCode' id='validation' class='get-valida-r'>
+              <img src='/getCode' id='validation-r' class='get-valida-r'>
             </div>
             
           </div>
           <div>
-            <input type='password' class='' id='pw-r' name='pw-r' placeholder='密码6-20位字符' />
+            <input type='password' class='' id='pw-r' name='pw-r' placeholder='密码6-20位字符' maxlength='20'/>
           </div>
-          <div>
-            <input type='password' id='login-r' readonly class='login-r' placeholder='注册' />
+          <div>            
+            <input type='button' value='注册' class='login-r' id='login-r'/>
           </div>
         </form>
 
@@ -42,6 +45,7 @@
   <script src="js/zepto/zepto.min.js"></script>
   <script src="js/bar/cookie.min.js"></script>
 	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=B4aa49233be137b159257762c65652fd"></script>
+  <script src="js/validator/validator.min.js"></script>
 	<script src="js/bar/index.js"></script>
 	
 </body>

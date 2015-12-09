@@ -16,20 +16,93 @@
       <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+      *{
+        margin:0;padding:0;
+      
+        -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+        -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+        -webkit-tap-highlight-color: rgba(210,210,210,0.35); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+        -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+      }
+      body{
+        font-family:"微软雅黑";
+        font-size:12px;
+      }
+      ul,li{
+        list-style:none;
+      }
+      
+      .toast-content{
+        z-index:1003;
+        font-size: 1.37em;
+        position: fixed;
+        bottom:50%;
+        width: 100%;
+        opacity:0;
+        height: 24px;
+        display: none;
+        transition: opacity 1s ease-out;
+      }
+      .huati_btn{
+        width:175px;
+
+        height:32px;
+        background:#34a0f0;
+        border-radius:3px;
+        font:14px/32px "微软雅黑";
+        display:block;
+        overflow:hidden;
+        margin:0 auto;
+        text-align:center;
+        color:#fff;
+        text-decoration:none;
+      }
+      .huati{height:40px;
+        padding-top:9px;
+        border-bottom:1px dashed #cecece
+      }
+    </style>
   </head>
   <body>
-    <h1>你好，世界！</h1>
-    <button type="button" class="btn btn-default" aria-label="Left Align">
-  <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-</button>
-
-<button type="button" class="btn btn-default btn-lg">
-  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-</button>
+    <p class="huati"><a href="#" id='huati_btu' class="huati_btn">测试一下</a></p>
+    <div id="toast-content" class="toast-content" style="display: none; opacity: 0;"></div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery/jquery-2.1.4.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap/bootstrap-3.3.5.min.js"></script>
+    <script src="js/zepto/zepto.min.js"></script>
+    <script>
+      Zepto(function($){
+        var toast_time = null;
+        var display_time = null;
+
+        function startToast(html){
+          if(toast_time!=null){
+            clearTimeout(toast_time);
+            clearTimeout(dispaly_time);
+          }
+
+          $('#toast-content').css('display', 'block');
+          $('#toast-content').css('opacity', 1);
+          $('#toast-content').html(html);
+
+          toast_time = setTimeout(function(){
+            $('#toast-content').css('opacity', 0);
+            display_time = setTimeout(function(){
+              $('#toast-content').css('display', 0);
+            }, 2000)
+          }, 1000);
+        }
+
+        function test(){
+          startToast('<div style="color:#fff;background: rgba(0, 0, 0, 0.6);border-radius: 2px;padding: 2px;text-align: center;width:175px;margin: 0 auto;">话题征集内容不能为空</div>');
+        }
+
+        test();
+      })
+      
+    </script>
   </body>
 </html>

@@ -176,7 +176,7 @@ exports.getSpend = function(uid, cb){
 }
 
 // 检查用户名是否已存在
-exports.checkUname = function(uname, cb){
+exports.checkUname = function(uname){
 	
 	var sql = 'select * from '+ config.user_t;
 	sql += ' where ';
@@ -189,9 +189,9 @@ exports.checkUname = function(uname, cb){
 		}
 		
 		if(rows.length !== 0){
-			cb(null, true);
+			return true;
 		}else{
-			cb(null, false);
+			return false;
 		}
 	});
 }

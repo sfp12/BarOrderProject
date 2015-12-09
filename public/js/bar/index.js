@@ -291,6 +291,31 @@ Zepto(function($){
     }
   }
 
+  // toast 提示
+  bo.toast_time = null;
+  bo.display_time = null;
+
+  bo.toast = function(html, cb){
+    if(bo.toast_time!=null){
+      clearTimeout(bo.toast_time);
+      clearTimeout(bo.dispaly_time);
+    }
+
+    $('#toast-content').css('display', 'block');
+    $('#toast-content').css('opacity', 1);
+    $('#toast-content span').text(html);
+
+    bo.toast_time = setTimeout(function(){
+      $('#toast-content').css('opacity', 0);
+      bo.display_time = setTimeout(function(){
+        $('#toast-content').css('display', 0);
+        if(cb !== undefined){
+          cb();
+        }
+      }, 2000)
+    }, 1000);
+  }
+
   /*
   * 首页 开始
   */
@@ -406,20 +431,51 @@ $('#edit-2-back').on('click', function(){
 */
 // $('#register-page .content').css('height', document.body.clientHeight);
 // 获取验证码
-$('#validation').on('click', function(){
+$('#validation-r').on('click', function(){
   $(this).attr('src', '/getCode?'+new Date().getTime());
 })
 
+$('#phone-number-r').on('blur', function(){
+    var t = validator.isMobilePhone($(this).val(), 'zh-CN');
+    if(!t){
+      bo.toast('请输入正确的手机号码');
+    }
+})
+
+$('#pw-r').on('blur', function(){
+    var t = $(this).val();
+    if(t < 6){
+      bo.toast('密码不足6位');
+    }
+})
+
 $('#login-r').on('click', function(data){
+
+  var t = validator.isMobilePhone($('#phone-number-r').val(), 'zh-CN');
+  if(!t){
+    bo.toast('请输入正确的手机号码');
+    return false;
+  }
+
+  var t = $('#pw-r').val();
+  if(t < 6){
+    bo.toast('密码不足6位');
+    return false;
+  }
+
   var argu = {};
-  argu.phoneNumber = $('#phone-number').val();
-  argu.validationCode = $('#validation-code').val();
+  argu.phoneNumber = $('#phone-number-r').val();
+  argu.validationCode = $('#validation-code-r').val();
   argu.pw = $('#pw-r').val();
   $.post('/login/register', argu, function(data){
     data = JSON.parse(data);
 
     if(data.status === 1){
-      alert(data.data);
+      bo.toast(data.data);
+    }else{
+      bo.toast(data.data, function(){
+        window.location.href='/main';
+      });
     }
     console.log('debug');
   });
@@ -431,8 +487,36 @@ $('#login-r').on('click', function(data){
 * 登陆 开始
 */
 // $('#login-page .content').css('height', document.body.clientHeight);
+
+$('#login-number').on('blur', function(){
+    var t = validator.isMobilePhone($(this).val(), 'zh-CN');
+    if(!t){
+      bo.toast('请输入正确的手机号码');
+    }
+})
+
+$('#login-pw').on('blur', function(){
+    var t = $(this).val();
+    if(t < 6){
+      bo.toast('密码不足6位');
+    }
+})
+
 // 登录
 $('#login-s').on('click', function(data){
+
+  var t = validator.isMobilePhone($('#login-number').val(), 'zh-CN');
+  if(!t){
+    bo.toast('请输入正确的手机号码');
+    return false;
+  }
+
+  var t = $('#login-pw').val();
+  if(t < 6){
+    bo.toast('密码不足6位');
+    return false;
+  }
+
   var argu = {};
   argu.phoneNumber = $('#login-number').val();
   argu.pw= $('#login-pw').val();
@@ -440,7 +524,7 @@ $('#login-s').on('click', function(data){
     data = JSON.parse(data);
 
     if(data.status === 1){
-      alert(data.data);
+      bo.toast(data.data);
     }else{
       cookie.set('username',data.data.userName);
       cookie.set('userid', data.data.userId);

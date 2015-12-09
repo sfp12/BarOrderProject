@@ -111,7 +111,22 @@ body{
 
 // content 不需要padding
 .content{
-	padding:0
+	padding:0;
+	.toast-content{
+        z-index:1003;
+        font-size: 1.37em;
+        position: fixed;
+        bottom:50%;
+        left:10%;
+        width: 80%;
+        opacity:0;
+        display: none;
+        transition: opacity 1s ease-out;
+        text-align:center;
+	    border-radius: 1rem;
+	    padding: 1rem;
+	    background-color:white;
+    }
 }
 
 // 导航条
@@ -256,7 +271,9 @@ body{
 					}
 				}				
 				.login-r{
-					background-color:#5c53ff;
+					width:100%;
+					padding-left:0;
+					background-color:#5e4fff;
 					color:white;
 					text-align:center;
 				}
@@ -272,7 +289,7 @@ body{
 #login-page{
 	.content{
 		background-image: url('/images/login-bg.png');
-		background-size:cover;		
+		background-size:cover;				
 		form{
 			padding-top: 20.5rem;
 			padding-bottom:3rem;
@@ -296,6 +313,8 @@ body{
 				.login{
 					text-align:center;
 					background-color:#5e4fff;
+					width:100%;
+					padding-left:0
 				}
 				a{
 					color:white;
