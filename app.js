@@ -4,12 +4,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var cookieParser = require('cookie-parser')('bar');
 var MongoStore = require('connect-mongo')(session);
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var util = require('util');
 
 var app = express();
 
+app.use(cookieParser);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -31,11 +34,24 @@ app.use(session({
          db: 'bar'        
      })
 }));
+
+app.use(function(req, res, next) {
+  if (req.cookies['mock_user']) {
+    var mockUser = JSON.parse(req.cookies['mock_user']);    
+    req.session.uid = mockUser.user_id;
+    req.session.code = 1234;
+    return next();
+  }
+  next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', routes);
 app.use('/users', users);
+
+
 
 // 捕获404错误，并交给错误处理器
 app.use(function(req, res, next) {

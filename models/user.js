@@ -34,14 +34,14 @@ exports.checkLogin = function(uname, pw, req, cb){
 }
 
 // 修改密码
-exports.modifyPW = function(uname, pw, cb){
+exports.modifyPW = function(uid, pw, cb){
 	
 	var sql = 'update ' + config.user_t;
 	sql += ' set ';
 	sql += ' user_pw = ?';
-	sql += ' where user_name = ?';
+	sql += ' where user_id = ?';
 	
-	mysqlUtil.query(sql, [cryptoUtil.md5(pw), uname], function(err, result){
+	mysqlUtil.query(sql, [cryptoUtil.md5(pw), uid], function(err, result){
 		if(err){
 			console.log('modify pw error');
 			return next(err);
@@ -159,7 +159,7 @@ exports.getSpend = function(uid, cb){
 			console.log('get order error');
 			return next(err);
 		}
-
+		
 		if(rows.length !== 0){
 			for(var i=0, l=rows.length; i<l; i++){
 				var spend = result[rows[i].menu_id];
@@ -169,6 +169,8 @@ exports.getSpend = function(uid, cb){
 				spend += +rows[i].wine_num * +rows[i].wine_price;
 				result[rows[i].menu_id] = spend;
 			}
+
+
 			cb(null, result);
 
 		}  // rows
@@ -176,22 +178,20 @@ exports.getSpend = function(uid, cb){
 }
 
 // 检查用户名是否已存在
-exports.checkUname = function(uname){
+exports.checkUname = function(uname, cb){
 	
 	var sql = 'select * from '+ config.user_t;
 	sql += ' where ';
-	sql += ' user_name = ?'; 
-	
+	sql += ' user_phone = ?'; 
 	mysqlUtil.query(sql, [uname], function(err, rows, fields){
 		if(err){
 			console.log('check uname error');
 			return next(err);
 		}
-		
 		if(rows.length !== 0){
-			return true;
+			cb(null, true);
 		}else{
-			return false;
+			cb(null, false);
 		}
 	});
 }
@@ -214,18 +214,4 @@ exports.addUser = function(uname, pw, cb){
 
 }
 
-// 删除用户
-exports.delUser = function(){
-
-}
-
-// 检查邮箱是否被注册
-exports.checkEmail = function(){
-
-}
-
-// 获取管理员列表
-exports.getUserList = function(){
-
-}
 

@@ -196,7 +196,7 @@ exports.wine_detail = function(req, res, next){
 
 // 我的订单
 exports.my_order = function(req, res, next){
-
+//
 	var uid = req.session.uid;
 
 	// 想获得订单的信息

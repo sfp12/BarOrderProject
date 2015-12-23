@@ -8,6 +8,7 @@ var user_c = require('../controllers/user');
 var wine_c = require('../controllers/wine');
 var index_c = require('../controllers/index');
 var menu_c = require('../controllers/menu');
+var admin_c = require('../controllers/admin');
 
 // 日期格式化
 Date.prototype.Format = function(fmt)   
@@ -84,6 +85,9 @@ router.get('/wine-detail', index_c.wine_detail);
 router.get('/my-order', index_c.my_order);
 
 router.get('/order-detail/:id', index_c.order_detail);
+
+// ---------------------管理端-----------------------
+router.get('/admin', admin_c.admin);
 
 //  测试使用
 router.get('/test', function(req, res, next) {

@@ -16,12 +16,12 @@ exports.modifyPW = function(req, res, next){
 		data: '密码重置成功'
 	}
 
-	var number = req.body.phoneNumber;
+	var uid= req.session.uid;
 	var pw = req.body.pw;
 
 	async.waterfall([
 		function(cb){
-			user_m.modifyPW(number, pw, cb);
+			user_m.modifyPW(uid, pw, cb);
 		},
 		function(r){
 			// 修改成功

@@ -332,26 +332,28 @@ Zepto(function($){
 
   $('#main-chat-page').on('click', function(){
 
-    if(cookie.get('userid')){
+    window.location.href='/chat';
+
+    // if(cookie.get('userid')){
       
-      $.get('/tochat', function(data){
+    //   $.get('/chat', function(data){
 
-        data = JSON.parse(data);
+    //     data = JSON.parse(data);
 
-        if(data.status === 0){
-          window.location.href='/chat';
-          w.chat.scrollToBottom();
-        }else{
-          window.location.href='/login';
-        }
+    //     if(data.status === 0){
+    //       window.location.href='/chat';
+    //       w.chat.scrollToBottom();
+    //     }else{
+    //       window.location.href='/login';
+    //     }
 
-      })
+    //   })
 
-    }else{
+    // }else{
 
-      window.location.href='/login';
+    //   window.location.href='/login';
 
-    }
+    // }
 
   })
 
@@ -381,6 +383,9 @@ Zepto(function($){
   // });
 
   $('#main-icons').css('padding-top', ($('#main-page .content').height() - 4 * bo.fontSize() - 3 * $('#main-menu').height()) * .75);
+  console.log('1: '+$('#main-page .content').height());
+  console.log('2: '+bo.fontSize());
+  console.log('3: '+$('#main-menu').height());
 
   // alert($('#main-icons').css('padding-top'));
   // 首页 结束
@@ -706,7 +711,6 @@ $('#m-login').on('click', function(data){
   }
 
   var argu = {};
-  argu.phoneNumber = $('#m-number').val();
   argu.pw= $('#m-pw').val();
   $.post('/modifyPW', argu, function(data){
     data = JSON.parse(data);

@@ -144,3 +144,22 @@ exports.getById = function(menu_id, cb){
 	});
 
 }
+
+// 根据用户名查找菜单 测试用
+exports.getByUserId = function(uid, cb){
+
+	var sql = 'select * from '+config.menu_t;
+	sql += ' where user_id = ?';
+	mysqlUtil.query(sql, [uid], function(err, rows, fields){
+		if(err){
+			console.log('get menu id  error');
+			return next(err);
+		}
+
+		if(rows.length !== 0){
+			cb(null, rows[0].menu_id);
+
+		}
+	});
+
+}
