@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>酒吧后台管理系统</title>
+
+    <!-- Bootstrap -->
+    <link href="styles/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/bar/admin.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class='container admin-info'>
+      <h1>酒吧后台管理系统</h1>
+      <div class='row'>
+
+        <div class='tablist-con col-mod-2 col-sm-2'>
+          <ul class="nav nav-tabs nav-stacked nav-pills " role="tablist">
+            <li class='first'><a class='btn btn-info'>顾客管理</a></li>
+            <li role="presentation" class=''><a href="#order-c" aria-controls="order-c" role="tab" data-toggle="tab">顾客点单</a></li>
+            <li role="presentation"><a href="#call-c" aria-controls="call-c" role="tab" data-toggle="tab">顾客呼叫</a></li>
+            <li role="presentation"><a href="#info-c" aria-controls="info-c" role="tab" data-toggle="tab">顾客信息</a></li>
+
+            <li class='first'><a class='btn btn-info'>酒吧管理</a></li>
+            <li role="presentation" ><a href="#menu-b" aria-controls="menu-b" role="tab" data-toggle="tab">菜单管理</a></li>
+            <li role="presentation"><a href="#bill-b" aria-controls="bill-b" role="tab" data-toggle="tab">查看流水</a></li>
+            <li role="presentation"><a href="#info-b" aria-controls="info-b" role="tab" data-toggle="tab">酒吧信息</a></li>
+
+            <li class='first'><a class='btn btn-info'>账号管理</a></li>
+            <li role="presentation" ><a href="#modify-p" aria-controls="modify-p" role="tab" data-toggle="tab">修改密码</a></li>
+            <li role="presentation" class='active'><a href="#user-m" aria-controls="user-m" role="tab" data-toggle="tab">成员管理</a></li>
+          </ul>
+
+        </div>
+
+        <div class="tab-content custom col-mod-10 col-sm-10">
+
+          <!-- 顾客点单 -->
+          <div role="tabpanel" class="tab-pane " id="order-c">
+
+            <div class='new-num'>
+              <button type="button" class="btn btn-default btn-lg" readonly id='new-order-num-o'>新增点单：1</button>
+              <button type="button" class="btn btn-default btn-lg" id='new-call-num-o'>新增呼叫：2</button>
+            </div>
+            
+            <div class='h4-con'>
+              <h4>顾客点单</h4>
+            </div>
+
+            <div>
+              <!-- Nav tabs:待处理订单，已完成订单，失效订单 -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" ><a href="#pending-o" aria-controls="pending-o" role="tab" data-toggle="tab">待处理订单</a></li>
+                <li role="presentation" class="active"><a href="#completed-o" aria-controls="completed-o" role="tab" data-toggle="tab">已完成订单</a></li>
+                <li role="presentation"><a href="#invalid-o" aria-controls="invalid-o" role="tab" data-toggle="tab">失效订单</a></li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+
+                <!-- 待处理订单 -->
+                <div role="tabpanel" class="tab-pane " id="pending-o">
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>日期</th>
+                        <th>下单时间</th>
+                        <th>订单号</th>
+                        <th>桌号</th>
+                        <th>手机号</th>
+                        <th>点单内容</th>
+                        <th>金额</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='pending-o' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='pending-o' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='pending-o' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='pending-o' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='pending-o' class='page' >
+                    <input type='button' data-info='pending-o' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+                <!-- 已完成订单 -->
+                <div role="tabpanel" class="tab-pane active" id="completed-o">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label for="start-time-c">筛选日期</label>
+                      <input type="text" class="form-control" id="start-time-c" placeholder="">
+                      -
+                      <input type="text" class="form-control" id="end-time-c" placeholder="">
+                    </div>
+                    <div class="form-group">
+                      <label for="key-c">搜索关键词</label>
+                      <input type="text" class="form-control" id="key-c" placeholder="">
+                    </div>
+                    <input type="button" class="btn btn-primary" id='search-c' value='搜索'>
+                  </form>
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>日期</th>
+                        <th>下单时间</th>
+                        <th>订单号</th>
+                        <th>桌号</th>
+                        <th>手机号</th>
+                        <th>点单内容</th>
+                        <th>金额</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='completed-o' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='completed-o' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='completed-o' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='completed-o' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='completed-o' class='page' >
+                    <input type='button' data-info='completed-o' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+                <!-- 失效订单 -->
+                <div role="tabpanel" class="tab-pane" id="invalid-o">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label for="start-time-i">筛选日期</label>
+                      <input type="text" class="form-control" id="start-time-i" placeholder="">
+                      -
+                      <input type="text" class="form-control" id="end-time-i" placeholder="">
+                    </div>
+                    <div class="form-group">
+                      <label for="key-i">搜索关键词</label>
+                      <input type="text" class="form-control" id="key-i" placeholder="">
+                    </div>
+                    <input type="button" class="btn btn-primary" id='search-i' value='搜索'>
+                  </form>
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>日期</th>
+                        <th>下单时间</th>
+                        <th>订单号</th>
+                        <th>桌号</th>
+                        <th>手机号</th>
+                        <th>点单内容</th>
+                        <th>金额</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>金额</td>                        
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>金额</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='invalid-o' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='invalid-o' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='invalid-o' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='invalid-o' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='invalid-o' class='page' >
+                    <input type='button' data-info='invalid-o' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+              </div>
+            </div>            
+          </div>
+
+          <!-- 顾客呼叫 -->
+          <div role="tabpanel" class="tab-pane" id="call-c">
+
+            <div class='new-num'>
+              <button type="button" class="btn btn-default btn-lg" readonly id='new-order-num-c'>新增点单：1</button>
+              <button type="button" class="btn btn-default btn-lg" id='new-call-num-c'>新增呼叫：2</button>
+            </div>
+            
+            <div class='h4-con'>
+              <h4>顾客呼叫</h4>
+            </div>
+
+            <div>
+              <!-- Nav tabs:待处理呼叫，已完成呼叫 -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#pending-c" aria-controls="pending-c" role="tab" data-toggle="tab">待处理呼叫</a></li>
+                <li role="presentation" ><a href="#completed-c" aria-controls="completed-c" role="tab" data-toggle="tab">已完成呼叫</a></li>
+                
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+
+                <!-- 待处理呼叫 -->
+                <div role="tabpanel" class="tab-pane  active" id="pending-c">
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>日期</th>
+                        <th>呼叫时间</th>
+                        <th>呼叫类型</th>
+                        <th>桌号</th>
+                        <th>手机号</th>
+                        <th>呼叫次数</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>待处理</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='pending-c' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='pending-c' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='pending-c' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='pending-c' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='pending-c' class='page' >
+                    <input type='button' data-info='pending-c' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+                <!-- 已完成呼叫 -->
+                <div role="tabpanel" class="tab-pane" id="completed-c">
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>日期</th>
+                        <th>呼叫时间</th>
+                        <th>呼叫类型</th>
+                        <th>桌号</th>
+                        <th>手机号</th>
+                        <th>呼叫次数</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>完成</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='completed-c' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='completed-c' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='completed-c' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='completed-c' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='completed-c' class='page' >
+                    <input type='button' data-info='completed-c' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>                
+
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 顾客信息 -->
+          <div role="tabpanel" class="tab-pane" id="info-c">
+
+            <div class='new-num'>
+              <button type="button" class="btn btn-default btn-lg" readonly id='new-order-num-i'>新增点单：1</button>
+              <button type="button" class="btn btn-default btn-lg" id='new-call-num-i'>新增呼叫：2</button>
+            </div>
+            
+            <div class='h4-con'>
+              <h4>顾客信息</h4>
+            </div>
+
+            <div>
+              <!-- Nav tabs:今日顾客，所有顾客 -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#today-c" aria-controls="today-c" role="tab" data-toggle="tab">今日顾客</a></li>
+                <li role="presentation" ><a href="#all-c" aria-controls="all-c" role="tab" data-toggle="tab">所有顾客</a></li>
+                
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+
+                <!-- 今日顾客 -->
+                <div role="tabpanel" class="tab-pane  active" id="today-c">
+                  <form class="form-inline">
+                    <input type="button" class="btn btn-default pull-right" id='today-spend-sort' value='今日消费升序排列'>
+                  </form>
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>昵称</th>
+                        <th>手机号</th>
+                        <th>到店次数</th>
+                        <th>今日消费</th>
+                        <th>历史消费</th>
+                        <th>备注</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>今日</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='today-c' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='today-c' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='today-c' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='today-c' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='today-c' class='page' >
+                    <input type='button' data-info='today-c' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+                <!-- 所有顾客 -->
+                <div role="tabpanel" class="tab-pane" id="all-c">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label for="start-time-a">筛选日期</label>
+                      <input type="text" class="form-control" id="start-time-a" placeholder="">
+                      -
+                      <input type="text" class="form-control" id="end-time-a" placeholder="">
+                    </div>
+                    <input type="button" class="btn btn-default pull-right" id='all-spend-sort' value='历史消费降序排列'>
+                  </form>
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>昵称</th>
+                        <th>手机号</th>
+                        <th>到店次数</th>
+                        <th>历史消费</th>
+                        <th>备注</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>所有</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='all-c' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='all-c' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='all-c' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='all-c' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='all-c' class='page' >
+                    <input type='button' data-info='all-c' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>                
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- 菜单管理 -->
+          <div role="tabpanel" class="tab-pane" id="menu-b">
+
+            <div class='h4-con'>
+              <h4>菜单管理</h4>
+            </div>
+
+            <div>
+              <!-- Nav tabs:当前酒品，套餐管理，类别管理，下架菜单 -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#sell-w" aria-controls="sell-w" role="tab" data-toggle="tab">当前酒品</a></li>
+                <li role="presentation"><a href="#set-m" aria-controls="set-m" role="tab" data-toggle="tab">套餐管理</a></li>
+                <li role="presentation"><a href="#type-m" aria-controls="type-m" role="tab" data-toggle="tab">类别管理</a></li>
+                <li role="presentation"><a href="#remove-w" aria-controls="remove-w" role="tab" data-toggle="tab">下架菜单</a></li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+
+                <!-- 当前酒品 -->
+                <div role="tabpanel" class="tab-pane active" id="sell-w">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label >名称</label>
+                      <input type="text" class="form-control" name='wine-name'>
+                    </div>
+                    <input type="button" class="btn btn-primary" name='search' value='搜索'>
+                    <!-- <a> -->
+                    <input type="button" class="btn btn-default pull-right" id='new-wine' value='新增商品'>
+                  </form>
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>名称</th>
+                        <th>售价</th>
+                        <th>库存</th>
+                        <th>今日售出</th>
+                        <th>历史售出</th>
+                        <th>所属套餐</th>
+                        <th>所属类别</th>
+                        <th>是否推荐</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='sell-w' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='sell-w' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='sell-w' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='sell-w' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='sell-w' class='page' >
+                    <input type='button' data-info='sell-w' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+                <!-- 套餐管理 -->
+                <div role="tabpanel" class="tab-pane" id="set-m">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label >套餐名称</label>
+                      <input type="text" class="form-control" name='menu-name'>
+                    </div>
+                    <input type="button" class="btn btn-primary" name='search' value='搜索'>
+                    <a href="/admin-menu" class="btn btn-default pull-right" id='new-menu'>新增套餐</a>
+                  </form>
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>套餐名称</th>
+                        <th>今日售出</th>
+                        <th>历史售出</th>
+                        <th>套餐内酒品</th>
+                        <th>数量</th>
+                        <th>库存</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='set-m' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='set-m' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='set-m' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='set-m' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='set-m' class='page' >
+                    <input type='button' data-info='set-m' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+                <!-- 类别管理 -->
+                <div role="tabpanel" class="tab-pane" id="type-m">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label >类别名称</label>
+                      <input type="text" class="form-control" name='type-name'>
+                    </div>
+                    <input type="button" class="btn btn-primary" name='search' value='搜索'>
+                    <input type="button" class="btn btn-default pull-right" id='new-type' value='新增类别'>
+                  </form>
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>类别名称</th>
+                        <th>类别内酒品数</th>
+                        <th>类别内酒品</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='type-m' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='type-m' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='type-m' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='type-m' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='type-m' class='page' >
+                    <input type='button' data-info='type-m' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+                <!-- 下架菜单 -->
+                <div role="tabpanel" class="tab-pane" id="remove-w">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label >类别</label>
+                      <input type="text" class="form-control" name='type'>
+                    </div>
+                    <div class="form-group">
+                      <label >名称</label>
+                      <input type="text" class="form-control" name='name'>
+                    </div>
+                    <input type="button" class="btn btn-primary" name='search' value='搜索'>
+                  </form>
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>类别</th>
+                        <th>名称</th>
+                        <th>售价</th>
+                        <th>历史售出</th>
+                        <th>库存</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>金额</td>                        
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>金额</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='remove-w' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='remove-w' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='remove-w' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='remove-w' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='remove-w' class='page' >
+                    <input type='button' data-info='remove-w' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+              </div>
+            </div>            
+          </div>
+
+          <!-- 查看流水 -->
+          <div role="tabpanel" class="tab-pane" id="bill-b">
+
+            <div class='h4-con'>
+              <h4>查看流水</h4>
+            </div>
+
+            <div>
+              <!-- Nav tabs:今日流水，历史流水 -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"  class="active"><a href="#today-b" aria-controls="today-b" role="tab" data-toggle="tab">今日流水</a></li>
+                <li role="presentation"><a href="#all-b" aria-controls="all-b" role="tab" data-toggle="tab">历史流水</a></li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+
+                <!-- 今日流水 -->
+                <div role="tabpanel" class="tab-pane active" id="today-b">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <h4>2015年8月23日</h4>
+                      <p>共<span class='today-bill-num'>268</span>条数据，今日销售额共计<span class='today-bill-money'>3678</span>元</p>
+                    </div>
+                    <input type="button" class="btn btn-default pull-right" id='sale-pic' value='生成销售分布图'>
+                  </form>
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>序号</th>
+                        <th>售出酒品</th>
+                        <th>售出数量</th>
+                        <th>单价</th>
+                        <th>销售额(元)</th>
+                        <th>库存</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='todat-b' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='todat-b' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='todat-b' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='todat-b' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='todat-b' class='page' >
+                    <input type='button' data-info='todat-b' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+                <!-- 历史流水 -->
+                <div role="tabpanel" class="tab-pane " id="all-b">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label >日期</label>
+                      <input type="text" class="form-control" name='start-time'>
+                      --
+                      <input type="text" class="form-control" name='end-time'>
+                      <p>共<span class='today-bill-num'>268</span>条数据，今日销售额共计<span class='today-bill-money'>3678</span>元</p>
+                    </div>
+                    <input type="button" class="btn btn-primary" name='search' value='搜索'>
+                    <input type="button" class="btn btn-default pull-right" id='sale-pic-a' value='生成销售额趋势图'>
+                  </form>
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>套餐名称</th>
+                        <th>今日售出</th>
+                        <th>历史售出</th>
+                        <th>套餐内酒品</th>
+                        <th>数量</th>
+                        <th>库存</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='all-b' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='all-b' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='all-b' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='all-b' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='all-b' class='page' >
+                    <input type='button' data-info='all-b' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>                
+
+              </div>
+            </div>            
+          </div>
+
+          <!-- 酒吧信息 -->
+          <div role="tabpanel" class="tab-pane" id="info-b">
+
+            <div class='h4-con'>
+              <h4>酒吧信息</h4>
+            </div>
+
+            <div class='info-con'>
+              <p>酒吧名称：<span id='bar-name'>酒吧名称</span></p>
+              <p>酒吧地址：<span id='bar-add'>酒吧名称</span></p>
+              <p>注册员工：<span id='bar-worker'>16</span>个</p>
+              <p>注册用户：<span id='bar-user'>236</span>个</p>
+            </div>            
+          </div>
+
+          <!-- 修改密码 -->
+          <div role='tabpanel' class='tab-pane' id='modify-p'>
+            <div class='h4-con'>
+              <h4>修改密码</h4>
+            </div>
+
+            <form>
+            <div class='form-group'>
+              <input type='text' class='form-control' placeholder='当前密码' name='old-pw'>
+            </div>
+            <div class='form-group'>
+              <input type='text' class='form-control' placeholder='新密码' name='new-pw'>
+            </div>
+            <div class='form-group'>
+              <input type='text' class='form-control' placeholder='再次确认密码' name='confirm-pw'>
+            </div>
+            <input type='button' class='btn btn-default pull-right' value='保存修改' id='save-modify-pw'>
+            </form>            
+          </div>
+
+          <!-- 成员管理 -->
+          <div role="tabpanel" class="tab-pane active" id="user-m">
+
+            <div class='h4-con'>
+              <h4>成员管理</h4>
+            </div>
+
+            <div>
+              <!-- Nav tabs:酒吧成员，注册申请 -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"  class="active"><a href="#bar-u" aria-controls="bar-u" role="tab" data-toggle="tab">酒吧成员</a></li>
+                <li role="presentation"><a href="#register-u" aria-controls="register-u" role="tab" data-toggle="tab">注册申请</a></li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content">
+
+                <!-- 酒吧成员 -->
+                <div role="tabpanel" class="tab-pane active" id="bar-u">
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>用户名</th>
+                        <th>真实姓名</th>
+                        <th>手机号</th>
+                        <th>身份</th>
+                        <th>上次登录</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='bar-u' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='bar-u' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='bar-u' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='bar-u' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='bar-u' class='page' >
+                    <input type='button' data-info='bar-u' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>
+
+                <!-- 注册申请 -->
+                <div role="tabpanel" class="tab-pane " id="register-u">
+                  <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                      <tr>
+                        <th>用户名</th>
+                        <th>真实姓名</th>
+                        <th>手机号</th>
+                        <th>身份</th>
+                        <th>操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                      <tr>
+                        <td>日期</td>
+                        <td>下单时间</td>
+                        <td>订单号</td>
+                        <td>桌号</td>
+                        <td>手机号</td>
+                        <td>点单内容</td>
+                        <td>金额</td>
+                        <td>操作</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class='page-con'>
+                    <input type='button' data-info='register-u' disabled class='btn btn-default btn-sm first-page' value='首页'>
+                    <input type='button' data-info='register-u' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+                    <input type='button' data-info='register-u' class='btn btn-default btn-sm next-page' value='下一页'>
+                    <input type='button' data-info='register-u' class='btn btn-default btn-sm last-page' value='末页'>
+                    <input type='text' data-info='register-u' class='page' >
+                    <input type='button' data-info='register-u' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+                  </div>
+                </div>                
+
+              </div>
+            </div>            
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- 单按钮modal -->
+      <div class="modal fade" id='one-btn-m'>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+            </div>
+            <div class="modal-body">
+              <p></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+
+    </div>  <!-- /.admin-info -->
+
+    
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery/jquery-2.1.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/bar/admin.js"></script>
+  </body>
+</html>

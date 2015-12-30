@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+/*
+* --------------管理端---------------------
+*/
+.admin{
+	form{
+		margin-top:20px;
+		p{
+			font-size:12px;
+			a{
+				text-decoration:underline;
+			}
+		}
+	}
+
+	.login{
+		// display:none
+	}
+
+	.register{
+		display:none;
+	}
+	.bar-register{
+		display:none;
+	}
+	.forget-pw{
+		display:none
+	}
+}
+
+// admin-index的css
+.admin-info{
+	ul{
+		li{
+			text-align:center;
+		}
+		li.first,
+		li.active.first{			
+			a{
+				text-align:left;
+				color: #fff;
+    			background-color: #5bc0de;
+			}
+		}
+		margin-bottom: 20px;
+	}
+
+	table{
+		margin-top: 10px;
+	}
+
+	.page-con{
+		.page{
+			width:30px;
+			margin-left:60px;
+		}
+		.first-page{
+
+		}
+	}
+
+	.modal{
+		.modal-body{
+			p{
+				text-align:center;
+			}
+		}
+	}
+
+	.custom{
+    	.new-num{
+    		margin: 0 20%;
+    		padding-bottom: 20px;
+    		#new-order-num{
+    			   margin-right: 20px;
+    		}
+    	}
+    	.h4-con{
+    		background-color: #eee;
+    		padding: 10px;
+    	}
+    	#completed-o,
+    	#invalid-o{
+    		form{
+    			padding:10px;
+    			input[type=text]{
+    				width: 100px;
+    			}
+    			#end-time-o{
+    				margin-right: 20px;
+    			}
+    			#search-o{
+    				margin-left:20px;
+    			}
+    		}
+    	}
+    	#today-c,
+    	#all-c{
+    		form{
+				height:54px;
+				
+    		}
+    	}
+    	#menu-b{
+    		form{
+    			padding:10px 0;
+    			input[name=search]{
+    				margin-left:20px;
+    			}
+    			#new-wine{
+
+    			}
+    		}
+    	}
+    	#bill-b{
+    		form{
+    			padding:10px 0;
+    			input[name=start-time],
+    			input[name=end-time]{
+    				width:100px;
+    			}
+    		}
+    	}
+    	#info-b{
+    		.info-con{
+    			margin:50px
+    		}
+    	}
+    	#modify-p{
+    		form{
+    			margin:50px;
+    		}
+    	}
+	}
+
+}
+
+// 新增酒品 和 新增套餐 用相同的css
+.admin-menu{
+	.col-md-3,
+	.col-sm-3{
+		text-align: center;
+	}
+	.form-group{
+		margin-bottom:20px
+	}
+	.checkbox,
+	.radio{
+		label{
+			margin-right: 20px;
+		}
+	}
+}
+
+
+

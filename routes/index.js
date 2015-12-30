@@ -89,6 +89,10 @@ router.get('/order-detail/:id', index_c.order_detail);
 // ---------------------管理端-----------------------
 router.get('/admin', admin_c.admin);
 
+router.get('/admin-info', admin_c.index);
+router.get('/admin-menu', admin_c.menu);
+router.get('/admin-wine', admin_c.wine);
+
 //  测试使用
 router.get('/test', function(req, res, next) {
 	

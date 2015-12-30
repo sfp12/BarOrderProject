@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>酒吧后台管理系统</title>
+
+    <!-- Bootstrap -->
+    <link href="styles/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/bar/admin.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class='container admin-menu'>
+      <h1>新增套餐</h1>
+      <form class='form-inline'>
+        <div class='row'>
+          <div class='col-md-3 col-sm-3'>
+            <img src='../images/food.png'>
+            <br>
+            <span>上传图片，大小最好是100*100</span>
+          </div>
+
+          <div class='col-md-9 col-sm-9'>
+            <div class="form-group">
+              <a href="/admin-wine" class="btn btn-default" role="button">添加酒品</a>
+            </div>
+            <br>
+            <div class="form-group">
+              <input type='text' placeholder='套餐名称' name='menu-name' class="form-control" >
+              <input type='text' placeholder='售价（元）' name='menu-price' class="form-control" >
+              <input type='text' placeholder='原售价（元）' name='menu-origin-price' class="form-control">
+            </div>
+            <br>
+            <div class="form-group" style="width:100%">
+              <input type='text' placeholder='套餐简介（不超过100字）' name='menu-des' class="form-control" style="width:100%">
+            </div>
+          </div>
+        </div>
+        <div class="form-group" style="width:100%">
+          套餐介绍
+          <textarea type='text' placeholder='套餐介绍（不超过100字）' rows='3' name='menu-des' class="form-control" style="width:100%"></textarea>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="">
+            加入酒吧推荐
+          </label>
+        </div>
+        <br>
+        <div class="form-group" style="width:100%">
+          <label>
+            套餐内容:
+          </label>
+          <table class='table'>
+            <thead>
+              <tr>
+                <th>名称</th>
+                <th>售价</th>
+                <th>库存</th>
+                <th>套餐内数量</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <a class='btn btn-default pull-left' href='#'>返回</a>
+        <a class='btn btn-default pull-right' href='#' id='submit'>保存</a>
+      </form>
+
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery/jquery-2.1.4.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/bar/admin.js"></script>
+  </body>
+</html>

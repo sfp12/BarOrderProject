@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/*
+* --------------管理端---------------------
+*/
+.admin form {
+  margin-top: 20px; }
+  .admin form p {
+    font-size: 12px; }
+    .admin form p a {
+      text-decoration: underline; }
+.admin .register {
+  display: none; }
+.admin .bar-register {
+  display: none; }
+.admin .forget-pw {
+  display: none; }
+
+.admin-info ul {
+  margin-bottom: 20px; }
+  .admin-info ul li {
+    text-align: center; }
+  .admin-info ul li.first a,
+  .admin-info ul li.active.first a {
+    text-align: left;
+    color: #fff;
+    background-color: #5bc0de; }
+.admin-info table {
+  margin-top: 10px; }
+.admin-info .page-con .page {
+  width: 30px;
+  margin-left: 60px; }
+.admin-info .modal .modal-body p {
+  text-align: center; }
+.admin-info .custom .new-num {
+  margin: 0 20%;
+  padding-bottom: 20px; }
+  .admin-info .custom .new-num #new-order-num {
+    margin-right: 20px; }
+.admin-info .custom .h4-con {
+  background-color: #eee;
+  padding: 10px; }
+.admin-info .custom #completed-o form,
+.admin-info .custom #invalid-o form {
+  padding: 10px; }
+  .admin-info .custom #completed-o form input[type=text],
+  .admin-info .custom #invalid-o form input[type=text] {
+    width: 100px; }
+  .admin-info .custom #completed-o form #end-time-o,
+  .admin-info .custom #invalid-o form #end-time-o {
+    margin-right: 20px; }
+  .admin-info .custom #completed-o form #search-o,
+  .admin-info .custom #invalid-o form #search-o {
+    margin-left: 20px; }
+.admin-info .custom #today-c form,
+.admin-info .custom #all-c form {
+  height: 54px; }
+.admin-info .custom #menu-b form {
+  padding: 10px 0; }
+  .admin-info .custom #menu-b form input[name=search] {
+    margin-left: 20px; }
+.admin-info .custom #bill-b form {
+  padding: 10px 0; }
+  .admin-info .custom #bill-b form input[name=start-time],
+  .admin-info .custom #bill-b form input[name=end-time] {
+    width: 100px; }
+.admin-info .custom #info-b .info-con {
+  margin: 50px; }
+.admin-info .custom #modify-p form {
+  margin: 50px; }
+
+.admin-menu .col-md-3,
+.admin-menu .col-sm-3 {
+  text-align: center; }
+.admin-menu .form-group {
+  margin-bottom: 20px; }
+.admin-menu .checkbox label,
+.admin-menu .radio label {
+  margin-right: 20px; }
+
+/*# sourceMappingURL=admin.css.map */
