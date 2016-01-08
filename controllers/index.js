@@ -19,6 +19,39 @@ exports.call = function(req, res, next){
 	res.render('call');
 };
 
+// get call
+exports.addCall = function(req, res, next){
+	var result = {};
+	result.status = 1;
+	result.data = '呼叫失败';
+
+	async.waterfall([
+			function(cb){
+				user_m.hasCall(req, cb, next);
+			},
+			function(r, cb){
+				if(r){
+					user_m.updateCallTimes(req, cb, next);
+				}else{
+					user_m.addCall(req, cb, next);
+				}
+			},
+			function(r, cb){
+				if(r){
+					result.status = 0;
+					result.data = '呼叫成功';
+					res.send(JSON.stringify(result));
+				}
+			}
+		], 
+
+		function(err, value){
+			console.log('err:'+err);
+			console.log('value:'+value);
+		}
+	);
+}
+
 // 聊天页
 exports.chat = function(req, res, next){
 	res.render('chat');

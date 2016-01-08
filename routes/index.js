@@ -65,6 +65,8 @@ router.post('/modifyInfo', user_c.modifyInfo);
 router.get('/main', index_c.main);
 
 router.get('/call', index_c.call);
+// 呼叫
+router.get('/addCall', index_c.addCall);
 
 router.get('/chat', index_c.chat);
 
@@ -88,10 +90,40 @@ router.get('/order-detail/:id', index_c.order_detail);
 
 // ---------------------管理端-----------------------
 router.get('/admin', admin_c.admin);
+router.post('/login', admin_c.login);
+router.get('/checkAdminName', admin_c.checkAdminName);
 
 router.get('/admin-info', admin_c.index);
 router.get('/admin-menu', admin_c.menu);
 router.get('/admin-wine', admin_c.wine);
+router.post('/barRegister', admin_c.barRegister);
+router.post('/workerRegister', admin_c.workerRegister);
+
+router.post('/adminForgetPw', admin_c.adminForgetPw);
+
+// 获取顾客点单的内容
+router.get('/getPendingO', admin_c.getPendingO);
+router.get('/getCompletedO', admin_c.getPendingO);
+router.get('/getInvalidO', admin_c.getPendingO);
+
+// 获取顾客呼叫的内容
+router.get('/getPendingC', admin_c.getPendingC);
+router.get('/getCompletedC', admin_c.getPendingC);
+
+// 订单状态切换
+router.get('/getSwitchStatus/', admin_c.getSwitchStatus);
+
+// 新增点单和呼叫
+router.get('/newOrderCall', admin_c.newOrderCall);
+// 呼叫状态切换
+router.get('/getSwitchStatusCall/', admin_c.getSwitchStatusCall);
+
+// 获取顾客信息的内容
+router.get('/getTodayC', admin_c.getTodayC);
+router.get('/getAllC', admin_c.getTodayC);
+
+
+// router.get('/getTodayCustom', admin_c.getTodayCustom);
 
 //  测试使用
 router.get('/test', function(req, res, next) {

@@ -145,6 +145,29 @@ exports.getById = function(menu_id, cb){
 
 }
 
+// 根据bar_id status 获取 menu
+exports.getByBS = function(bar_id, statu, cb){
+	var sql = 'select menu_id, add_time from ' + config.menu_t;
+	sql += ' where ';
+	sql += ' user_id = ?';
+
+	mysqlUtil.query(sql, [uid], function(err, rows, fields){
+		if(err){
+			console.log('get wine id num error');
+			return next(err);
+		}
+		
+		if(rows.length !== 0){
+			for(var i=0, l=rows.length; i<l; i++){
+				var item = rows[i];
+				spend[item.menu_id] += ','+item.add_time; 
+			}
+			cb(null, spend);
+
+		}
+	});
+}
+
 // 根据用户名查找菜单 测试用
 exports.getByUserId = function(uid, cb){
 

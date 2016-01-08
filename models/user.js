@@ -72,6 +72,79 @@ exports.addChat = function(obj, cb){
 
 }
 
+// 是否已有呼叫
+exports.hasCall = function(req, cb, next){
+	var sql = 'select call_id, call_times from '+config.call_t;
+	sql += ' where user_id = ? and call_type = ?';
+	sql += ' and table_id = ? and call_status = ? and bar_id = ?';
+
+	mysqlUtil.query(sql, [
+			req.query.user_id, 
+			req.query.call_type, 
+			req.query.table_id, 
+			1,
+			req.query.bar_id
+		], function(err, result){
+		
+		if(err){
+			console.log('has call error');
+			return next(err);
+		}
+		if(result.length !== 0){
+			req.query.call_times = (+result[0].call_times)+1;
+			req.query.call_id = result[0].call_id;
+			cb(null, true);
+		}else{
+			cb(null, false);
+		}
+		
+	});
+}
+
+// 更新呼叫次数
+exports.updateCallTimes = function(req, cb, next){
+	sql = 'update '+config.call_t+' set ';
+	sql += ' call_times = ? where ';
+	sql += ' call_id = ?';
+
+	mysqlUtil.query(sql, [req.query.call_times, req.query.call_id], function(err, results, fields) {
+
+		if (err) { 
+			console.log('update call times wrong');
+			return next(err);		  	 
+		} 
+
+		cb(null, true);		
+
+	});
+}
+
+// 添加呼叫
+exports.addCall = function(req, cb, next){
+
+	var call  = {
+		user_id: req.query.user_id, 
+		call_type: req.query.call_type,
+		bar_id: req.query.bar_id,
+		table_id: req.query.table_id,
+		call_status: 1, 
+		add_time:new Date().Format('YYYY-MM-dd HH:mm:ss')};
+
+	var sql = 'insert into ' +config.call_t;
+	sql += ' set ? ';
+
+	mysqlUtil.query(sql, call, function(err, result){
+		
+		if(err){
+			console.log('add chat error');
+			return next(err);
+		}
+
+		cb(null, result.insertId);
+	});
+
+}
+
 // 修改用户信息
 exports.modifyInfo = function(req, cb){
 	

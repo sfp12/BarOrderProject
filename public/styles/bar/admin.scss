@@ -3,6 +3,7 @@
 /*
 * --------------管理端---------------------
 */
+// 登陆页
 .admin{
 	form{
 		margin-top:20px;
@@ -20,16 +21,45 @@
 
 	.register{
 		display:none;
+
+		.form-group{
+			p{
+				margin-top: 10px;
+				margin-bottom: 0px;
+			}
+		}
 	}
 	.bar-register{
 		display:none;
+
+		.form-group{
+			p{
+				margin-top: 10px;
+				margin-bottom: 0px;
+			}
+		}
 	}
 	.forget-pw{
-		display:none
+		display:none;
+
+		.form-group{
+			p{
+				margin-top: 10px;
+				margin-bottom: 0px;
+			}
+		}
+	}
+	.modal{
+		.modal-body{
+			p{
+				text-align:center;
+			}
+		}
 	}
 }
 
 // admin-index的css
+// 管理端的详细信息页
 .admin-info{
 	ul{
 		li{
@@ -48,6 +78,10 @@
 
 	table{
 		margin-top: 10px;
+		.to-completed-o,
+		.wine-name{
+			margin-right: 5px;
+		}
 	}
 
 	.page-con{
@@ -87,10 +121,10 @@
     			input[type=text]{
     				width: 100px;
     			}
-    			#end-time-o{
+    			input[name=end-time]{
     				margin-right: 20px;
     			}
-    			#search-o{
+    			input[name=search-o]{
     				margin-left:20px;
     			}
     		}

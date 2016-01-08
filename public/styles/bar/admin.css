@@ -10,10 +10,21 @@
       text-decoration: underline; }
 .admin .register {
   display: none; }
+  .admin .register .form-group p {
+    margin-top: 10px;
+    margin-bottom: 0px; }
 .admin .bar-register {
   display: none; }
+  .admin .bar-register .form-group p {
+    margin-top: 10px;
+    margin-bottom: 0px; }
 .admin .forget-pw {
   display: none; }
+  .admin .forget-pw .form-group p {
+    margin-top: 10px;
+    margin-bottom: 0px; }
+.admin .modal .modal-body p {
+  text-align: center; }
 
 .admin-info ul {
   margin-bottom: 20px; }
@@ -26,6 +37,9 @@
     background-color: #5bc0de; }
 .admin-info table {
   margin-top: 10px; }
+  .admin-info table .to-completed-o,
+  .admin-info table .wine-name {
+    margin-right: 5px; }
 .admin-info .page-con .page {
   width: 30px;
   margin-left: 60px; }
@@ -45,11 +59,11 @@
   .admin-info .custom #completed-o form input[type=text],
   .admin-info .custom #invalid-o form input[type=text] {
     width: 100px; }
-  .admin-info .custom #completed-o form #end-time-o,
-  .admin-info .custom #invalid-o form #end-time-o {
+  .admin-info .custom #completed-o form input[name=end-time],
+  .admin-info .custom #invalid-o form input[name=end-time] {
     margin-right: 20px; }
-  .admin-info .custom #completed-o form #search-o,
-  .admin-info .custom #invalid-o form #search-o {
+  .admin-info .custom #completed-o form input[name=search-o],
+  .admin-info .custom #invalid-o form input[name=search-o] {
     margin-left: 20px; }
 .admin-info .custom #today-c form,
 .admin-info .custom #all-c form {

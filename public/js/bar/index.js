@@ -383,9 +383,9 @@ Zepto(function($){
   // });
 
   $('#main-icons').css('padding-top', ($('#main-page .content').height() - 4 * bo.fontSize() - 3 * $('#main-menu').height()) * .75);
-  console.log('1: '+$('#main-page .content').height());
-  console.log('2: '+bo.fontSize());
-  console.log('3: '+$('#main-menu').height());
+  // console.log('1: '+$('#main-page .content').height());
+  // console.log('2: '+bo.fontSize());
+  // console.log('3: '+$('#main-menu').height());
 
   // alert($('#main-icons').css('padding-top'));
   // 首页 结束
@@ -534,6 +534,12 @@ $('#login-s').on('click', function(data){
       cookie.set('username',data.data.userName);
       cookie.set('userid', data.data.userId);
       cookie.set('userimg', data.data.userImg);
+
+      // 把bar_id and table_id save in cookie
+      // 需要从url中解析出来
+      cookie.set('bar_id', 1);
+      cookie.set('table_id', 1);
+
       window.location.href='/profile';
       // w.chat.init(cookie.get('userid'), cookie.get('username'));
     }
@@ -601,6 +607,25 @@ $('#order-detail-page .content').css('height', bo.height - 4.4 * bo.fontSize());
 */
 $('#call-page .content').css('height', bo.height - 4.4 * bo.fontSize());
 $('#call-page .content .icons').css('margin-top', ($('#call-page .content').height() -  $('#call-page .content .icons').height()) * .75);
+
+$('#call-page .icons div').on('click', function(e){
+    var call_type = $(e.target).text();
+    var argu = {};
+    argu.call_type = call_type;
+    argu.user_id = cookie.get('userid');
+    argu.bar_id = cookie.get('bar_id');
+    argu.table_id = cookie.get('table_id');
+
+    $.get('/addCall', argu, function(data){
+        data = JSON.parse(data);
+
+        if(data.status === 0){
+
+        }else{
+
+        }
+    });
+})
 // 呼叫 结束
 
 /*
