@@ -636,3 +636,293 @@ exports.getTodayC = function(req, res, next){
 			console.log('value:'+value);
 		})
 }
+
+/*
+* 菜单管理
+*/
+exports.getSellW = function(req, res, next){
+	var result = {};
+	result.status = 1;
+	result.data = '获取当前酒品出错';
+
+	var page = req.query.page;
+	var list_start = (+page - 1) * config.page_size;
+	req.query.list_start = list_start;
+
+	// 存储wine_id
+	var wine_ids = [];
+	// 存储menu_id
+	var menu_ids = [];
+
+	// 1、获取酒品信息
+	// 2、获取今日售出 :先找出今日出售的菜单，再找出今日出售的酒
+	// 3、获取历史售出 :直接找出历史出售的酒
+	// 4、没有wine_today_sell, wine_all_sell, 设为0
+	// 5、调整库存
+	async.waterfall([
+			function(cb){
+
+				admin_m.getSellW(req, wine_ids, cb, next);
+			},
+			function(r, cb){
+				// console.log('wine_ids:'+wine_ids);
+				req.query.start_date = new Date(2015, 10, 30).Format('YYYY-MM-dd');
+				req.query.end_date = new Date(new Date(2015, 10, 30).getTime() + 24*60*60*1000).Format('YYYY-MM-dd');
+				admin_m.getTodaySellM(req, r, menu_ids, cb, next);
+			},
+			function(r, cb){
+				// console.log(util.inspect({menu_ids : menu_ids}));
+
+				
+				admin_m.getTodaySellW(req, r, wine_ids, menu_ids, cb, next)
+			},
+			function(r, cb){
+				// console.log(util.inspect({todaysellw : r}));
+				
+				admin_m.getAllSellW(req, r, cb, next)
+			},			
+			function(r, cb){
+
+				for(key in r){
+					if(!r[key].wine_today_sell){
+						r[key].wine_today_sell = 0
+					}
+					if(!r[key].wine_all_sell){
+						r[key].wine_all_sell = 0;
+					}
+				}
+
+				for(key in r){
+					r[key].wine_stock = +r[key].wine_stock - +r[key].wine_all_sell;
+				}
+
+				if(r){
+					result.status = 0;
+					result.data = r;
+					res.send(JSON.stringify(result));
+				}
+			}
+		], 
+
+		function(err, value){
+			console.log('err:'+err);
+			console.log('value:'+value);
+		}
+	);
+}
+
+// 酒品下架
+exports.getSwitchStatusWine = function(req, res, next){
+	var result = {};
+	result.status = 1;
+	result.data = 'wine状态切换出错';
+
+	var id = req.query.wine_id;
+	var to = req.query.to;
+
+	async.waterfall([
+			function(cb){
+				admin_m.getSwitchStatusWine(id, to, cb);
+			},
+			function(r, cb){
+				if(r){
+					result.status = 0;
+					result.data = 'wine状态切换成功';
+					res.send(JSON.stringify(result));
+				}
+			}
+		], 
+
+		function(err, value){
+			console.log('err:'+err);
+			console.log('value:'+value);
+		}
+	);
+}
+
+// 类别管理
+exports.getTypeM = function(req, res, next){
+	var result = {};
+	result.status = 1;
+	result.data = '获取类别管理数据错误';
+
+	var page = req.query.page;
+	var list_start = (+page - 1) * config.page_size;
+	req.query.list_start = list_start;
+
+	//
+	var type_ids = [];
+
+	async.waterfall([
+			function(cb){
+				admin_m.getTypeM(req, type_ids, cb);
+			},
+			function(r, cb){
+				// if(r){
+					// console.log(util.inspect({r : r}));
+				// }
+				admin_m.getWineBytype(r, type_ids, req, cb);
+
+			},
+			function(r, cb){
+				// console.log(util.inspect({get_wine : r['1'].wine_name}));
+				result.status = 0;
+				result.data = r;
+				res.send(JSON.stringify(result));
+			}
+		], 
+
+		function(err, value){
+			console.log('err:'+err);
+			console.log('value:'+value);
+		}
+	);
+}
+
+//新增类别
+exports.postNewType = function(req, res, next){
+	var result = {};
+	result.status = 1;
+	result.data = '新增类别出错';
+
+	async.waterfall([
+			function(cb){
+				admin_m.postNewType(req, cb, next);
+			},
+			function(r, cb){
+				// console.log('insert:'+r);
+
+				admin_m.updateWineType(req, r, cb, next);
+			},
+			function(r, cb){
+				if(r){
+					result.status = 0;
+					result.data = '新增类别成功';
+					res.send(JSON.stringify(result));
+				}
+			}
+		], 
+
+		function(err, value){
+			console.log('err:'+err);
+			console.log('value:'+value);
+		}
+	);
+}
+
+// 编辑类别
+exports.getEditType = function(req, res, next){
+	// 找出类别的信息，最后返回admin-type
+
+	async.waterfall([
+			function(cb){
+				admin_m.getTypeInfo(req, cb, next);
+			},
+			function(r, cb){
+				// console.log(util.inspect({gettypeinfo : r}));
+
+				admin_m.getWineByType(req, r, cb, next);
+			},
+			function(r, cb){
+				// console.log(util.inspect({getwine : r[req.query.type_id].wine}));
+				res.render('admin-edit-type', {
+					type_id: req.query.type_id,
+					type_name: r[req.query.type_id].type_name,
+					wine: r[req.query.type_id].wine
+				});
+			}
+		], 
+
+		function(err, value){
+			console.log('err:'+err);
+			console.log('value:'+value);
+		}
+	);
+
+	console.log(req.query.type_id);
+}
+
+// 编辑类别 post
+exports.postEditType = function(req, res, next){
+	var result = {};
+	result.status = 1;
+	result.data = '';
+
+	// type中待删除的wine 需要 跨函数
+	var del = [];
+
+	// 根据type_id找到wine_ids_o
+	// 根据wine_ids_o and wine_id, 找出增加和删除的wine_id
+	// 增加的wine_type设为type_id
+	// 删除的wine_type设为0
+	async.waterfall([
+			function(cb){
+
+				// 根据type_id找到wine_ids_o
+				admin_m.getWineByTypeEdit(req, cb, next);
+			},
+			function(r, cb){
+
+
+				var wine_ids_o = [];
+				if(r.length !== 0){
+					for(var i=0, l=r.length; i<l; i++){
+						var item = r[i];				
+						wine_ids_o.push(item.wine_id);
+					}
+				}
+
+				var wine_ids = req.body['wine_ids[]'];
+				// wine_ids 元素为字符
+				for(var i=0; i<wine_ids.length; i++){
+					wine_ids[i] = +wine_ids[i];
+				}
+
+				// del
+				for(var i=0; i<wine_ids_o.length; i++){
+				    if(wine_ids.indexOf(wine_ids_o[i]) === -1){
+				        del.push(wine_ids_o[i])
+				    }
+				}
+
+				// add
+				var add = [];
+				for(var i=0; i<wine_ids.length; i++){
+				    if(wine_ids_o.indexOf(wine_ids[i]) === -1){
+				        add.push(wine_ids[i])
+				    }
+				}
+
+				if(add.length !== 0){
+					admin_m.updateWineTypeEdit(req, add, cb, next);
+				}else{
+					cb(null, true);
+				}
+				
+			},
+			function(r, cb){
+
+				if(del.length !== 0){
+					req.query.type_id = 0
+					admin_m.updateWineTypeEdit(req, del, cb, next);
+				}else{
+					cb(null)
+				}			
+
+			},
+			function(r, cb){
+
+				result.status = 0;
+				result.data = '编辑类别成功';
+				res.send(JSON.stringify(result));
+			}
+		], 
+
+		function(err, value){
+			console.log('err:'+err);
+			console.log('value:'+value);
+		}
+	);
+}
+
+

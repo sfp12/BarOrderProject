@@ -72,8 +72,8 @@ exports.checkLogin = function(admin_name, admin_pw, req, cb, next){
 		if(results.length !== 0)
 		{	
 			req.session.uname = admin_name;
-			req.session.uid = results[0].id;
-			// req.session.uimg = results[0].user_img;
+			req.session.uid = results[0].admin_id;
+			req.session.bar_id = req.body.bar_id;
 			cb(null, true);
 		}else{
 			cb(null, false);
@@ -768,6 +768,355 @@ exports.getUserInfo = function(bar_id, user_ids, data, cb, next){
 
 	});
 }
+
+/*
+* 菜单管理
+*/
+// 获取当前酒品
+exports.getSellW = function(req, wine_ids, cb, next){
+	var sql = 'select wine_id, wine_name, wine_price, wine_stock, wine_set, wine_type, if_recommend from '+config.wine_t;
+	sql += ' where bar_id = ?';
+	sql += ' and wine_status = ?';
+	var data = [req.session.bar_id, 1];
+	if(req.query.name){
+		console.log('no name');
+		sql += " and wine_name like '%"+req.query.name+"%' ";
+	}
+	sql += ' limit ?,?';
+	data.push(req.query.list_start, config.page_size);
+
+	mysqlUtil.query(sql, data, function(err, results, fields) {
+
+		if (err) { 
+			console.log('get sell wine wrong');
+			return next(err);		  	 
+		} 
+
+		if(results.length !== 0){
+			var data = {};
+			for(var i=0, l=results.length; i<l; i++){
+				var item = results[i];
+				wine_ids.push(item.wine_id);
+				data[item.wine_id] = {};
+				data[item.wine_id].wine_name = item.wine_name;
+				data[item.wine_id].wine_price = item.wine_price;
+				data[item.wine_id].wine_stock = item.wine_stock;
+				data[item.wine_id].wine_set = item.wine_set;
+				data[item.wine_id].wine_type = item.wine_type;
+				data[item.wine_id].if_recommend = item.if_recommend;
+
+			}
+			cb(null, data);
+
+		}
+
+	});
+}
+
+exports.getTodaySellM = function(req, r, menu_ids, cb, next){
+	var sql = 'select menu_id from '+config.menu_t+' where bar_id = ? '
+	data = [req.query.bar_id];
+	sql += ' and add_time > ?';
+	sql += ' and add_time < ?';
+	data.push(req.query.start_date, req.query.end_date);
+
+	mysqlUtil.query(sql, data, function(err, results, fields) {
+
+		if (err) { 
+			console.log('get today sell menu wrong');
+			return next(err);		  	 
+		} 
+
+		if(results.length !== 0){
+			for(var i=0, l=results.length; i<l; i++){
+				var item = results[i];
+				menu_ids.push(item.menu_id);
+			}
+			cb(null, r);
+
+		}
+
+	});
+}
+
+// 今日售出
+exports.getTodaySellW = function(req, r, wine_ids, menu_ids, cb, next){
+	var sql = 'SELECT menu_id, wine_id, wine_num FROM '+config.menu_wine_t;
+	sql += ' where ';
+	var data = [];
+	if(wine_ids.length !== 0){
+		sql += ' wine_id in ('+wine_ids.join(',')+') and ';
+		// data.push(req.query.name);
+	}
+	if(menu_ids.length !== 0){
+		sql += ' menu_id in ('+menu_ids.join(',')+') ';
+	}
+
+	mysqlUtil.query(sql, data, function(err, results, fields) {
+
+		if (err) { 
+			console.log('get today sell wine wrong');
+			return next(err);		  	 
+		} 
+
+		if(results.length !== 0){
+			var data = r;
+			for(var i=0, l=results.length; i<l; i++){
+				var item = results[i];
+				if(!data[item.wine_id]){
+					continue;
+				}
+				data[item.wine_id].wine_today_sell = data[item.wine_id].wine_today_sell || 0;
+				data[item.wine_id].wine_today_sell += +item.wine_num;
+			}
+			cb(null, data);
+		}
+
+	});
+}
+
+// 历史售出
+exports.getAllSellW = function(req, r, cb, next){
+	var sql = 'SELECT menu_id, wine_id, wine_num FROM '+config.menu_wine_t;
+	sql += ' where ';
+	var data = [];
+	if(req.query.name){
+		sql += ' wine_id in (select wine_id from '+config.wine_t+' where wine_name like "%'+req.query.name+'%") and ';
+		// data.push(req.query.name);
+	}
+	sql += ' menu_id in (select menu_id from '+config.menu_t+' where bar_id = ? '
+	data = [req.query.bar_id];
+	sql += ' ) ';
+
+	mysqlUtil.query(sql, data, function(err, results, fields) {
+
+		if (err) { 
+			console.log('get all sell wine wrong');
+			return next(err);		  	 
+		} 
+		if(results.length !== 0){
+			var data = r;
+			for(var i=0, l=results.length; i<l; i++){
+				var item = results[i];
+				if(!data[item.wine_id]){
+					continue;
+				}
+				data[item.wine_id].wine_all_sell = data[item.wine_id].wine_all_sell || 0;
+				data[item.wine_id].wine_all_sell += +item.wine_num;
+			}
+			cb(null, data);
+		}
+
+	});
+}
+
+// 当前酒品 切换状态
+exports.getSwitchStatusWine = function(wine_id, to, cb){
+	sql = 'update '+config.wine_t+' set ';
+	sql += ' wine_status = ? where ';
+	sql += ' wine_id = ?';
+
+	mysqlUtil.query(sql, [to, wine_id], function(err, results, fields) {
+
+		if (err) { 
+			console.log('get switch status wine wrong');
+			return next(err);		  	 
+		} 
+
+		cb(null, true);		
+
+	});
+}
+
+// 类别管理
+exports.getTypeM = function(req, type_ids, cb){
+	var sql = 'select type_id, type_name from '+config.wine_type_t;
+	sql += ' where bar_id = ?';
+	sql += ' and type_status = ?';
+	var data = [req.session.bar_id, 1];
+	if(req.query.name){
+		sql += " and type_name like '%"+req.query.name+"%' ";
+	}
+	sql += ' limit ?,?';
+	data.push(req.query.list_start, config.page_size);
+
+	mysqlUtil.query(sql, data, function(err, results, fields) {
+
+		if (err) { 
+			console.log('get type m wrong');
+			return next(err);		  	 
+		} 
+		// console.log(util.inspect({result : results}));
+		if(results.length !== 0){
+			var data = {};
+			for(var i=0, l=results.length; i<l; i++){
+				var item = results[i];
+				type_ids.push(item.type_id);
+				data[item.type_id] = {};
+				data[item.type_id].type_name = item.type_name;
+			}
+			cb(null, data);
+
+		}
+
+	});
+}
+
+// 根据type_ids 获取wine info
+exports.getWineBytype = function(r, type_ids, req, cb){
+	var sql = 'select wine_id, wine_name, wine_type from '+config.wine_t;
+	sql += ' where bar_id = ? ';
+	if(type_ids.length !== 0){
+		sql += ' and wine_type in ('+type_ids.join(',')+')';
+	}
+
+	mysqlUtil.query(sql, [req.session.bar_id], function(err, results, fields) {
+
+		if (err) { 
+			console.log('get wine by type wrong');
+			return next(err);		  	 
+		} 
+	console.log(util.inspect({result : results}));
+		if(results.length !== 0){
+			for(var i=0, l=results.length; i<l; i++){
+				var item = results[i];
+				r[item.wine_type].wine_name = r[item.wine_type].wine_name || [];
+				r[item.wine_type].wine_name.push(item.wine_name);
+			}
+			cb(null, r);
+
+		}
+
+	});
+	 
+}
+
+// 新增类别
+exports.postNewType = function(req, cb, next){
+	var sql = 'insert into '+config.wine_type_t+' set ? ';
+	var type = {
+		type_name: req.body.type_name,
+		type_status: 1,
+		bar_id: req.session.bar_id
+	} 
+
+	mysqlUtil.query(sql, type, function(err, result) {
+
+		if (err) { 
+			console.log('add new type wrong');
+			return next(err);		  	 
+		} 
+
+		cb(null, result.insertId);
+	});
+}
+
+// 更新wine type
+exports.updateWineType = function(req, r, cb, next){
+	var sql = 'update '+config.wine_t+' set wine_type = ?';
+	sql += ' where wine_id in ('+req.body['wine_ids[]'].join(',')+')';
+
+	mysqlUtil.query(sql, [r], function(err, results, fields) {
+
+		if (err) { 
+			console.log('update wine type wrong');
+			return next(err);		  	 
+		} 
+
+		cb(null, true);
+	});
+
+}
+
+// 获取类别的信息
+exports.getTypeInfo = function(req, cb, next){
+	var sql = 'select type_name from '+config.wine_type_t;
+	sql += ' where type_id = ? and bar_id = ?';
+
+	mysqlUtil.query(sql, [req.query.type_id, req.session.bar_id], function(err, results, fields) {
+
+		if (err) { 
+			console.log('get type info wrong');
+			return next(err);		  	 
+		} 
+		var data = {};
+		if(results.length !== 0){
+			for(var i=0, l=results.length; i<l; i++){
+				var item = results[i];
+				data[req.query.type_id] = {};
+				data[req.query.type_id].type_name = item.type_name;
+			}
+			cb(null, data);
+
+		}
+
+	});
+}
+
+// 获取酒的信息 根据 类别
+exports.getWineByType = function(req, r, cb, next){
+	var sql = 'select wine_id, wine_name, wine_price, wine_stock from '+config.wine_t;
+	sql += ' where wine_type = ?';
+
+	mysqlUtil.query(sql, [req.query.type_id], function(err, results, fields) {
+
+		if (err) { 
+			console.log('get wine by type wrong');
+			return next(err);		  	 
+		} 
+	
+		var data = r;
+		if(results.length !== 0){
+			// console.log(util.inspect({data : data}));
+			// console.log('type_id:'+req.query.type_id);
+			data[req.query.type_id].wine = {};
+			for(var i=0, l=results.length; i<l; i++){
+				var item = results[i];				
+				data[req.query.type_id].wine[item.wine_id] = {}
+				data[req.query.type_id].wine[item.wine_id].wine_name = item.wine_name;
+				data[req.query.type_id].wine[item.wine_id].wine_price = item.wine_price;
+				data[req.query.type_id].wine[item.wine_id].wine_stock = item.wine_stock;
+			}
+			cb(null, data);
+
+		}
+
+	});
+}
+
+// 获取酒的信息 根据 类别 编辑类别
+exports.getWineByTypeEdit = function(req, cb, next){
+	var sql = 'select wine_id from '+config.wine_t;
+	sql += ' where wine_type = ?';
+
+	mysqlUtil.query(sql, [req.body.type_id], function(err, results, fields) {
+
+		if (err) { 
+			console.log('get wine by edit type wrong');
+			return next(err);		  	 
+		} 
+
+		cb(null, results);
+	});
+}
+
+// 更新酒的类别
+exports.updateWineTypeEdit = function(req, add, cb, next){
+	var sql = 'update '+config.wine_t+' set wine_type = ?';
+	sql += ' where wine_id in ('+add.join(',')+')';
+
+	mysqlUtil.query(sql, [req.body.type_id], function(err, results, fields) {
+
+		if (err) { 
+			console.log('update wine type edit wrong');
+			return next(err);		  	 
+		} 
+
+		cb(null, true);
+	});
+}
+
+
 
 
 

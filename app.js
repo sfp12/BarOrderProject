@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
   secret:'bar',
-  cookie: { maxAge: 1000*60*60 },
+  cookie: { maxAge: 1000*60*60*10000 },
   resave: false,
   saveUninitialized: true,
   store: new MongoStore({   

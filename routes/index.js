@@ -122,6 +122,32 @@ router.get('/getSwitchStatusCall/', admin_c.getSwitchStatusCall);
 router.get('/getTodayC', admin_c.getTodayC);
 router.get('/getAllC', admin_c.getTodayC);
 
+// 获取菜单管理的数据
+router.get('/getSellW', admin_c.getSellW);
+// router.get('/getSetM', admin_c.getSetM);
+router.get('/getTypeM', admin_c.getTypeM);
+// router.get('/getRemoveW', admin_c.getRemoveW);
+
+// 状态切换 酒品下架
+router.get('/getSwitchStatusWine', admin_c.getSwitchStatusWine);
+router.get('/newWine', function(req, res){
+  res.render('admin-wine');
+})
+router.get('/newMenu', function(req, res){
+  res.render('admin-menu');
+})
+router.get('/newType', function(req, res){
+  res.render('admin-type')
+})
+router.post('/newType', admin_c.postNewType);
+router.get('/editType', admin_c.getEditType)
+router.post('/editType', admin_c.postEditType)
+
+
+
+router.get('/addWineToType', function(req, res){
+  res.render('a_wine_to_type');
+})
 
 // router.get('/getTodayCustom', admin_c.getTodayCustom);
 

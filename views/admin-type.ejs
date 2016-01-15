@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>酒吧后台管理系统</title>
+
+    <!-- Bootstrap -->
+    <link href="styles/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/bar/admin.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+     <div class='container admin-type'>
+      <h1>新增类别</h1>
+      <div>
+        * <input type='text' class='' id='add-type-name' placeholder='类别名称'>
+        <a href='/addWineToType' class='btn btn-default pull-right'>添加酒品</a>
+      </div>
+      <h4>类别内容:</h4>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>名称</th>
+            <th>售价</th>
+            <th>库存</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+      <div>
+        <button class="btn btn-default pull-left" id='back' type="button">返回</button>
+        <button class="btn btn-default pull-right" id='save'  type="button">保存</button>
+      </div>
+
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery/jquery.cookie.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/bar/admin.js"></script>
+    <script>
+    jQuery(function($){
+
+      // 把cookie('wine-in-type') 的内容加载到页面 
+      var loadWine = function(){
+
+        if($.cookie('wine-in-type') === null){
+          return false;
+        }
+
+        var data =  JSON.parse($.cookie('wine-in-type'));
+        for(key in data){
+          var tr = $('.admin-type tr[data-id='+key+']');
+          if(tr.length == 0){
+            // 页面上没有当前的酒
+            var str = '<tr data-id="'+key+'">';
+            str += '<td>'+data[key].name+'</td>';
+            str += '<td>'+data[key].price+'</td>';
+            str += '<td>'+data[key].stock+'</td>';
+            str += '<td class="remove" data-id="'+key+'">删除</td>';
+            $('.admin-type tbody').append(str);
+          }
+        } 
+
+        // 添加删除功能
+        $('.remove').on('click', function(e){
+          var key = $(e.target).data('id');
+          $('tr[data-id='+key+']').remove();
+
+          // cookie delete
+          var data = JSON.parse($.cookie('wine-in-type'));
+          delete data[key];
+
+          $.cookie('wine-in-type', JSON.stringify(data));
+        })
+      }
+
+      // 每隔1s,把cookie的内容加载到页面
+      setInterval(function(){
+        loadWine();
+      }, 1000);
+      
+
+      // 保存
+      $('#save').on('click', function(e){
+        var name = $('#add-type-name').val();
+
+        if(name === ''){
+          alert('类名不能为空');
+          return false;
+        }
+
+        var argu = {
+          type_name: name,
+          wine_ids: []
+        };
+
+        var data = JSON.parse($.cookie('wine-in-type'));
+        for(key in data){
+          argu.wine_ids.push(key);
+        }
+
+        $.post('/newType', argu, function(data){
+          data = JSON.parse(data);
+
+          if(data.status === 0){
+            console.log('new type save success');
+            $.cookie('wine-in-type', '');
+          }else{
+            console.log('new type save fail');
+          }
+        });
+      })
+
+
+    })
+    </script>
+  </body>
+</html>

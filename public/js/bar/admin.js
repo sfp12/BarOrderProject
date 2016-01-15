@@ -1,6 +1,8 @@
+var admin = {};
+
 jQuery(function($){
 
-	var admin = {};
+	
 	// 检查之前的input是否为空
 	admin.register_input = [
 		'admin-name',
@@ -42,8 +44,8 @@ jQuery(function($){
 		repeat_pw: '确认密码'
 	}
 
-	cookie.set('bar_id', 1);
-	admin.bar_id = cookie.get('bar_id');
+	$.cookie('bar_id', 1);
+	admin.bar_id = $.cookie('bar_id');
 	admin.page_size = 10;
 
 	/*
@@ -91,6 +93,7 @@ jQuery(function($){
 		var argu = {};
 		argu.admin_name = admin_name;
 		argu.admin_pw = admin_pw;
+		argu.bar_id = $.cookie('bar_id');
 
 		$.post('/login', argu, function(data){
 			data = JSON.parse(data);
@@ -774,16 +777,16 @@ jQuery(function($){
 			admin[admin.convertMethod(data_info)](page);
 		}else if(data_info === 'completed-o'){
 
-			var start_time = $('#'+page+' input[name=start-time]').val();
-			var end_time = $('#'+page+' input[name=end-time]').val();
-			var key = $('#'+page+' input[name=key]').val();
+			var start_time = $('#'+data_info+' input[name=start-time]').val();
+			var end_time = $('#'+data_info+' input[name=end-time]').val();
+			var key = $('#'+data_info+' input[name=key]').val();
 
 			admin[admin.convertMethod(data_info)](page, start_time, end_time, key);
 		}else if(data_info === 'invalid-o'){
 
-			var start_time = $('#'+page+' input[name=start-time]').val();
-			var end_time = $('#'+page+' input[name=end-time]').val();
-			var key = $('#'+page+' input[name=key]').val();
+			var start_time = $('#'+data_info+' input[name=start-time]').val();
+			var end_time = $('#'+data_info+' input[name=end-time]').val();
+			var key = $('#'+data_info+' input[name=key]').val();
 
 			admin[admin.convertMethod(data_info)](page, start_time, end_time, key);
 		}else if(data_info === 'pending-c'){
@@ -794,17 +797,27 @@ jQuery(function($){
 			admin[admin.convertMethod(data_info)](page);
 		}else if(data_info === 'today-c'){
 
-			var start_time = $('#'+page+' input[name=start-time]').val();
-			var end_time = $('#'+page+' input[name=end-time]').val();
+			var start_time = $('#'+data_info+' input[name=start-time]').val();
+			var end_time = $('#'+data_info+' input[name=end-time]').val();
 
 			admin[admin.convertMethod(data_info)](page, start_time, end_time);
 		}
 		else if(data_info === 'all-c'){
 
-			var start_time = $('#'+page+' input[name=start-time]').val();
-			var end_time = $('#'+page+' input[name=end-time]').val();
+			var start_time = $('#'+data_info+' input[name=start-time]').val();
+			var end_time = $('#'+data_info+' input[name=end-time]').val();
 
 			admin[admin.convertMethod(data_info)](page, start_time, end_time);
+		}
+		else if(data_info === 'type-m'){
+			var name = $('#'+data_info+' input[name=type-name]').val();
+
+			admin[admin.convertMethod(data_info)](page, name);
+		}
+		else if(data_info === 'add-wine-to-type'){
+			var name = $('.'+data_info+' input[name=wine-time]').val();
+
+			admin.addWineToType(page, name);
 		}
 		else{
 
@@ -917,7 +930,7 @@ jQuery(function($){
 		// 已完成的订单
   		var argu = {};
   		argu.page = page;
-  		argu.bar_id = cookie.get('bar_id');
+  		argu.bar_id = $.cookie('bar_id');
   		argu.statu = 1;
 
   		argu.url = '/getPendingO';
@@ -935,7 +948,7 @@ jQuery(function($){
 		// 已完成的订单
   		var argu = {};
   		argu.page = page;
-  		argu.bar_id = cookie.get('bar_id');
+  		argu.bar_id = $.cookie('bar_id');
   		argu.statu = 2;
 
   		if(start_time){
@@ -958,7 +971,7 @@ jQuery(function($){
 		// 失效订单
   		var argu = {};
   		argu.page = 1;
-  		argu.bar_id = cookie.get('bar_id');
+  		argu.bar_id = $.cookie('bar_id');
   		argu.statu = 3;
 
   		if(start_time){
@@ -1196,7 +1209,7 @@ jQuery(function($){
 		// 已完成的订单
   		var argu = {};
   		argu.page = page;
-  		argu.bar_id = cookie.get('bar_id');
+  		argu.bar_id = $.cookie('bar_id');
   		argu.statu = 1;
 
   		argu.url = '/getPendingC';
@@ -1214,7 +1227,7 @@ jQuery(function($){
 		// 已完成的订单
   		var argu = {};
   		argu.page = page;
-  		argu.bar_id = cookie.get('bar_id');
+  		argu.bar_id = $.cookie('bar_id');
   		argu.statu = 2;
 
   		argu.url = '/getCompletedC';
@@ -1317,7 +1330,7 @@ jQuery(function($){
 	admin.todayC = function(page){
   		var argu = {};
   		argu.page = page;
-  		argu.bar_id = cookie.get('bar_id');
+  		argu.bar_id = $.cookie('bar_id');
   		// 1:今日
   		argu.state = 1;
   		// 1:升序
@@ -1333,7 +1346,7 @@ jQuery(function($){
 	admin.allC = function(page, start_day, end_day){
   		var argu = {};
   		argu.page = page;
-  		argu.bar_id = cookie.get('bar_id');
+  		argu.bar_id = $.cookie('bar_id');
   		argu.state = 2;
   		argu.sort = $('#all-c input[name=all-spend-sort]').data('sort');
   		
@@ -1420,6 +1433,351 @@ jQuery(function($){
 
 		admin.allC(1);
 	});
+
+	/*
+	* 酒吧管理 现在每个tab返回的内容不同了。
+	*/
+	// 当前酒品
+	admin.sellW = function(page, name){
+		// 已完成的订单
+  		var argu = {};
+  		argu.page = page;
+  		argu.bar_id = $.cookie('bar_id');
+  		argu.statu = 1;
+
+  		if(name){
+  			argu.name = name;
+  		}
+
+  		$.get('/getSellW', argu, function(data){
+	  		data = JSON.parse(data);
+	  		var last_page = Math.ceil(data.num/10);
+
+	  		if(data.status === 0){
+	  			data = data.data;
+	  			var str = '';
+		  		for(key in data){	  		
+		  			str += '<tr>';
+	  				str += '<td>'+data[key].wine_name+'</td>';
+	  				str += '<td>'+data[key].wine_price+'</td>';
+	  				str += '<td>'+data[key].wine_stock+'</td>';
+	  				str += '<td>'+data[key].wine_today_sell+'</td>';
+	  				str += '<td>'+data[key].wine_all_sell+'</td>';
+	  				str += '<td>'+data[key].wine_set+'</td>';
+	  				str += '<td>'+data[key].wine_type+'</td>';
+	  				str += '<td>'+data[key].if_recommend+'</td>';
+	  				str += '<td><a href="javascript:void(0);" data-id="'+key+'" class="edit-wine">编辑</a><a href="javascript:void(0);" data-id="'+key+'" class="to-remove-w">下架</a></td>';
+		  			str += '</tr>';
+		  		}
+
+		  		$('#sell-w table tbody').html(str);
+
+		  		// 根据data.num 来确定末页。
+		  		var $page_con = $('#sell-w .page-con');
+		  		admin.addDataPage($page_con, argu.page, last_page);
+
+		  		admin.switchStatusWine();
+	  		}else{
+	  			console.log(data.data);
+	  		}
+
+	  		
+	  	})
+	}
+
+	// 套餐管理
+	admin.setM = function(page, name){
+		// 已完成的订单
+  		var argu = {};
+  		argu.page = page;
+  		argu.bar_id = $.cookie('bar_id');
+  		argu.statu = 2;
+
+  		if(name){
+  			argu.name = name;
+  		}
+
+  		argu.url = '/getCompletedO';
+  		argu.selector = '#completed-o';
+  		argu.cb = function(str, key){
+  			return str;
+  		};
+
+  		admin.orderC(argu);
+	}
+
+	// 类别管理
+	admin.typeM = function(page, name){
+		// 失效订单
+  		var argu = {};
+  		argu.page = 1;
+  		argu.bar_id = $.cookie('bar_id');
+  		argu.statu = 1;
+
+  		if(name){
+	  		argu.name = name;
+  		}
+
+  		$.get('/getTypeM', argu, function(data){
+	  		data = JSON.parse(data);
+	  		var last_page = Math.ceil(data.num/10);
+
+	  		if(data.status === 0){
+	  			data = data.data;
+	  			var str = '';
+		  		for(key in data){	  		
+		  			str += '<tr>';
+	  				str += '<td>'+data[key].type_name+'</td>';
+	  				if(data[key].wine_name){
+	  					str += '<td>'+data[key].wine_name.length+'</td>';
+	  					str += '<td>';
+		  				for(var i=0,l=data[key].wine_name.length; i<l; i++){
+		  					var item = data[key].wine_name[i];
+		  					str += '<span>'+item+'</span>';
+		  					str += '</br>';
+		  				}
+		  				str += '</td>';
+	  				}else{
+	  					str += '<td>0</td>';
+	  					str += '<td></td>';
+	  				}
+	  				str += '<td><a href="/editType?type_id='+key+'" class="edit-type">编辑</a><a href="/removeType?type_id='+key+'" class="to-remove-t">下架</a></td>';
+		  			str += '</tr>';
+		  		}
+
+		  		$('#type-m table tbody').html(str);
+
+		  		// 根据data.num 来确定末页。
+		  		var $page_con = $('#type-m .page-con');
+		  		admin.addDataPage($page_con, argu.page, last_page);
+
+		  		admin.switchStatusType();
+	  		}else{
+	  			console.log(data.data);
+	  		}
+
+	  		
+	  	})
+	}
+
+	// 下架菜单
+	admin.removeW = function(page, name, type){
+		// 失效订单
+  		var argu = {};
+  		argu.page = 1;
+  		argu.bar_id = $.cookie('bar_id');
+  		argu.statu = 3;
+
+  		if(start_time){
+  			argu.start_time = start_time;
+	  		argu.end_time = end_time;
+	  		argu.key = key;
+  		}
+
+  		argu.url = '/getInvalidO';
+  		argu.selector = '#invalid-o';
+  		argu.cb = function(str, key){
+  			str += '<td><a href="javascript:void(0);" class="to-pending-o" data-id="'+key+'">恢复</a></td>';
+  			return str;
+  		};
+
+  		admin.orderC(argu);
+	}
+
+	/*
+	* 菜单管理 tab show 获取数据
+	*/
+	$('a[data-toggle=tab][href=#menu-b]').on('shown.bs.tab', function (e) {
+		// 切换到顾客点单界面 一级
+
+		// 找到 active tab 二级		
+	  	var $menu_b = $('#menu-b');
+	  	var active_info = $menu_b.find('li.active').data('info');
+
+	  	if(active_info === 'sell-w'){
+
+	  		admin.sellW(1);
+	  	}else if(active_info === 'set-m'){
+	  		
+	  		admin.setM(1);
+	  	}else if(active_info === 'type-m'){
+	  		
+	  		admin.typeM(1);
+	  	}else if(active_info === 'remove-w'){
+	  		
+	  		admin.removeW(1);
+	  	}else{
+	  		console.log('menu-b active info error');
+	  	}
+
+	});
+
+	// 当前酒品
+	$('a[data-toggle=tab][href=#sell-w]').on('shown.bs.tab', function (e) {
+
+		admin.sellW(1);
+		
+	});
+
+	// 新增酒品 搜索
+	$('#sell-w input[name=search]').on('click', function(e){
+		var key = $('#sell-w input[name=wine-name]').val();
+		console.log('search key:'+key);
+		admin.sellW(1, key);
+	})
+
+	// 套餐管理
+	$('a[data-toggle=tab][href=#set-m]').on('shown.bs.tab', function (e) {
+
+		admin.setM(1);
+	});
+
+	// 套餐管理 搜索
+	$('#set-m input[name=search]').on('click', function(e){
+		var $invalid_o = $('#invalid-o');
+		var start_time = $invalid_o.find('input[name=start-time]').val();
+		var end_time = $invalid_o.find('input[name=end-time]').val();
+		var key = $invalid_o.find('input[name=key]').val();
+
+		admin.invalidO(1, start_time, end_time, key);
+	})
+
+	// 类别管理
+	$('a[data-toggle=tab][href=#type-m]').on('shown.bs.tab', function (e) {
+
+		admin.typeM(1);
+	});
+
+	// 类别管理 搜索
+	$('#type-m input[name=search]').on('click', function(e){
+		var $invalid_o = $('#invalid-o');
+		var start_time = $invalid_o.find('input[name=start-time]').val();
+		var end_time = $invalid_o.find('input[name=end-time]').val();
+		var key = $invalid_o.find('input[name=key]').val();
+
+		admin.invalidO(1, start_time, end_time, key);
+	})
+
+	// 下架菜单
+	$('a[data-toggle=tab][href=#remove-w]').on('shown.bs.tab', function (e) {
+
+		admin.removeW(1);
+	});
+
+	//	下架管理 搜索
+	$('#remove-w input[name=search]').on('click', function(e){
+		var $invalid_o = $('#invalid-o');
+		var start_time = $invalid_o.find('input[name=start-time]').val();
+		var end_time = $invalid_o.find('input[name=end-time]').val();
+		var key = $invalid_o.find('input[name=key]').val();
+
+		admin.invalidO(1, start_time, end_time, key);
+	})
+
+	/*
+	* 切换状态 order
+	*/
+	admin.getSwitchStatusWine = function(wine_id, to){
+		$.get('/getSwitchStatusWine', {
+			wine_id: wine_id,
+			to: to
+		}, function(data){
+			data = JSON.parse(data);
+
+			if(data.status === 0){
+				// console.log('switch success');
+			}else{
+				console.log('switch fail');
+
+			}
+		})
+	}
+
+	admin.switchStatusWine = function(){
+		// 编辑
+		$('#pending-o .edit-wine').on('click', function(e){
+			var menu_id = $(e.target).data('id');
+			var to = 2;
+
+			// admin.getSwitchStatusBar(menu_id, to);
+		})		
+
+		// 下架
+		$('#sell-w .to-remove-w').on('click', function(e){
+			var wine_id = $(e.target).data('id');
+			var to = 2;
+
+			admin.getSwitchStatusWine(wine_id, to);
+		})
+	}
+
+	admin.getSwitchStatusSet = function(menu_id, to){
+		$.get('/getSwitchStatus', {
+			menu_id: menu_id,
+			to: to
+		}, function(data){
+			data = JSON.parse(data);
+
+			if(data.status === 0){
+				// console.log('switch success');
+			}else{
+				console.log('switch fali');
+
+			}
+		})
+	}
+
+	admin.switchStatusSet = function(){
+		// 下架
+		$('#pending-o .to-invalid-o').on('click', function(e){
+			var menu_id = $(e.target).data('id');
+			var to = 2;
+
+			admin.getSwitchStatusSet(menu_id, to);
+		})		
+
+		// 恢复
+		$('#invalid-o .to-pending-o').on('click', function(e){
+			var menu_id = $(e.target).data('id');
+			var to = 1;
+
+			admin.getSwitchStatusSet(menu_id, to);
+		})
+	}
+
+	admin.getSwitchStatusType = function(menu_id, to){
+		$.get('/getSwitchStatus', {
+			menu_id: menu_id,
+			to: to
+		}, function(data){
+			data = JSON.parse(data);
+
+			if(data.status === 0){
+				// console.log('switch success');
+			}else{
+				console.log('switch fali');
+
+			}
+		})
+	}
+
+	admin.switchStatusType = function(){
+		// 下架
+		$('#pending-o .to-invalid-o').on('click', function(e){
+			var menu_id = $(e.target).data('id');
+			var to = 2;
+
+			admin.getSwitchStatusType(menu_id, to);
+		})		
+
+		// 恢复
+		$('#invalid-o .to-pending-o').on('click', function(e){
+			var menu_id = $(e.target).data('id');
+			var to = 1;
+
+			admin.getSwitchStatusType(menu_id, to);
+		})
+	}
 
 
 

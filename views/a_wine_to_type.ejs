@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>酒吧后台管理系统</title>
+
+    <!-- Bootstrap -->
+    <link href="styles/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/bar/admin.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+     <div class='container admin-wine-to-type'>
+      <div class='search-con'>
+        <div class='form-'>
+        <label>名称</label>
+        <input type='text' class='' name='wine-name' placeholder='类别名称'>
+        <button class="btn btn-default search-wine pull-right" type="button">搜索</button>
+      </div>
+      <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <tr>
+            <th>名称</th>
+            <th>售价</th>
+            <th>库存</th>
+            <th>今日售出</th>
+            <th>历史售出</th>
+            <th>所属套餐</th>
+            <th>所属类别</th>
+            <th>是否推荐</th>
+            <th>添加</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <div class='page-con'>
+        <input type='button' data-info='add-wine-to-type' data-page='1' disabled class='btn btn-default btn-sm first-page' value='首页'>
+        <input type='button' data-info='add-wine-to-type' disabled class='btn btn-default btn-sm prev-page' value='上一页'>
+        <input type='button' data-info='add-wine-to-type' class='btn btn-default btn-sm next-page' value='下一页'>
+        <input type='button' data-info='add-wine-to-type' class='btn btn-default btn-sm last-page' value='末页'>
+        <input type='text' data-info='add-wine-to-type' class='page' >
+        <input type='button' data-info='add-wine-to-type' class='btn btn-default btn-sm page-to' value='跳转到该页'>
+      </div>
+      <div>
+        <button class="btn btn-default pull-left" data-method='back' type="button">返回</button>
+        <button class="btn btn-default pull-right" data-method='save' type="button">保存</button>
+      </div>
+
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery/jquery.cookie.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <script src="js/bar/admin.js"></script>
+    <script>
+    jQuery(function($){
+
+      jQuery.getScript("/js/bar/admin.js")
+       .done(function() {
+        
+        // 加载 类别管理 添加酒品 的内容 
+        admin.addWineToType = function(page, name){
+          // 已完成的订单
+            var argu = {};
+            argu.page = page;
+            argu.bar_id = $.cookie('bar_id');
+            argu.statu = 1;
+
+            if(name){
+              argu.name = name;
+            }
+
+            $.get('/getSellW', argu, function(data){
+              data = JSON.parse(data);
+              var last_page = Math.ceil(data.num/10);
+
+              if(data.status === 0){
+                data = data.data;
+                var str = '';
+                for(key in data){       
+                  str += '<tr>';
+                  str += '<td>'+data[key].wine_name+'</td>';
+                  str += '<td>'+data[key].wine_price+'</td>';
+                  str += '<td>'+data[key].wine_stock+'</td>';
+                  str += '<td>'+data[key].wine_today_sell+'</td>';
+                  str += '<td>'+data[key].wine_all_sell+'</td>';
+                  str += '<td>'+data[key].wine_set+'</td>';
+                  str += '<td>'+data[key].wine_type+'</td>';
+                  str += '<td>'+data[key].if_recommend+'</td>';
+                  str += '<td><input type="checkbox" name="if-add" value='+key+'></td>';
+                  str += '</tr>';
+                }
+
+                $('.admin-wine-to-type table tbody').html(str);
+
+                // 根据data.num 来确定末页。
+                var $page_con = $('.admin-wine-to-type .page-con');
+                admin.addDataPage($page_con, argu.page, last_page);
+
+                $('.admin-wine-to-type input[name=if-add]').on('click', function(e){
+                if($(e.target).is(':checked')){
+                  // true 选中
+                  // 从cookie中取值，添加，save to cookie
+                  if($.cookie('wine-in-type') === null){
+                    var data = {}
+                    var item = {};
+                    var wine_id = $(e.target).val();
+                    item.name = $(e.target).parent().parent().children(':eq(0)').text();
+                    item.price = $(e.target).parent().parent().children(':eq(1)').text();
+                    item.stock = $(e.target).parent().parent().children(':eq(2)').text();
+                    data[wine_id] = item;
+                    $.cookie('wine-in-type', JSON.stringify(data));
+                  }else{
+                    var wine_id = $(e.target).val();
+                    var data = JSON.parse($.cookie('wine-in-type'));
+                    if(data[wine_id] === undefined){
+                      // 类别中没有这种酒
+                      var item = {};
+                      item.name = $(e.target).parent().parent().children(':eq(0)').text();
+                      item.price = $(e.target).parent().parent().children(':eq(1)').text();
+                      item.stock = $(e.target).parent().parent().children(':eq(2)').text();
+                      data[wine_id] = item;
+                      $.cookie('wine-in-type', JSON.stringify(data));
+                    }
+                  }
+                }else{
+                  // 从cookie中取值，delete，save to cookie
+                  if($.cookie('wine-in-type') === null){
+                    console.error('删除酒，但是类别中没酒');
+                  }else{
+                    var wine_id = $(e.target).val();
+                    var data = JSON.parse($.cookie('wine-in-type'));
+                    delete data[wine_id];
+                    $.cookie('wine-in-type', JSON.stringify(data));
+                  }
+                }
+              })
+
+              // cookie wine-in-type show on page
+              if($.cookie('wine-in-type') !== null){
+                var data = JSON.parse($.cookie('wine-in-type'));
+                var input_s = $('.admin-wine-to-type tr input');
+                for(var i=0, l=input_s.length; i<l; i++){
+                  var $input = $(input_s[i]);
+                  if(data[$input.val()] !== undefined){
+                    $input.attr('checked', true)
+                  }
+                }
+              }
+
+                admin.switchStatusWine();
+              }else{
+                console.log(data.data);
+              }
+
+              
+            })
+        };
+
+        admin.addWineToType(1);
+
+        // 按名称搜索酒
+        $('.admin-wine-to-type .search-wine').on('click', function(){
+          var name = $('.admin-wine-to-type input[name=wine-name]').val();
+
+          if(name === ''){
+            admin.addWineToType(1);
+          }else{
+            admin.addWineToType(1, name);
+          }
+        })
+
+       })
+       .fail(function() {
+        
+      });
+    
+      
+    })
+      
+    </script>
+  </body>
+</html>

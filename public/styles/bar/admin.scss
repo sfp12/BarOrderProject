@@ -79,7 +79,9 @@
 	table{
 		margin-top: 10px;
 		.to-completed-o,
-		.wine-name{
+		.wine-name,
+		.edit-wine,
+		.edit-type{
 			margin-right: 5px;
 		}
 	}
@@ -185,6 +187,33 @@
 			margin-right: 20px;
 		}
 	}
+}
+
+.admin-type{
+	table{
+		// margin-top:50px;
+	}
+	h4{
+		clear: both;
+    	margin-top: 50px;
+	}
+	h1{
+		margin-bottom: 30px;
+	}
+	.remove{
+		text-decoration: underline;
+	}
+}
+
+.admin-wine-to-type{
+	padding-top: 20px;
+	table{
+		margin-top:20px;
+	}
+	.page-con{
+		margin-bottom:50px;
+	}
+
 }
 
 

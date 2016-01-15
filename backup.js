@@ -49,6 +49,15 @@ call_times, add call时，自动添加。 ok
 info 前端写好，准备后端。 
 如何取出add_time的date？
 
+function  把数据取回来 库存，售出。
+下架
+
+
+新增类别 添加酒品，跟cookie交互  接下来写保存和返回。
+set in 不行
+
+a_wine_to_type can exec admin.test
+
 
 
 

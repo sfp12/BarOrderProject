@@ -38,7 +38,9 @@
 .admin-info table {
   margin-top: 10px; }
   .admin-info table .to-completed-o,
-  .admin-info table .wine-name {
+  .admin-info table .wine-name,
+  .admin-info table .edit-wine,
+  .admin-info table .edit-type {
     margin-right: 5px; }
 .admin-info .page-con .page {
   width: 30px;
@@ -90,5 +92,20 @@
 .admin-menu .checkbox label,
 .admin-menu .radio label {
   margin-right: 20px; }
+
+.admin-type h4 {
+  clear: both;
+  margin-top: 50px; }
+.admin-type h1 {
+  margin-bottom: 30px; }
+.admin-type .remove {
+  text-decoration: underline; }
+
+.admin-wine-to-type {
+  padding-top: 20px; }
+  .admin-wine-to-type table {
+    margin-top: 20px; }
+  .admin-wine-to-type .page-con {
+    margin-bottom: 50px; }
 
 /*# sourceMappingURL=admin.css.map */
